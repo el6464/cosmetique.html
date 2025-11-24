@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Éclat Beauté — Cosmétiques</title>
+  <title>Bélli et Bien Etre — Cosmétiques</title>
   <meta name="description" content="Éclat Beauté — cosmétiques naturels et soins premium">
   <style>
     :root{--bg:#fff;--accent:#b76ba3;--muted:#6b6b6b;--card:#f9f6fb}
@@ -71,6 +71,9 @@
       <nav class="tabs" role="tablist" aria-label="Navigation principale">
         <button class="tab active" data-tab="accueil" role="tab" aria-selected="true">Accueil</button>
         <button class="tab" data-tab="produits" role="tab" aria-selected="false">Produits</button>
+        <button class="tab" data-tab="panier" role="tab" aria-selected="false">Panier</button>
+        <button class="tab" data-tab="apropos" role="tab" aria-selected="false">À propos</button>
+        <button class="tab" data-tab="blog" role="tab" aria-selected="false">Blog</button>
         <button class="tab" data-tab="contact" role="tab" aria-selected="false">Contact</button>
       </nav>
     </div>
@@ -83,7 +86,7 @@
         <div class="left">
           <h1>Bienvenue chez Éclat Beauté</h1>
           <p>Nous créons des cosmétiques riches en ingrédients naturels, testés dermatologiquement, pour révéler l'éclat naturel de votre peau.</p>
-          <a href="#produits" class="cta">Découvrir nos produits</a>
+          <a href="#produits" class="cta" onclick="document.querySelector('[data-tab=\'produits\']').click()">Découvrir nos produits</a>
         </div>
         <div class="right" style="flex:1;min-width:260px">
           <div style="background:linear-gradient(180deg,#fff,#fff);padding:16px;border-radius:12px;border:1px solid #f0eaf3">
@@ -106,10 +109,29 @@
 
     <!-- Produits -->
     <section id="produits" class="tab-panel" hidden>
-      <h2>Nos produits phares</h2>
-      <p style="color:var(--muted)">Des soins formulés pour chaque type de peau — six produits sélectionnés.</p>
+      <h2>Nos produits — Catégories</h2>
 
-      <div class="grid cols-3" style="margin-top:18px">
+      <div style="display:flex;align-items:center;gap:16px;margin:12px 0">
+        <div class="tabs" style="margin:0">
+          <button class="tab subtab active" data-subtab="cheveux">Cheveux</button>
+          <button class="tab subtab" data-subtab="hygiene">Hygiène</button>
+          <button class="tab subtab" data-subtab="soins">Soins visage</button>
+        </div>
+
+        <!-- Filtres -->
+        <select id="sort-select" style="padding:8px;border-radius:8px;border:1px solid #ccc">
+          <option value="default">Trier par</option>
+          <option value="price-asc">Prix : croissant</option>
+          <option value="price-desc">Prix : décroissant</option>
+          <option value="alpha">Ordre alphabétique</option>
+        </select>
+      </div>
+        <button class="tab subtab active" data-subtab="cheveux">Cheveux</button>
+        <button class="tab subtab" data-subtab="hygiene">Hygiène</button>
+        <button class="tab subtab" data-subtab="soins">Soins visage</button>
+      </div>
+
+      <div class="grid cols-3 subpanel" data-panel="cheveux">" style="margin-top:18px">
         <!-- Product 1 -->
         <article class="card">
           <img src="https://images.unsplash.com/photo-1514996937319-344454492b37?q=80&w=800&auto=format&fit=crop&crop=faces" alt="Sérum Éclat">
@@ -178,6 +200,20 @@
       </div>
 
       <p style="margin-top:12px;color:var(--muted)"><small>Remplacez les liens de paiement par vos liens réels (Stripe, PayPal, WooCommerce, etc.).</small></p>
+          <!-- Hygiène -->
+      <div class="grid cols-3 subpanel" data-panel="hygiene" hidden>
+        <article class="card"><img src="https://via.placeholder.com/400" alt="Shampooing">
+          <div class="product-info"><div class="product-title">Shampooing Purifiant</div><div class="price">12,90 €</div><p style="color:var(--muted)">Élimine l’excès de sébum et purifie le cuir chevelu.</p><a class="btn-buy">Ajouter au panier</a></div></article>
+        <article class="card"><img src="https://via.placeholder.com/400" alt="Gel douche">
+          <div class="product-info"><div class="product-title">Gel Douche Naturel</div><div class="price">9,90 €</div><p style="color:var(--muted)">Formule douce, parfum d’origine naturelle.</p><a class="btn-buy">Ajouter au panier</a></div></article>
+      </div>
+
+      <!-- Soins Visage -->
+      <div class="grid cols-3 subpanel" data-panel="soins" hidden>
+        <article class="card"><img src="https://via.placeholder.com/400" alt="Lotion">
+          <div class="product-info"><div class="product-title">Lotion Tonique</div><div class="price">14,90 €</div><p style="color:var(--muted)">Rééquilibre la peau et resserre les pores.</p><a class="btn-buy">Ajouter au panier</a></div></article>
+      </div>
+
     </section>
 
     <!-- Contact -->
@@ -205,6 +241,37 @@
         <strong>Téléphone :</strong> +33 1 23 45 67 89</p>
       </div>
     </section>
+      <!-- Panier -->
+    <section id="panier" class="tab-panel" hidden>
+      <h2>Votre panier</h2>
+      <p style="color:var(--muted)">Les articles ajoutés apparaîtront ici.</p>
+      <div id="cart-items"></div>
+      <div style="margin-top:12px;font-weight:700">Total : <span id="cart-total">0.00 €</span></div>
+      <button id="checkout-btn" class="btn-buy" style="margin-top:12px">Procéder au paiement</button>
+    </section>
+
+    <!-- À propos -->
+    <section id="apropos" class="tab-panel" hidden>
+      <h2>À propos de notre entreprise</h2>
+      <p style="color:var(--muted)">Éclat Beauté est une entreprise française spécialisée dans les cosmétiques naturels, respectueux de votre peau et de l’environnement.</p>
+      <p>Nos produits sont formulés avec des ingrédients d’origine naturelle, sans parabènes, sans sulfates et non testés sur les animaux.</p>
+    </section>
+
+    <!-- Blog -->
+    <section id="blog" class="tab-panel" hidden>
+      <h2>Conseils beauté & Blog</h2>
+      <div class="grid cols-2" style="margin-top:16px">
+        <article class="card">
+          <h3>Comment choisir une routine beauté naturelle ?</h3>
+          <p style="color:var(--muted)">Découvrez les étapes essentielles d’une routine naturelle et efficace.</p>
+        </article>
+        <article class="card">
+          <h3>Les bienfaits de la vitamine C pour la peau</h3>
+          <p style="color:var(--muted)">La vitamine C est un antioxydant puissant : éclat, uniformité et protection.</p>
+        </article>
+      </div>
+    </section>
+
   </main>
 
   <footer>
@@ -241,6 +308,99 @@
       const tab = Array.from(tabs).find(t=>t.dataset.tab===hash);
       if(tab) tab.click();
     }
+      // Sous-catégories Produits
+    const subtabs=document.querySelectorAll('.subtab');
+    const subpanels=document.querySelectorAll('.subpanel');
+    subtabs.forEach(st=>{
+      st.addEventListener('click',()=>{
+        subtabs.forEach(s=>s.classList.remove('active'));
+        st.classList.add('active');
+        const target=st.dataset.subtab;
+        subpanels.forEach(p=>p.hidden=p.dataset.panel!==target);
+      });
+    });
+
+    // Sous-catégories Produits
+    const subtabs=document.querySelectorAll('.subtab');
+    const subpanels=document.querySelectorAll('.subpanel');
+    subtabs.forEach(st=>{
+      st.addEventListener('click',()=>{
+        subtabs.forEach(s=>s.classList.remove('active'));
+        st.classList.add('active');
+        const target=st.dataset.subtab;
+        subpanels.forEach(p=>p.hidden=p.dataset.panel!==target);
+        applySort();
+      });
+    });
+
+    // ------- TRI PRODUITS -------
+    const sortSelect=document.getElementById('sort-select');
+    sortSelect.addEventListener('change',applySort);
+
+    function applySort(){
+      const activePanel=document.querySelector('.subpanel:not([hidden])');
+      if(!activePanel) return;
+      const items=[...activePanel.querySelectorAll('.card')];
+      const mode=sortSelect.value;
+      let sorted=[...items];
+
+      if(mode==='price-asc'){
+        sorted.sort((a,b)=>parseFloat(a.querySelector('.price').textContent)-parseFloat(b.querySelector('.price').textContent));
+      } else if(mode==='price-desc'){
+        sorted.sort((a,b)=>parseFloat(b.querySelector('.price').textContent)-parseFloat(a.querySelector('.price').textContent));
+      } else if(mode==='alpha'){
+        sorted.sort((a,b)=>a.querySelector('.product-title').textContent.localeCompare(b.querySelector('.product-title').textContent));
+      }
+
+      sorted.forEach(card=>activePanel.appendChild(card));
+    }
+
+    // ------- PANIER AVEC LOCALSTORAGE -------
+    let cart=JSON.parse(localStorage.getItem('cart-data')||'[]');
+    updateCartUI();
+
+    function saveCart(){ localStorage.setItem('cart-data',JSON.stringify(cart)); }
+
+    function updateCartUI(){
+      const container=document.getElementById('cart-items');
+      const totalEl=document.getElementById('cart-total');
+      container.innerHTML=cart.map(item=>`<div><strong>${item.name}</strong> — ${item.price} €</div>`).join('');
+      const total=cart.reduce((t,i)=>t+parseFloat(i.price),0).toFixed(2);
+      totalEl.textContent=total+' €';
+      saveCart();
+    }
+
+    document.querySelectorAll('.btn-buy').forEach(btn=>{
+      btn.addEventListener('click',e=>{
+        const card=e.target.closest('.card');
+        const name=card.querySelector('.product-title').textContent;
+        const price=card.querySelector('.price').textContent.replace('€','');
+        cart.push({name,price});
+        updateCartUI();
+        alert('Produit ajouté au panier !');
+      })
+    });
+    // Mini système de panier END
+    const cart = [];
+    function updateCartUI(){
+      const container = document.getElementById('cart-items');
+      const totalEl = document.getElementById('cart-total');
+      container.innerHTML = cart.map(item=>`<div><strong>${item.name}</strong> — ${item.price} €</div>`).join('');
+      const total = cart.reduce((t,i)=>t+parseFloat(i.price),0).toFixed(2);
+      totalEl.textContent = total + ' €';
+    }
+
+    document.querySelectorAll('.btn-buy').forEach(btn=>{
+      btn.addEventListener('click', e=>{
+        const card = e.target.closest('.card');
+        const name = card.querySelector('.product-title').textContent;
+        const price = card.querySelector('.price').textContent.replace('€','');
+        cart.push({name,price});
+        alert('Produit ajouté au panier !');
+        updateCartUI();
+      })
+    })
+
   </script>
 </body>
 </html>
