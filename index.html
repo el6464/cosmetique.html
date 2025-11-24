@@ -12,18 +12,19 @@
   --accent2:#6bb3b7;
   --muted:#555;
   --card:#fff;
-  --shadow:rgba(0,0,0,0.15);
+  --shadow:rgba(0,0,0,0.15);--text-footer:#000; /* ajout couleur noir pour footer */
+--text-hero:#000; /* ajout couleur noir pour hero */
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:#111;line-height:1.6}
-header{position:fixed;top:0;width:100%;background:var(--accent2);padding:8px 0;z-index:1000;box-shadow:0 4px 12px var(--shadow)}
-.container{max-width:1200px;margin:0 auto;padding:0 24px}
+header{position:fixed;top:0;width:100%;background:var(--accent2);padding:8px 0;z-index:1000;box-shadow:0 4px 8px var(--shadow)}
+.container{max-width:1200px;margin:0 auto;padding:0 18px}
 .tabs{display:flex;gap:12px;flex-wrap:wrap;overflow-x:auto;-webkit-overflow-scrolling:touch}
-.tab{padding:10px 16px;border-radius:12px;background:transparent;border:1px solid transparent;cursor:pointer;font-weight:600;transition:0.3s;font-family:'Playfair Display', serif;flex:0 0 auto;white-space:nowrap}
+.tab{padding:8px 12px;border-radius:12px;background:transparent;border:1px solid transparent;cursor:pointer;font-weight:600;transition:0.3s;font-family:'Playfair Display', serif;flex:0 0 auto;white-space:nowrap}
 .tab.active{background:var(--accent);color:#fff;box-shadow:0 6px 18px var(--shadow)}
-.hero{display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:center;padding:80px 24px 40px 24px;background:linear-gradient(rgba(183,107,163,0.4), rgba(107,179,183,0.4)), url('assets/images/hero-bg.jpg') no-repeat center/cover;text-align:center;color:#fff}
-.hero h1{font-family:'Playfair Display', serif;font-size:clamp(28px,6vw,48px);margin-bottom:16px}
-.hero p{font-size:clamp(16px,2.5vw,18px);margin-bottom:24px}
+..hero{display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:center;padding:80px 24px 40px 24px;background:linear-gradient(rgba(183,107,163,0.4), rgba(107,179,183,0.4)), url('assets/images/hero-bg.jpg') no-repeat center/cover;text-align:center;color:var(--text-hero)}
+.hero h1{font-family:'Playfair Display', serif;font-size:clamp(28px,6vw,48px);margin-bottom:16px;color:var(--text-hero)}
+.hero p{font-size:clamp(16px,2.5vw,18px);margin-bottom:24px;color:var(--text-hero)}
 .cta{display:inline-block;padding:clamp(10px,2vw,16px) clamp(20px,4vw,28px);border-radius:24px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;text-decoration:none;font-weight:700;transition:0.3s}
 .cta:hover{opacity:0.85;transform:translateY(-3px)}
 section{padding:60px 0}
@@ -56,7 +57,12 @@ textarea{min-height:140px}
 footer{border-top:2px solid var(--accent);padding:40px 24px;background:var(--accent2);color:#fff;display:flex;justify-content:center;align-items:center;flex-direction:column;gap:12px;flex-wrap:wrap}
 .social-links a{color:#fff;margin:0 12px;text-decoration:none;font-weight:600;transition:0.3s}
 .social-links a:hover{opacity:0.8;transform:scale(1.05)}
-@media(max-width:900px){.hero{flex-direction:column;text-align:center;padding-top:100px}.grid.cols-3{grid-template-columns:1fr}.tabs{flex-direction:column;gap:8px;overflow-x:visible}}
+@media(max-width:900px){
+  .hero{flex-direction:column;text-align:center;padding-top:100px}
+  .grid.cols-3{grid-template-columns:1fr}
+  .tabs{flex-direction:row;gap:8px;overflow-x:auto}
+}
+
 </style>
 </head>
 <body>
@@ -95,6 +101,8 @@ footer{border-top:2px solid var(--accent);padding:40px 24px;background:var(--acc
 <h2>Avis de nos clients</h2>
 <div class="review-card"><strong>Marie D.</strong><p style="color:var(--muted)">"Les produits ont transformé ma peau. Je recommande !"</p></div>
 <div class="review-card"><strong>Lucas T.</strong><p style="color:var(--muted)">"Service rapide et produits excellents."</p></div>
+        <div class="review-card"><strong>Lucas T.</strong><p style="color:var(--muted)">"Service rapide et produits excellents."</p></div>
+        <div class="review-card"><strong>Lucas T.</strong><p style="color:var(--muted)">"Service rapide et produits excellents."</p></div>
 </div>
 </section>
 <section id="produits" class="tab-panel" hidden>
@@ -152,6 +160,8 @@ footer{border-top:2px solid var(--accent);padding:40px 24px;background:var(--acc
 <h3>Routine Matinale</h3><p style="color:var(--muted)">Préparer et protéger votre peau pour la journée.</p>
 <h3>Routine du Soir</h3><p style="color:var(--muted)">Astuces pour régénérer et apaiser votre peau le soir.</p>
 <h3>Astuce Bien-être</h3><p style="color:var(--muted)">Conseils pour prendre soin de vous et détendre votre peau.</p>
+  <h3>Astuce Bien-être</h3><p style="color:var(--muted)">Conseils pour prendre soin de vous et détendre votre peau.</p>
+  <h3>Astuce Bien-être</h3><p style="color:var(--muted)">Conseils pour prendre soin de vous et détendre votre peau.</p>
 </section>
 <section id="contact" class="tab-panel" hidden>
 <h2>Contactez-nous</h2>
@@ -164,7 +174,7 @@ footer{border-top:2px solid var(--accent);padding:40px 24px;background:var(--acc
 </section>
 </main>
 <footer>
-<div class="container" style="display:flex;flex-direction:column;align-items:center;gap:12px">
+<div class="container" style="display:flex;flex-direction:column;align-items:center;gap:12px;color:#000;">
 <div>© <strong>Bélli et Bien-être</strong> — Tous droits réservés</div>
 <div class="social-links">Suivez-nous:
 <a href="#" target="_blank">Facebook</a>
@@ -173,6 +183,7 @@ footer{border-top:2px solid var(--accent);padding:40px 24px;background:var(--acc
 </div>
 </div>
 </footer>
+
 <script>
 const tabs=document.querySelectorAll('.tab');
 const panels=document.querySelectorAll('.tab-panel');
