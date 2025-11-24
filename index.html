@@ -10,6 +10,7 @@
     :root{
       --bg:#fdfdfd;
       --accent:#b76ba3;
+      --accent2:#6bb3b7;
       --muted:#6b6b6b;
       --card:#fff;
       --shadow:rgba(0,0,0,0.08);
@@ -17,7 +18,7 @@
     *{box-sizing:border-box;margin:0;padding:0}
     body{font-family:'Inter',sans-serif;background:var(--bg);color:#111;line-height:1.6}
 
-    header{background:#fff;border-bottom:1px solid #eee;position:sticky;top:0;z-index:1000;box-shadow:0 2px 8px var(--shadow)}
+    header{background:var(--accent2);border-bottom:1px solid #eee;position:sticky;top:0;z-index:1000;box-shadow:0 2px 8px var(--shadow)}
     .container{max-width:1100px;margin:0 auto;padding:24px}
 
     .tabs{display:flex;gap:12px;flex-wrap:wrap}
@@ -40,6 +41,7 @@
     .card img{width:100%;border-radius:12px;display:block}
     .product-info{padding-top:12px}
     .product-title{font-weight:700;margin-bottom:6px}
+    .product-desc{color:var(--muted);font-size:14px;margin-bottom:6px}
     .price{font-weight:800;color:var(--accent)}
     .btn-buy{display:inline-block;margin-top:10px;padding:10px 14px;border-radius:12px;background:#111;color:#fff;text-decoration:none;font-weight:600;transition:0.3s}
     .btn-buy:hover{background:#333}
@@ -57,7 +59,8 @@
     .review-card{background:var(--card);padding:20px;border-radius:16px;border:1px solid #eee;box-shadow:0 4px 12px var(--shadow);margin-bottom:16px;transition:0.3s}
     .review-card:hover{transform:translateY(-3px);box-shadow:0 8px 18px var(--shadow)}
 
-    footer{border-top:1px solid #eee;padding:24px 0;color:var(--muted);background:#fff}
+    footer{border-top:1px solid #eee;padding:24px 0;color:var(--muted);background:var(--accent2);color:#fff;display:flex;justify-content:space-between;align-items:center}
+    .social-links a{color:#fff;margin-left:12px;text-decoration:none;font-weight:600}
 
     @media (max-width:900px){
       .hero{flex-direction:column}
@@ -73,7 +76,7 @@
         <img src="assets/images/logo.png" alt="Logo Éclat Beauté" style="border-radius:12px;width:60px">
         <div>
           <strong style="font-size:1.2rem">Éclat Beauté</strong><br>
-          <small style="color:var(--muted)">Cosmétiques naturels & soins premium</small>
+          <small>Cosmétiques naturels & soins premium</small>
         </div>
       </div>
       <nav class="tabs" role="tablist" aria-label="Navigation principale">
@@ -94,7 +97,7 @@
           <a href="#produits" class="cta" onclick="document.querySelector('[data-tab=\'produits\']').click()">Découvrir nos produits</a>
         </div>
         <div class="right" style="flex:1;min-width:280px">
-          <div style="background:linear-gradient(180deg,#fff,#fff);padding:20px;border-radius:16px;border:1px solid #f0eaf3">
+          <div style="background:#fff;padding:20px;border-radius:16px;border:1px solid #f0eaf3">
             <strong>Notre promesse</strong>
             <p style="margin-top:12px;color:var(--muted)">Formules propres, tests cliniques, emballages recyclables.</p>
           </div>
@@ -102,35 +105,29 @@
       </div>
       <div style="margin-top:36px">
         <h2>Vidéo de présentation</h2>
-        <p style="color:var(--muted)">Découvrez notre histoire et comment nous fabriquons nos produits.</p>
         <div class="video-wrap">
           <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Vidéo Éclat Beauté" allowfullscreen loading="lazy"></iframe>
         </div>
       </div>
       <div class="reviews">
         <h2>Avis de nos clients</h2>
-        <div class="review-card">
-          <strong>Marie D.</strong>
-          <p style="color:var(--muted);margin-top:8px">"Les produits Éclat Beauté ont transformé ma peau en quelques semaines. Je recommande vivement !"</p>
-        </div>
-        <div class="review-card">
-          <strong>Lucas T.</strong>
-          <p style="color:var(--muted);margin-top:8px">"Service client impeccable et livraison rapide. Les produits sentent divinement bon."</p>
-        </div>
+        <div class="review-card"><strong>Marie D.</strong><p style="color:var(--muted);margin-top:8px">"Les produits Éclat Beauté ont transformé ma peau en quelques semaines. Je recommande vivement !"</p></div>
+        <div class="review-card"><strong>Lucas T.</strong><p style="color:var(--muted);margin-top:8px">"Service client impeccable et livraison rapide. Les produits sentent divinement bon."</p></div>
       </div>
     </section>
 
     <section id="produits" class="tab-panel" hidden>
       <h2>Nos produits par catégorie</h2>
+
       <h3 style="margin-top:20px;color:var(--accent)">Soin du visage</h3>
       <div class="grid cols-3" style="margin-top:12px">
         <article class="card">
           <img src="assets/images/produit1.jpg" alt="Sérum Éclat" loading="lazy">
-          <div class="product-info"><div class="product-title">Sérum Éclat</div><div class="price">29,90 €</div><a class="btn-buy" href="https://buy.example.com/produit1" target="_blank">Acheter</a></div>
+          <div class="product-info"><div class="product-title">Sérum Éclat</div><div class="product-desc">Sérum léger pour un teint lumineux et hydraté.</div><div class="price">29,90 €</div><a class="btn-buy" href="https://buy.example.com/produit1" target="_blank">Acheter</a></div>
         </article>
         <article class="card">
           <img src="assets/images/produit2.jpg" alt="Crème de Jour" loading="lazy">
-          <div class="product-info"><div class="product-title">Crème de Jour Réparatrice</div><div class="price">24,50 €</div><a class="btn-buy" href="https://buy.example.com/produit2" target="_blank">Acheter</a></div>
+          <div class="product-info"><div class="product-title">Crème de Jour Réparatrice</div><div class="product-desc">Hydrate et protège la peau toute la journée.</div><div class="price">24,50 €</div><a class="btn-buy" href="https://buy.example.com/produit2" target="_blank">Acheter</a></div>
         </article>
       </div>
 
@@ -138,11 +135,11 @@
       <div class="grid cols-3" style="margin-top:12px">
         <article class="card">
           <img src="assets/images/produit3.jpg" alt="Masque Nuit" loading="lazy">
-          <div class="product-info"><div class="product-title">Masque Nuit Régénérant</div><div class="price">34,00 €</div><a class="btn-buy" href="https://buy.example.com/produit3" target="_blank">Acheter</a></div>
+          <div class="product-info"><div class="product-title">Masque Nuit Régénérant</div><div class="product-desc">Régénère la peau pendant votre sommeil.</div><div class="price">34,00 €</div><a class="btn-buy" href="https://buy.example.com/produit3" target="_blank">Acheter</a></div>
         </article>
         <article class="card">
           <img src="assets/images/produit4.jpg" alt="Huile visage" loading="lazy">
-          <div class="product-info"><div class="product-title">Huile Visage Nourrissante</div><div class="price">27,00 €</div><a class="btn-buy" href="https://buy.example.com/produit4" target="_blank">Acheter</a></div>
+          <div class="product-info"><div class="product-title">Huile Visage Nourrissante</div><div class="product-desc">Nourrit et adoucit la peau en profondeur.</div><div class="price">27,00 €</div><a class="btn-buy" href="https://buy.example.com/produit4" target="_blank">Acheter</a></div>
         </article>
       </div>
 
@@ -150,18 +147,25 @@
       <div class="grid cols-3" style="margin-top:12px">
         <article class="card">
           <img src="assets/images/produit5.jpg" alt="Brume visage" loading="lazy">
-          <div class="product-info"><div class="product-title">Brume Hydratante</div><div class="price">15,90 €</div><a class="btn-buy" href="https://buy.example.com/produit5" target="_blank">Acheter</a></div>
+          <div class="product-info"><div class="product-title">Brume Hydratante</div><div class="product-desc">Rafraîchit et hydrate instantanément.</div><div class="price">15,90 €</div><a class="btn-buy" href="https://buy.example.com/produit5" target="_blank">Acheter</a></div>
         </article>
         <article class="card">
           <img src="assets/images/produit6.jpg" alt="Crème nuit" loading="lazy">
-          <div class="product-info"><div class="product-title">Crème Nuit Confort</div><div class="price">31,50 €</div><a class="btn-buy" href="https://buy.example.com/produit6" target="_blank">Acheter</a></div>
+          <div class="product-info"><div class="product-title">Crème Nuit Confort</div><div class="product-desc">Régénère et nourrit intensément pendant la nuit.</div><div class="price">31,50 €</div><a class="btn-buy" href="https://buy.example.com/produit6" target="_blank">Acheter</a></div>
         </article>
       </div>
     </section>
 
     <section id="beauté" class="tab-panel" hidden>
       <h2>Beauté & Conseils</h2>
-      <p style="color:var(--muted);margin-top:12px">Découvrez nos astuces, routines et conseils pour prendre soin de votre peau et sublimer votre beauté au quotidien.</p>
+      <div style="margin-top:16px">
+        <h3>Routine Matinale</h3>
+        <p style="color:var(--muted)">Conseils pour préparer et protéger votre peau dès le matin.</p>
+        <h3>Routine du Soir</h3>
+        <p style="color:var(--muted)">Astuces pour régénérer et apaiser votre peau le soir.</p>
+        <h3>Astuce Bien-être</h3>
+        <p style="color:var(--muted)">Conseils de beauté globale, hydratation et relaxation.</p>
+      </div>
     </section>
 
     <section id="contact" class="tab-panel" hidden>
@@ -176,9 +180,14 @@
   </main>
 
   <footer>
-    <div class="container" style="display:flex;justify-content:space-between;align-items:center">
+    <div class="container">
       <div>© <strong>Éclat Beauté</strong> — Tous droits réservés</div>
-      <div style="color:var(--muted)">Suivez-nous sur les réseaux</div>
+      <div class="social-links">
+        Suivez-nous:
+        <a href="#" target="_blank">Facebook</a>
+        <a href="#" target="_blank">Instagram</a>
+        <a href="#" target="_blank">Twitter</a>
+      </div>
     </div>
   </footer>
 
