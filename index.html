@@ -67,8 +67,10 @@
     .cta:hover { opacity:0.85; transform:translateY(-3px); }
 
     section { padding: 60px 0; }
-    section:nth-of-type(even) { background: var(--accent2); color: #fff; }
-    h2,h3 { font-family:'Playfair Display', serif; margin-bottom:24px; }
+  section:nth-of-type(even) { 
+  background: linear-gradient(135deg, var(--accent), var(--accent2)); 
+  color: #fff; 
+}
 
     .grid { display: grid; gap: 24px; }
     .grid.cols-3 { grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); }
