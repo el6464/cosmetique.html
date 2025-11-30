@@ -100,8 +100,8 @@ color: #fff;
   border-radius: 16px;
   overflow: hidden;
   background: #000;
-  margin: 16px auto 0; /* centre horizontalement */
-  max-width: 600px; /* largeur maximale */
+  margin: 12px auto 0; /* centre horizontalement */
+  max-width: 300px; /* largeur maximale */
 }
 
 .video-wrap iframe {
@@ -157,14 +157,15 @@ section {
 }
 /* Encadrement des titres H2 */
 h2 {
-  color: #000;          /* texte noir */
-  text-align: center;    /* centré */
+  color: #000;                  /* texte noir */
+  text-align: center;            /* centre le texte à l'intérieur du bloc */
   border: 2px solid var(--accent2);
   padding: 12px 20px;
   border-radius: 12px;
-  display: inline-block;
+  display: block;                /* bloc entier */
+  width: fit-content;            /* largeur qui épouse le contenu */
+  margin: 0 auto 32px auto;      /* centré horizontalement et marge en bas */
   background: var(--card);
-  margin-bottom: 32px;
 }
 
   /* Beauté & Conseil design */
@@ -334,7 +335,7 @@ main.container {
 <!-- BEAUTÉ & CONSEIL -->
 <section id="beaute" class="tab-panel" hidden>
 
-
+<h2>BEAUTÉ & CONSEIL</h2>
   <div class="beauty-section">
     <h3>Routine Matinale</h3>
     <div class="beauty-card">
