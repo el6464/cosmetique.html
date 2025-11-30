@@ -30,16 +30,22 @@ padding: 4px 0;
 z-index: 1000;
 box-shadow: 0 4px 12px var(--shadow);
 }
+
+  header img {
+  width: 50px; /* logo plus petit */
+  height: auto;
+}
 .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
 .tabs {
-display: flex;
-gap: 12px;
-flex-wrap: wrap;
-overflow-x: auto;
+  display: flex;
+  gap: 12px;
+  flex-wrap: nowrap; /* interdit le passage à la ligne */
+  overflow-x: auto;  /* scroll si trop d’onglets */
+  align-items: center;
 }
 .tab {
-padding: 8px 12px;
+padding: 6px 10px;
 border-radius: 12px;
 background: transparent;
 cursor: pointer;
@@ -142,8 +148,9 @@ input,textarea { font-size:14px; }
 </nav>
 </div>
 </header>
-
-<main class="container">
+main.container {
+  padding-top: 100px; /* laisse de l'espace pour le header fixe */
+}
 <!-- ACCUEIL -->
 <section id="accueil" class="tab-panel">
 <div class="hero">
