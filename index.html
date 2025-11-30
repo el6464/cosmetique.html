@@ -1,4 +1,40 @@
+<!-- Code HTML complet optimisé (responsive + ajustements header/footer + sections) -->
 <!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bélli et Bien‑être</title>
+<style>
+:root {
+--bg: #fdfdfd;
+--accent: #000000;
+--accent2: #6bb3b7;
+--muted: #333;
+--card: #fff;
+--shadow: rgba(0, 0, 0, 0.15);
+--text-footer: #000;
+--text-hero: #000;
+}
+body {
+margin: 0;
+font-family: Arial, sans-serif;
+background: var(--bg);
+color: #000;
+}
+header {
+position: fixed;
+top: 0;
+width: 100%;
+background: var(--accent2);
+color: #000;
+padding: 8px 0;
+text-align: center;
+z-index: 999;
+box-shadow: 0 2px 4px var(--shadow);
+}
+main {
+padding-top: 120px; /* Ajustement pour header fixe */
 }
 @media(max-width:480px){
 main {
@@ -17,193 +53,6 @@ padding: 12px;
 .tab {
 padding: 10px 18px;
 border-radius: 14px;
-border: 2px solid #fff;
-background: transparent;
-color: #fff;
-cursor: pointer;
-font-size: 16px;
-}
-.tab.active {
-background: #000;
-color: #fff;
-}
-section {
-padding: 32px 20px;
-margin: 12px;
-background: var(--card);
-border-radius: 14px;
-box-shadow: 0 4px 10px var(--shadow);
-}
-/* Design alterné sur sections */
-section:nth-of-type(even) {
-background: linear-gradient(135deg, var(--accent), var(--accent2));
-color: #fff;
-}
-.video-wrap {
-width: 100%;
-max-width: 100%;
-border-radius: 12px;
-overflow: hidden;
-}
-footer {
-border-top: 2px solid var(--accent);
-padding: 10px 20px; /* Réduction footer */
-background: var(--accent2);
-color: #fff;
-text-align: center;
-margin-top: 40px;
-}
-  </style>
-</head>
-<body>
-
-<header>
-  <div class="container" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap">
-    <div style="display:flex;gap:12px;align-items:center">
-      <img src="assets/images/logo.png" alt="Logo Bélli et Bien-être" style="border-radius:12px;width:60px">
-      <div>
-        <strong style="font-size:1.2rem">Bélli et Bien-être</strong><br>
-        <small>Cosmétiques naturels & soins premium</small>
-      </div>
-    </div>
-    <nav class="tabs" role="tablist" aria-label="Navigation principale" id="main-tabs">
-      <button class="tab active" data-tab="accueil" role="tab" aria-selected="true">Accueil</button>
-      <button class="tab" data-tab="produits" role="tab" aria-selected="false">Produits</button>
-      <button class="tab" data-tab="beaute" role="tab" aria-selected="false">Beauté & Conseil</button>
-      <button class="tab" data-tab="contact" role="tab" aria-selected="false">Contact</button>
-    </nav>
-  </div>
-</header>
-
-<main class="container">
-  <!-- ACCUEIL -->
-  <section id="accueil" class="tab-panel">
-    <div class="hero">
-      <h1>Bienvenue chez Bélli et Bien-être</h1>
-      <p>Des cosmétiques naturels, testés dermatologiquement, pour sublimer votre peau.</p>
-      <a href="#produits" class="cta" onclick="document.querySelector('[data-tab=\'produits\']').click()">Découvrir nos produits</a>
-    </div>
-
-    <div style="display:flex;flex-wrap:wrap;gap:24px;margin-top:40px;">
-      <div style="flex:1;min-width:300px;">
-        <h2>Vidéo de présentation</h2>
-        <div class="video-wrap">
-          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Vidéo Éclat Beauté" allowfullscreen loading="lazy"></iframe>
-        </div>
-      </div>
-      <div style="flex:1;min-width:300px;">
-        <h2>Avis de nos clients</h2>
-        <div class="review-card visible"><strong>Marie D.</strong><p>"Les produits ont transformé ma peau. Je recommande !"</p></div>
-        <div class="review-card visible"><strong>Lucas T.</strong><p>"Service rapide et produits excellents."</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRODUITS -->
-  <section id="produits" class="tab-panel" hidden>
-    <h2>Nos produits</h2>
-
-    <!-- Soin du visage -->
-    <h3 style="color:var(--accent)">Soin du visage</h3>
-    <div class="grid cols-3">
-      <article class="card">
-        <img src="assets/images/produit1.jpg" alt="Sérum Éclat">
-        <div class="product-title">Sérum Éclat</div>
-        <div class="product-desc">Illumine, hydrate et unifie le teint.</div>
-        <div class="price">29,90 €</div>
-        <a class="btn-buy" href="#">Acheter</a>
-      </article>
-      <article class="card">
-        <img src="assets/images/produit2.jpg" alt="Crème de Jour">
-        <div class="product-title">Crème de Jour Réparatrice</div>
-        <div class="product-desc">Hydratation intense, texture douce et non grasse.</div>
-        <div class="price">24,50 €</div>
-        <a class="btn-buy" href="#">Acheter</a>
-      </article>
-      <article class="card">
-        <img src="assets/images/produit7.jpg" alt="Gel Nettoyant">
-        <div class="product-title">Gel Nettoyant Pureté</div>
-        <div class="product-desc">Nettoie en douceur, réduit les imperfections.</div>
-        <div class="price">18,90 €</div>
-        <a class="btn-buy" href="#">Acheter</a>
-      </article>
-    </div>
-
-    <!-- Soins du corps -->
-    <h3 style="color:var(--accent)">Soins du corps</h3>
-    <div class="grid cols-3">
-      <article class="card">
-        <img src="assets/images/produit3.jpg" alt="Masque Nuit">
-        <div class="product-title">Masque Nuit Régénérant</div>
-        <div class="product-desc">Régénère et apaise la peau pendant votre sommeil.</div>
-        <div class="price">34,00 €</div>
-        <a class="btn-buy" href="#">Acheter</a>
-      </article>
-      <article class="card">
-        <img src="assets/images/produit8.jpg" alt="Gommage">
-        <div class="product-title">Gommage Sucre & Coco</div>
-        <div class="product-desc">Exfolie, adoucit et illumine la peau instantanément.</div>
-        <div class="price">19,50 €</div>
-        <a class="btn-buy" href="#">Acheter</a>
-      </article>
-      <article class="card">
-        <img src="assets/images/produit4.jpg" alt="Huile Corps">
-        <div class="product-title">Huile Corps Satinée</div>
-        <div class="product-desc">Nourrit intensément et laisse un fini lumineux.</div>
-        <div class="price">27,00 €</div>
-        <a class="btn-buy" href="#">Acheter</a>
-      </article>
-    </div>
-
-    <!-- Accessoires & parfums -->
-    <h3 style="color:var(--accent)">Accessoires & parfums</h3>
-    <div class="grid cols-3">
-      <article class="card">
-        <img src="assets/images/produit5.jpg" alt="Brume Hydratante">
-        <div class="product-title">Brume Hydratante</div>
-        <div class="product-desc">Hydrate, rafraîchit et illumine le teint.</div>
-        <div class="price">15,90 €</div>
-        <a class="btn-buy" href="#">Acheter</a>
-      </article>
-      <article class="card">
-        <img src="assets/images/produit9.jpg" alt="Roller Jade">
-        <div class="product-title">Roller de Jade Premium</div>
-        <div class="product-desc">Stimule la microcirculation et raffermit la peau.</div>
-        <div class="price">22,90 €</div>
-        <a class="btn-buy" href="#">Acheter</a>
-      </article>
-      <article class="card">
-        <img src="assets/images/produit6.jpg" alt="Crème Nuit">
-        <div class="product-title">Crème Nuit Confort</div>
-        <div class="product-desc">Hydratation profonde et apaisement immédiat.</div>
-        <div class="price">31,50 €</div>
-        <a class="btn-buy" href="#">Acheter</a>
-      </article>
-    </div>
-  </section>
-
-  <!-- BEAUTÉ & CONSEIL -->
-  <section id="beaute" class="tab-panel" hidden>
-    <h2>Beauté & Conseil</h2>
-
-    <h3>Routine Matinale</h3>
-    <p style="color:var(--muted)">Nettoyez votre visage, appliquez un sérum hydratant et terminez par votre crème solaire pour protéger votre peau.</p>
-    <div class="video-wrap">
-      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Routine Matinale" allowfullscreen loading="lazy"></iframe>
-    </div>
-
-    <h3>Routine du Soir</h3>
-    <p style="color:var(--muted)">Démaquillez-vous, appliquez un sérum régénérant et terminez avec votre crème de nuit pour nourrir la peau pendant le sommeil.</p>
-    <div class="video-wrap">
-      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Routine du Soir" allowfullscreen loading="lazy"></iframe>
-    </div>
-
-    <h3>Conseils Bien-être</h3>
-    <p style="color:var(--muted)">Buvez suffisamment d'eau, dormez bien et faites des pauses détente pour améliorer l'éclat de votre peau.</p>
-    <div class="video-wrap">
-      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Conseils Bien-être" allowfullscreen loading="lazy"></iframe>
-    </div>
-  </section>
 
   <!-- CONTACT -->
   <section id="contact" class="tab-panel" hidden>
