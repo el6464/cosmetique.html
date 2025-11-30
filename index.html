@@ -117,7 +117,7 @@ textarea { min-height:140px; }
 .btn-send:hover { opacity:0.85; transform:translateY(-2px); }
 
 footer { border-top:2px solid var(--accent); padding:20px 12px; background:var(--accent2); color:#fff; text-align:center; }
-.social-links a { color:#fff; margin:0 12px; text-decoration:none; font-weight:600; transition:0.3s; }
+.social-links a { color:#000; margin:0 12px; text-decoration:none; font-weight:600; transition:0.3s; }
 .social-links a:hover { opacity:0.8; transform:scale(1.05); }
 
 @media(max-width:900px){
@@ -299,11 +299,17 @@ main.container {
 <div class="container">
 © <strong>Bélli et Bien-être</strong> — Tous droits réservés
 <div class="social-links">
-<a href="#">Facebook</a>
-<a href="#">Instagram</a>
-<a href="#">Twitter</a>
+  <a href="#" aria-label="Facebook">
+    <img src="assets/icons/facebook.svg" alt="Facebook" width="24" height="24">
+  </a>
+  <a href="#" aria-label="Instagram">
+    <img src="assets/icons/instagram.svg" alt="Instagram" width="24" height="24">
+  </a>
+  <a href="#" aria-label="Twitter">
+    <img src="assets/icons/twitter.svg" alt="Twitter" width="24" height="24">
+  </a>
 </div>
-</div>
+
 </footer>
 
 <script>
