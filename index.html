@@ -177,29 +177,79 @@ h3::after {
 .video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
 /* Footer */
+/* Footer */
 footer {
   background: linear-gradient(135deg, #6bb3b7, #9ad3d6);
-  color: var(--text-footer);
+  color: #000; /* Texte noir */
   font-family: 'Inter', sans-serif;
-  padding: 40px 20px 20px 20px;
+  padding: 30px 20px 20px 20px; /* réduit l'espace vertical */
 }
+
 .footer-container {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   max-width: 1200px;
   margin: 0 auto;
-  gap: 20px;
+  gap: 12px; /* réduit l'espace horizontal entre les colonnes */
 }
-.footer-col { flex: 1 1 250px; }
-.footer-col h4 { font-size: 1.1rem; margin-bottom: 12px; color: #fff; text-transform: uppercase; }
-.footer-col p, .footer-col a { font-size: 0.95rem; color: #f9f9f9; text-decoration: none; }
-.footer-col a:hover { text-decoration: underline; }
-.footer-socials { display: flex; gap: 12px; margin-top: 8px; }
-.footer-socials a { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: #fff; border-radius: 50%; transition: transform 0.3s, background 0.3s; }
-.footer-socials a img { width: 18px; height: 18px; }
-.footer-socials a:hover { transform: scale(1.1); background: #f0f0f0; }
-.footer-bottom { text-align: center; font-size: 0.9rem; padding: 12px 0; border-top: 1px solid rgba(255,255,255,0.3); margin-top: 20px; }
+
+.footer-col {
+  flex: 1 1 250px;
+}
+
+.footer-col h4 {
+  font-size: 1.1rem;
+  margin-bottom: 10px; /* réduit l'espace sous le titre */
+  color: #000; /* texte noir pour titres */
+  text-transform: uppercase;
+}
+
+.footer-col p, .footer-col a {
+  font-size: 0.95rem;
+  color: #000; /* texte noir pour les liens et paragraphes */
+  text-decoration: none;
+}
+
+.footer-col a:hover {
+  text-decoration: underline;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 8px; /* réduit l'espace entre les icônes */
+  margin-top: 8px;
+}
+
+.footer-socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.footer-socials a img {
+  width: 18px;
+  height: 18px;
+}
+
+.footer-socials a:hover {
+  transform: scale(1.1);
+  background: #f0f0f0;
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 0.9rem;
+  padding: 10px 0; /* réduit l'espace vertical */
+  border-top: 1px solid rgba(0,0,0,0.2); /* plus discret */
+  margin-top: 16px;
+  color: #000; /* texte noir */
+}
 
 /* Responsivité */
 @media(max-width: 900px){
@@ -277,25 +327,38 @@ main.container {
 <section id="produits" class="tab-panel" hidden>
 
 
-<!-- Soin du visage -->
 <h3 class="styled-h3">Nos soins capillaires</h3>
 <div class="product-slider">
+  <!-- Produit 1 -->
   <article class="card">
-    <img src="1747160036940.png" alt="Sérum Éclat">
+    <div class="img-wrapper">
+      <img src="1747160036940.png" alt="Sérum Éclat" class="first">
+      <img src="1747160036940-2.png" alt="Sérum Éclat - vue 2" class="second">
+    </div>
     <div class="product-title">Sérum Éclat</div>
     <div class="product-desc">Illumine, hydrate et unifie le teint.</div>
     <div class="price">29,90 €</div>
     <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=2525">Acheter</a>
   </article>
+
+  <!-- Produit 2 -->
   <article class="card">
-    <img src="1747160119497.png" alt="Crème de Jour">
+    <div class="img-wrapper">
+      <img src="1747160119497.png" alt="Crème de Jour" class="first">
+      <img src="1747160119497-2.png" alt="Crème de Jour - vue 2" class="second">
+    </div>
     <div class="product-title">Crème de Jour Réparatrice</div>
     <div class="product-desc">Hydratation intense, texture douce et non grasse.</div>
     <div class="price">24,50 €</div>
     <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=2525">Acheter</a>
   </article>
+
+  <!-- Produit 3 -->
   <article class="card">
-    <img src="1747160281157.png" alt="Gel Nettoyant">
+    <div class="img-wrapper">
+      <img src="1747160281157.png" alt="Gel Nettoyant" class="first">
+      <img src="1747160281157-2.png" alt="Gel Nettoyant - vue 2" class="second">
+    </div>
     <div class="product-title">Gel Nettoyant Pureté</div>
     <div class="product-desc">Nettoie en douceur, réduit les imperfections.</div>
     <div class="price">18,90 €</div>
@@ -303,44 +366,38 @@ main.container {
   </article>
 </div>
 
-<!-- Accessoires cheveux -->
-<h3 class="styled-h3">Accessoires cheveux</h3>
+   <h3 class="styled-h3">Accessoires cheveux</h3>
 <div class="product-slider">
+  <!-- Produit 1 -->
   <article class="card">
-    <img src="1747160308438.png" alt="Masque Nuit">
-    <div class="product-title">Masque Nuit Régénérant</div>
-    <div class="product-desc">Régénère et apaise la peau pendant votre sommeil.</div>
-    <div class="price">34,00 €</div>
-    <a class="btn-buy" href="#">Acheter</a>
-  </article>
-  <article class="card">
-    <img src="1747161724999.png" alt="Gommage">
-    <div class="product-title">Gommage Sucre & Coco</div>
-    <div class="product-desc">Exfolie, adoucit et illumine le peau instantanément.</div>
-    <div class="price">19,50 €</div>
-    <a class="btn-buy" href="#">Acheter</a>
-  </article>
-</div>
-
-<!-- Cosmétiques & bien-être -->
-<h3 class="styled-h3">Cosmétiques & bien-être</h3>
-<div class="product-slider">
-  <article class="card">
-    <img src="Alibaba5f6885d36f99dcfbfd31a61d3b98610a_original.png" alt="Sérum Éclat">
+    <div class="img-wrapper">
+      <img src="1747160036940.png" alt="Sérum Éclat" class="first">
+      <img src="1747160036940-2.png" alt="Sérum Éclat - vue 2" class="second">
+    </div>
     <div class="product-title">Sérum Éclat</div>
     <div class="product-desc">Illumine, hydrate et unifie le teint.</div>
     <div class="price">29,90 €</div>
     <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=2525">Acheter</a>
   </article>
+
+  <!-- Produit 2 -->
   <article class="card">
-    <img src="Alibabad7faa2c17177e2ffab840d9759a5fb76_original.png" alt="Crème de Jour">
+    <div class="img-wrapper">
+      <img src="1747160119497.png" alt="Crème de Jour" class="first">
+      <img src="1747160119497-2.png" alt="Crème de Jour - vue 2" class="second">
+    </div>
     <div class="product-title">Crème de Jour Réparatrice</div>
     <div class="product-desc">Hydratation intense, texture douce et non grasse.</div>
     <div class="price">24,50 €</div>
     <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=2525">Acheter</a>
   </article>
+
+  <!-- Produit 3 -->
   <article class="card">
-    <img src="IMG-20250502-WA0001.jpg" alt="Gel Nettoyant">
+    <div class="img-wrapper">
+      <img src="1747160281157.png" alt="Gel Nettoyant" class="first">
+      <img src="1747160281157-2.png" alt="Gel Nettoyant - vue 2" class="second">
+    </div>
     <div class="product-title">Gel Nettoyant Pureté</div>
     <div class="product-desc">Nettoie en douceur, réduit les imperfections.</div>
     <div class="price">18,90 €</div>
@@ -348,24 +405,81 @@ main.container {
   </article>
 </div>
 
-
-
-<!-- Nouveautés & meilleures ventes -->
-<h3 class="styled-h3">Nouveautés & meilleures ventes</h3>
+   <h3 class="styled-h3">Cosmétiques & bien-être</h3>
 <div class="product-slider">
+  <!-- Produit 1 -->
   <article class="card">
-    <img src="Screenshot_20250513-195350.jpg" alt="Masque Nuit">
-    <div class="product-title">Masque Nuit Régénérant</div>
-    <div class="product-desc">Régénère et apaise la peau pendant votre sommeil.</div>
-    <div class="price">34,00 €</div>
-    <a class="btn-buy" href="#">Acheter</a>
+    <div class="img-wrapper">
+      <img src="1747160036940.png" alt="Sérum Éclat" class="first">
+      <img src="1747160036940-2.png" alt="Sérum Éclat - vue 2" class="second">
+    </div>
+    <div class="product-title">Sérum Éclat</div>
+    <div class="product-desc">Illumine, hydrate et unifie le teint.</div>
+    <div class="price">29,90 €</div>
+    <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=2525">Acheter</a>
   </article>
+
+  <!-- Produit 2 -->
   <article class="card">
-    <img src="collage.jpg" alt="Gommage">
-    <div class="product-title">Gommage Sucre & Coco</div>
-    <div class="product-desc">Exfolie, adoucit et illumine le peau instantanément.</div>
-    <div class="price">19,50 €</div>
-    <a class="btn-buy" href="#">Acheter</a>
+    <div class="img-wrapper">
+      <img src="1747160119497.png" alt="Crème de Jour" class="first">
+      <img src="1747160119497-2.png" alt="Crème de Jour - vue 2" class="second">
+    </div>
+    <div class="product-title">Crème de Jour Réparatrice</div>
+    <div class="product-desc">Hydratation intense, texture douce et non grasse.</div>
+    <div class="price">24,50 €</div>
+    <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=2525">Acheter</a>
+  </article>
+
+  <!-- Produit 3 -->
+  <article class="card">
+    <div class="img-wrapper">
+      <img src="1747160281157.png" alt="Gel Nettoyant" class="first">
+      <img src="1747160281157-2.png" alt="Gel Nettoyant - vue 2" class="second">
+    </div>
+    <div class="product-title">Gel Nettoyant Pureté</div>
+    <div class="product-desc">Nettoie en douceur, réduit les imperfections.</div>
+    <div class="price">18,90 €</div>
+    <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=2525">Acheter</a>
+  </article>
+</div>
+
+   <h3 class="styled-h3">Nouveautés & meilleures ventes</h3>
+<div class="product-slider">
+  <!-- Produit 1 -->
+  <article class="card">
+    <div class="img-wrapper">
+      <img src="1747160036940.png" alt="Sérum Éclat" class="first">
+      <img src="1747160036940-2.png" alt="Sérum Éclat - vue 2" class="second">
+    </div>
+    <div class="product-title">Sérum Éclat</div>
+    <div class="product-desc">Illumine, hydrate et unifie le teint.</div>
+    <div class="price">29,90 €</div>
+    <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=2525">Acheter</a>
+  </article>
+
+  <!-- Produit 2 -->
+  <article class="card">
+    <div class="img-wrapper">
+      <img src="1747160119497.png" alt="Crème de Jour" class="first">
+      <img src="1747160119497-2.png" alt="Crème de Jour - vue 2" class="second">
+    </div>
+    <div class="product-title">Crème de Jour Réparatrice</div>
+    <div class="product-desc">Hydratation intense, texture douce et non grasse.</div>
+    <div class="price">24,50 €</div>
+    <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=2525">Acheter</a>
+  </article>
+
+  <!-- Produit 3 -->
+  <article class="card">
+    <div class="img-wrapper">
+      <img src="1747160281157.png" alt="Gel Nettoyant" class="first">
+      <img src="1747160281157-2.png" alt="Gel Nettoyant - vue 2" class="second">
+    </div>
+    <div class="product-title">Gel Nettoyant Pureté</div>
+    <div class="product-desc">Nettoie en douceur, réduit les imperfections.</div>
+    <div class="price">18,90 €</div>
+    <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=2525">Acheter</a>
   </article>
 </div>
 
