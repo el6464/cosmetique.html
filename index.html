@@ -121,56 +121,110 @@ h3::after {
   border-radius: 2px;
 }
 
-/* Grid produits (2 cartes visibles sur mobile) */
-.grid {
-  display: flex;
-  gap: 16px;
-  overflow-x: auto;
-  padding-bottom: 10px;
-}
-.grid::-webkit-scrollbar { display: none; }
-.card {
-  flex: 0 0 220px;
-  background: var(--card);
-  border-radius:16px;
-  padding:16px;
-  box-shadow:0 4px 20px var(--shadow);
-  transition:0.3s;
+/* TITRES H3 */
+.styled-h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: underline;
+  margin: 24px 0 16px;
   position: relative;
 }
-.card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px var(--shadow); }
 
-/* Double image pour chaque produit */
-.card img {
-  width: 100%;
-  border-radius: 12px;
-  margin-bottom: 8px;
-  cursor: pointer;
+/* SLIDER PRODUITS */
+.product-slider-wrapper {
+  position: relative;
 }
-.card .img-wrapper {
+
+.product-slider {
+  display: flex;
+  gap: 16px; /* petit espace entre les cartes */
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 8px;
+}
+
+.product-slider::-webkit-scrollbar {
+  height: 8px;
+}
+
+.product-slider::-webkit-scrollbar-thumb {
+  background: var(--accent2);
+  border-radius: 4px;
+}
+
+.product-slider::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.card {
+  min-width: 250px; /* chaque produit a une largeur fixe */
+  flex: 0 0 auto;
+}
+
+/* IMAGES DU PRODUIT */
+.img-wrapper {
   position: relative;
   width: 100%;
-  height: 200px;
-  overflow: hidden;
-  border-radius: 12px;
+  height: 250px;
 }
-.card .img-wrapper img { 
+
+.img-wrapper img {
   position: absolute;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: opacity 0.3s;
+  border-radius: 12px;
+  transition: opacity 0.3s ease-in-out;
 }
-.card .img-wrapper img.second { opacity: 0; }
-.card .img-wrapper:hover img.second { opacity: 1; }
-.card .img-wrapper:hover img.first { opacity: 0; }
 
-.product-title { font-weight:700; margin-bottom:6px; color:#111; }
-.product-desc { color:var(--muted); font-size:14px; margin-bottom:6px; }
-.price { font-weight:800; color:var(--accent); }
-.btn-buy { display:inline-block; margin-top:12px; padding:10px 20px; border-radius:24px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; text-decoration:none; font-weight:600; transition:0.3s; }
-.btn-buy:hover { opacity:0.85; transform:translateY(-2px); }
+.img-wrapper img.second {
+  opacity: 0;
+}
+
+.img-wrapper:hover img.first {
+  opacity: 0;
+}
+
+.img-wrapper:hover img.second {
+  opacity: 1;
+}
+
+/* FLÈCHES */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(107,179,183,0.8);
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+}
+
+.slider-btn:hover {
+  background: var(--accent2);
+}
+
+.slider-btn.prev {
+  left: -18px;
+}
+
+.slider-btn.next {
+  right: -18px;
+}
+
 
 /* Vidéos */
 .video-wrap { position: relative; padding-top: 56.25%; border-radius: 16px; overflow: hidden; background: #000; margin: 18px auto 0; max-width: 100%; }
@@ -357,162 +411,149 @@ main.container {
 <!-- PRODUITS -->
 <section id="produits" class="tab-panel" hidden>
 
-
+<!-- Nos soins capillaires -->
 <h3 class="styled-h3">Nos soins capillaires</h3>
-<div class="product-slider">
-  <!-- Produit 1 -->
-  <article class="card">
-    <div class="img-wrapper">
-      <img src="1747160119497.png" alt="Sérum Éclat" class="first">
-      <img src="1747160036940.png" alt="Sérum Éclat - vue 2" class="second">
-    </div>
-    <div class="product-title">Sérum Éclat</div>
-    <div class="product-desc">Illumine, hydrate et unifie le teint.</div>
-    <div class="price">29,90 €</div>
-    <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=2525">Acheter</a>
-  </article>
+<div class="product-slider-wrapper">
+  <button class="slider-btn prev" onclick="scrollSlider(this, -1)">&#10094;</button>
+  <div class="product-slider">
+    <!-- Produit 1 -->
+    <article class="card">
+      <div class="img-wrapper">
+        <img src="1747160119497.png" alt="Sérum Éclat" class="first">
+        <img src="1747160036940.png" alt="Sérum Éclat - vue 2" class="second">
+      </div>
+      <div class="product-title">Sérum Éclat</div>
+      <div class="product-desc">Illumine, hydrate et unifie le teint.</div>
+      <div class="price">29,90 €</div>
+      <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=2525">Acheter</a>
+    </article>
 
-  <!-- Produit 2 -->
-  <article class="card">
-    <div class="img-wrapper">
-      <img src="1747160036940.png" alt="Crème de Jour" class="first">
-      <img src="1747160119497.png" alt="Crème de Jour - vue 2" class="second">
-    </div>
-    <div class="product-title">Crème de Jour Réparatrice</div>
-    <div class="product-desc">Hydratation intense, texture douce et non grasse.</div>
-    <div class="price">24,50 €</div>
-    <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=2525">Acheter</a>
-  </article>
+    <!-- Produit 2 -->
+    <article class="card">
+      <div class="img-wrapper">
+        <img src="1747160036940.png" alt="Crème de Jour" class="first">
+        <img src="1747160119497.png" alt="Crème de Jour - vue 2" class="second">
+      </div>
+      <div class="product-title">Crème de Jour Réparatrice</div>
+      <div class="product-desc">Hydratation intense, texture douce et non grasse.</div>
+      <div class="price">24,50 €</div>
+      <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=2525">Acheter</a>
+    </article>
 
-  <!-- Produit 3 -->
-  <article class="card">
-    <div class="img-wrapper">
-      <img src="1747160281157.png" alt="Gel Nettoyant" class="first">
-      <img src="1747160281157.png" alt="Gel Nettoyant - vue 2" class="second">
-    </div>
-    <div class="product-title">Gel Nettoyant Pureté</div>
-    <div class="product-desc">Nettoie en douceur, réduit les imperfections.</div>
-    <div class="price">18,90 €</div>
-    <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=2525">Acheter</a>
-  </article>
+    <!-- Produit 3 -->
+    <article class="card">
+      <div class="img-wrapper">
+        <img src="1747160281157.png" alt="Gel Nettoyant" class="first">
+        <img src="1747160281157.png" alt="Gel Nettoyant - vue 2" class="second">
+      </div>
+      <div class="product-title">Gel Nettoyant Pureté</div>
+      <div class="product-desc">Nettoie en douceur, réduit les imperfections.</div>
+      <div class="price">18,90 €</div>
+      <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=2525">Acheter</a>
+    </article>
+  </div>
+  <button class="slider-btn next" onclick="scrollSlider(this, 1)">&#10095;</button>
 </div>
 
-   <h3 class="styled-h3">Accessoires cheveux</h3>
-<div class="product-slider">
-  <!-- Produit 1 -->
-  <article class="card">
-    <div class="img-wrapper">
-      <img src="1747160036940.png" alt="Sérum Éclat" class="first">
-      <img src="Alibaba5f6885d36f99dcfbfd31a61d3b98610a_original.png" alt="Sérum Éclat - vue 2" class="second">
-    </div>
-    <div class="product-title">Sérum Éclat</div>
-    <div class="product-desc">Illumine, hydrate et unifie le teint.</div>
-    <div class="price">29,90 €</div>
-    <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=2525">Acheter</a>
-  </article>
+<!-- Accessoires cheveux -->
+<h3 class="styled-h3">Accessoires cheveux</h3>
+<div class="product-slider-wrapper">
+  <button class="slider-btn prev" onclick="scrollSlider(this, -1)">&#10094;</button>
+  <div class="product-slider">
+    <!-- Produit 1 -->
+    <article class="card">
+      <div class="img-wrapper">
+        <img src="1747160036940.png" alt="Accessoire 1" class="first">
+        <img src="Alibaba5f6885d36f99dcfbfd31a61d3b98610a_original.png" alt="Accessoire 1 - vue 2" class="second">
+      </div>
+      <div class="product-title">Accessoire 1</div>
+      <div class="product-desc">Accessoire tendance pour cheveux.</div>
+      <div class="price">15,90 €</div>
+      <a class="btn-buy" href="#">Acheter</a>
+    </article>
 
-  <!-- Produit 2 -->
-  <article class="card">
-    <div class="img-wrapper">
-      <img src="1747160119497.png" alt="Crème de Jour" class="first">
-      <img src="Alibabad7faa2c17177e2ffab840d9759a5fb76_original.png" alt="Crème de Jour - vue 2" class="second">
-    </div>
-    <div class="product-title">Crème de Jour Réparatrice</div>
-    <div class="product-desc">Hydratation intense, texture douce et non grasse.</div>
-    <div class="price">24,50 €</div>
-    <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=2525">Acheter</a>
-  </article>
+    <!-- Produit 2 -->
+    <article class="card">
+      <div class="img-wrapper">
+        <img src="1747160119497.png" alt="Accessoire 2" class="first">
+        <img src="Alibabad7faa2c17177e2ffab840d9759a5fb76_original.png" alt="Accessoire 2 - vue 2" class="second">
+      </div>
+      <div class="product-title">Accessoire 2</div>
+      <div class="product-desc">Parfait pour sublimer vos coiffures.</div>
+      <div class="price">19,50 €</div>
+      <a class="btn-buy" href="#">Acheter</a>
+    </article>
 
-  <!-- Produit 3 -->
-  <article class="card">
-    <div class="img-wrapper">
-      <img src="Alibabad7faa2c17177e2ffab840d9759a5fb76_original.png" alt="Gel Nettoyant" class="first">
-      <img src="IMG-20250502-WA0001.jpg" alt="Gel Nettoyant - vue 2" class="second">
-    </div>
-    <div class="product-title">Gel Nettoyant Pureté</div>
-    <div class="product-desc">Nettoie en douceur, réduit les imperfections.</div>
-    <div class="price">18,90 €</div>
-    <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=2525">Acheter</a>
-  </article>
+    <!-- Produit 3 -->
+    <article class="card">
+      <div class="img-wrapper">
+        <img src="Alibabad7faa2c17177e2ffab840d9759a5fb76_original.png" alt="Accessoire 3" class="first">
+        <img src="IMG-20250502-WA0001.jpg" alt="Accessoire 3 - vue 2" class="second">
+      </div>
+      <div class="product-title">Accessoire 3</div>
+      <div class="product-desc">Idéal pour tous types de cheveux.</div>
+      <div class="price">22,90 €</div>
+      <a class="btn-buy" href="#">Acheter</a>
+    </article>
+  </div>
+  <button class="slider-btn next" onclick="scrollSlider(this, 1)">&#10095;</button>
 </div>
 
-   <h3 class="styled-h3">Cosmétiques & bien-être</h3>
-<div class="product-slider">
-  <!-- Produit 1 -->
-  <article class="card">
-    <div class="img-wrapper">
-      <img src="IMG-20250502-WA0001.jpg" alt="Sérum Éclat" class="first">
-      <img src="Screenshot_20250513-195350.jpg" alt="Sérum Éclat - vue 2" class="second">
-    </div>
-    <div class="product-title">Sérum Éclat</div>
-    <div class="product-desc">Illumine, hydrate et unifie le teint.</div>
-    <div class="price">29,90 €</div>
-    <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=2525">Acheter</a>
-  </article>
+<!-- Cosmétiques & bien-être -->
+<h3 class="styled-h3">Cosmétiques & bien-être</h3>
+<div class="product-slider-wrapper">
+  <button class="slider-btn prev" onclick="scrollSlider(this, -1)">&#10094;</button>
+  <div class="product-slider">
+    <!-- Produit 1 -->
+    <article class="card">
+      <div class="img-wrapper">
+        <img src="IMG-20250502-WA0001.jpg" alt="Cosmétique 1" class="first">
+        <img src="Screenshot_20250513-195350.jpg" alt="Cosmétique 1 - vue 2" class="second">
+      </div>
+      <div class="product-title">Cosmétique 1</div>
+      <div class="product-desc">Produit de soin naturel et efficace.</div>
+      <div class="price">29,90 €</div>
+      <a class="btn-buy" href="#">Acheter</a>
+    </article>
 
-  <!-- Produit 2 -->
-  <article class="card">
-    <div class="img-wrapper">
-      <img src="Screenshot_20250513-195350.jpg" alt="Crème de Jour" class="first">
-      <img src="1747160119497.png" alt="Crème de Jour - vue 2" class="second">
-    </div>
-    <div class="product-title">Crème de Jour Réparatrice</div>
-    <div class="product-desc">Hydratation intense, texture douce et non grasse.</div>
-    <div class="price">24,50 €</div>
-    <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=2525">Acheter</a>
-  </article>
+    <!-- Produit 2 -->
+    <article class="card">
+      <div class="img-wrapper">
+        <img src="Screenshot_20250513-195350.jpg" alt="Cosmétique 2" class="first">
+        <img src="1747160119497.png" alt="Cosmétique 2 - vue 2" class="second">
+      </div>
+      <div class="product-title">Cosmétique 2</div>
+      <div class="product-desc">Soin doux et hydratant pour la peau.</div>
+      <div class="price">24,50 €</div>
+      <a class="btn-buy" href="#">Acheter</a>
+    </article>
 
-  <!-- Produit 3 -->
-  <article class="card">
-    <div class="img-wrapper">
-      <img src="1747160281157.png" alt="Gel Nettoyant" class="first">
-      <img src="collage.jpg" alt="Gel Nettoyant - vue 2" class="second">
-    </div>
-    <div class="product-title">Gel Nettoyant Pureté</div>
-    <div class="product-desc">Nettoie en douceur, réduit les imperfections.</div>
-    <div class="price">18,90 €</div>
-    <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=2525">Acheter</a>
-  </article>
+    <!-- Produit 3 -->
+    <article class="card">
+      <div class="img-wrapper">
+        <img src="1747160281157.png" alt="Cosmétique 3" class="first">
+        <img src="collage.jpg" alt="Cosmétique 3 - vue 2" class="second">
+      </div>
+      <div class="product-title">Cosmétique 3</div>
+      <div class="product-desc">Nettoie et protège efficacement.</div>
+      <div class="price">18,90 €</div>
+      <a class="btn-buy" href="#">Acheter</a>
+    </article>
+  </div>
+  <button class="slider-btn next" onclick="scrollSlider(this, 1)">&#10095;</button>
 </div>
 
-   <h3 class="styled-h3">Nouveautés & meilleures ventes</h3>
-<div class="product-slider">
-  <!-- Produit 1 -->
-  <article class="card">
-    <div class="img-wrapper">
-      <img src="collage.jpg" alt="Sérum Éclat" class="first">
-      <img src="pack unique.jpg" alt="Sérum Éclat - vue 2" class="second">
-    </div>
-    <div class="product-title">Sérum Éclat</div>
-    <div class="product-desc">Illumine, hydrate et unifie le teint.</div>
-    <div class="price">29,90 €</div>
-    <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=2525">Acheter</a>
-  </article>
+</section>
 
-  <!-- Produit 2 -->
-  <article class="card">
-    <div class="img-wrapper">
-      <img src="1747160119497.png" alt="Crème de Jour" class="first">
-      <img src="1747160119497-2.png" alt="Crème de Jour - vue 2" class="second">
-    </div>
-    <div class="product-title">Crème de Jour Réparatrice</div>
-    <div class="product-desc">Hydratation intense, texture douce et non grasse.</div>
-    <div class="price">24,50 €</div>
-    <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=2525">Acheter</a>
-  </article>
+<!-- Script pour les flèches -->
+<script>
+function scrollSlider(button, direction) {
+  const wrapper = button.parentElement;
+  const slider = wrapper.querySelector('.product-slider');
+  slider.scrollBy({ left: direction * 260, behavior: 'smooth' });
+}
+</script>
 
-  <!-- Produit 3 -->
-  <article class="card">
-    <div class="img-wrapper">
-      <img src="1747160281157.png" alt="Gel Nettoyant" class="first">
-      <img src="pack unique.jpgg" alt="Gel Nettoyant - vue 2" class="second">
-    </div>
-    <div class="product-title">Gel Nettoyant Pureté</div>
-    <div class="product-desc">Nettoie en douceur, réduit les imperfections.</div>
-    <div class="price">18,90 €</div>
-    <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=2525">Acheter</a>
-  </article>
-</div>
 
 
 </section>
