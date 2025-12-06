@@ -131,149 +131,50 @@ h3::after {
   margin: 24px 0 16px;
   position: relative;
 }
-/* Grid produits (2 cartes visibles sur mobile) */
-.grid {
-  display: flex;
-  gap: 16px;
-  overflow-x: auto;
-  padding-bottom: 10px;
-}
-.grid::-webkit-scrollbar { display: none; }
-.card {
-  flex: 0 0 220px;
-  background: var(--card);
-  border-radius:16px;
-  padding:16px;
-  box-shadow:0 4px 20px var(--shadow);
-  transition:0.3s;
-  position: relative;
-}
-.card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px var(--shadow); }
-
-/* Double image pour chaque produit */
-.card img {
-  width: 100%;
-  border-radius: 12px;
-  margin-bottom: 8px;
-  cursor: pointer;
-}
-.card .img-wrapper {
-  position: relative;
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-  border-radius: 12px;
-}
-.card .img-wrapper img { 
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: opacity 0.3s;
-}
-.card .img-wrapper img.second { opacity: 0; }
-.card .img-wrapper:hover img.second { opacity: 1; }
-.card .img-wrapper:hover img.first { opacity: 0; }
-
-.product-title { font-weight:700; margin-bottom:6px; color:#111; }
-.product-desc { color:var(--muted); font-size:14px; margin-bottom:6px; }
-.price { font-weight:800; color:var(--accent); }
-.btn-buy { display:inline-block; margin-top:12px; padding:10px 20px; border-radius:24px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; text-decoration:none; font-weight:600; transition:0.3s; }
-.btn-buy:hover { opacity:0.85; transform:translateY(-2px); }
-/* SLIDER PRODUITS */
-.product-slider-wrapper {
-  position: relative;
-}
-
-.product-slider {
-  display: flex;
-  gap: 16px; /* petit espace entre les cartes */
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  padding-bottom: 8px;
-}
-
-.product-slider::-webkit-scrollbar {
-  height: 8px;
-}
-
-.product-slider::-webkit-scrollbar-thumb {
-  background: var(--accent2);
-  border-radius: 4px;
-}
-
-.product-slider::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-.card {
-  min-width: 250px; /* chaque produit a une largeur fixe */
-  flex: 0 0 auto;
-}
-
-/* IMAGES DU PRODUIT */
-.img-wrapper {
+/* Mini-slider pour chaque produit */
+.img-slider {
   position: relative;
   width: 100%;
   height: 250px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.img-wrapper {
+  width: 200%; /* deux images côte à côte */
+  display: flex;
+  transition: transform 0.4s ease-in-out;
 }
 
 .img-wrapper img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  width: 50%; /* chaque image prend la moitié du slider */
   object-fit: cover;
   border-radius: 12px;
-  transition: opacity 0.3s ease-in-out;
 }
 
-.img-wrapper img.second {
-  opacity: 0;
-}
-
-.img-wrapper:hover img.first {
-  opacity: 0;
-}
-
-.img-wrapper:hover img.second {
-  opacity: 1;
-}
-
-/* FLÈCHES */
-.slider-btn {
+/* Flèches pour mini-slider */
+.img-slider .slider-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   background: rgba(107,179,183,0.8);
   border: none;
   color: #fff;
-  font-size: 1.5rem;
-  width: 36px;
-  height: 36px;
+  font-size: 1.2rem;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   cursor: pointer;
   z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: 0.3s;
 }
 
-.slider-btn:hover {
-  background: var(--accent2);
-}
+.img-slider .img-prev { left: 6px; }
+.img-slider .img-next { right: 6px; }
 
-.slider-btn.prev {
-  left: -18px;
-}
-
-.slider-btn.next {
-  right: -18px;
-}
-
+.img-slider .slider-btn:hover { background: var(--accent2); }
 
 /* Vidéos */
 .video-wrap { position: relative; padding-top: 56.25%; border-radius: 16px; overflow: hidden; background: #000; margin: 18px auto 0; max-width: 100%; }
@@ -460,16 +361,18 @@ main.container {
 <!-- PRODUITS -->
 <section id="produits" class="tab-panel" hidden>
 
-<!-- Nos soins capillaires -->
-<h3 class="styled-h3">Nos soins capillaires</h3>
-<div class="product-slider-wrapper">
-  <button class="slider-btn prev" onclick="scrollSlider(this, -1)">&#10094;</button>
-  <div class="product-slider">
+  <!-- Nos soins capillaires -->
+  <h3 class="styled-h3">Nos soins capillaires</h3>
+  <div class="grid">
     <!-- Produit 1 -->
     <article class="card">
-      <div class="img-wrapper">
-        <img src="1747160119497.png" alt="Sérum Éclat" class="first">
-        <img src="1747160036940.png" alt="Sérum Éclat - vue 2" class="second">
+      <div class="img-slider">
+        <button class="img-prev slider-btn">&#10094;</button>
+        <div class="img-wrapper">
+          <img src="1747160119497.png" alt="Sérum Éclat" class="first">
+          <img src="1747160036940.png" alt="Sérum Éclat - vue 2" class="second">
+        </div>
+        <button class="img-next slider-btn">&#10095;</button>
       </div>
       <div class="product-title">Sérum Éclat</div>
       <div class="product-desc">Illumine, hydrate et unifie le teint.</div>
@@ -479,9 +382,13 @@ main.container {
 
     <!-- Produit 2 -->
     <article class="card">
-      <div class="img-wrapper">
-        <img src="1747160036940.png" alt="Crème de Jour" class="first">
-        <img src="1747160119497.png" alt="Crème de Jour - vue 2" class="second">
+      <div class="img-slider">
+        <button class="img-prev slider-btn">&#10094;</button>
+        <div class="img-wrapper">
+          <img src="1747160036940.png" alt="Crème de Jour" class="first">
+          <img src="1747160119497.png" alt="Crème de Jour - vue 2" class="second">
+        </div>
+        <button class="img-next slider-btn">&#10095;</button>
       </div>
       <div class="product-title">Crème de Jour Réparatrice</div>
       <div class="product-desc">Hydratation intense, texture douce et non grasse.</div>
@@ -491,9 +398,13 @@ main.container {
 
     <!-- Produit 3 -->
     <article class="card">
-      <div class="img-wrapper">
-        <img src="1747160281157.png" alt="Gel Nettoyant" class="first">
-        <img src="1747160281157.png" alt="Gel Nettoyant - vue 2" class="second">
+      <div class="img-slider">
+        <button class="img-prev slider-btn">&#10094;</button>
+        <div class="img-wrapper">
+          <img src="1747160281157.png" alt="Gel Nettoyant" class="first">
+          <img src="1747160281157.png" alt="Gel Nettoyant - vue 2" class="second">
+        </div>
+        <button class="img-next slider-btn">&#10095;</button>
       </div>
       <div class="product-title">Gel Nettoyant Pureté</div>
       <div class="product-desc">Nettoie en douceur, réduit les imperfections.</div>
@@ -501,96 +412,80 @@ main.container {
       <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=2525">Acheter</a>
     </article>
   </div>
-  <button class="slider-btn next" onclick="scrollSlider(this, 1)">&#10095;</button>
-</div>
 
-<!-- Accessoires cheveux -->
-<h3 class="styled-h3">Accessoires cheveux</h3>
-<div class="product-slider-wrapper">
-  <button class="slider-btn prev" onclick="scrollSlider(this, -1)">&#10094;</button>
-  <div class="product-slider">
+  <!-- Accessoires cheveux -->
+  <h3 class="styled-h3">Accessoires cheveux</h3>
+  <div class="grid">
     <!-- Produit 1 -->
     <article class="card">
-      <div class="img-wrapper">
-        <img src="1747160036940.png" alt="Accessoire 1" class="first">
-        <img src="Alibaba5f6885d36f99dcfbfd31a61d3b98610a_original.png" alt="Accessoire 1 - vue 2" class="second">
+      <div class="img-slider">
+        <button class="img-prev slider-btn">&#10094;</button>
+        <div class="img-wrapper">
+          <img src="1747160036940.png" alt="Masque Nuit" class="first">
+          <img src="Alibaba5f6885d36f99dcfbfd31a61d3b98610a_original.png" alt="Masque Nuit - vue 2" class="second">
+        </div>
+        <button class="img-next slider-btn">&#10095;</button>
       </div>
-      <div class="product-title">Accessoire 1</div>
-      <div class="product-desc">Accessoire tendance pour cheveux.</div>
-      <div class="price">15,90 €</div>
+      <div class="product-title">Masque Nuit Régénérant</div>
+      <div class="product-desc">Régénère et apaise la peau pendant votre sommeil.</div>
+      <div class="price">34,00 €</div>
       <a class="btn-buy" href="#">Acheter</a>
     </article>
 
     <!-- Produit 2 -->
     <article class="card">
-      <div class="img-wrapper">
-        <img src="1747160119497.png" alt="Accessoire 2" class="first">
-        <img src="Alibabad7faa2c17177e2ffab840d9759a5fb76_original.png" alt="Accessoire 2 - vue 2" class="second">
+      <div class="img-slider">
+        <button class="img-prev slider-btn">&#10094;</button>
+        <div class="img-wrapper">
+          <img src="1747160119497.png" alt="Gommage" class="first">
+          <img src="Alibabad7faa2c17177e2ffab840d9759a5fb76_original.png" alt="Gommage - vue 2" class="second">
+        </div>
+        <button class="img-next slider-btn">&#10095;</button>
       </div>
-      <div class="product-title">Accessoire 2</div>
-      <div class="product-desc">Parfait pour sublimer vos coiffures.</div>
+      <div class="product-title">Gommage Sucre & Coco</div>
+      <div class="product-desc">Exfolie, adoucit et illumine la peau instantanément.</div>
       <div class="price">19,50 €</div>
       <a class="btn-buy" href="#">Acheter</a>
     </article>
 
     <!-- Produit 3 -->
     <article class="card">
-      <div class="img-wrapper">
-        <img src="Alibabad7faa2c17177e2ffab840d9759a5fb76_original.png" alt="Accessoire 3" class="first">
-        <img src="IMG-20250502-WA0001.jpg" alt="Accessoire 3 - vue 2" class="second">
+      <div class="img-slider">
+        <button class="img-prev slider-btn">&#10094;</button>
+        <div class="img-wrapper">
+          <img src="Alibabad7faa2c17177e2ffab840d9759a5fb76_original.png" alt="Huile Corps" class="first">
+          <img src="IMG-20250502-WA0001.jpg" alt="Huile Corps - vue 2" class="second">
+        </div>
+        <button class="img-next slider-btn">&#10095;</button>
       </div>
-      <div class="product-title">Accessoire 3</div>
-      <div class="product-desc">Idéal pour tous types de cheveux.</div>
-      <div class="price">22,90 €</div>
+      <div class="product-title">Huile Corps Satinée</div>
+      <div class="product-desc">Nourrit intensément et laisse un fini lumineux.</div>
+      <div class="price">27,00 €</div>
       <a class="btn-buy" href="#">Acheter</a>
     </article>
   </div>
-  <button class="slider-btn next" onclick="scrollSlider(this, 1)">&#10095;</button>
-</div>
 
-<!-- Cosmétiques & bien-être -->
-<h3 class="styled-h3">Cosmétiques & bien-être</h3>
-<div class="product-slider-wrapper">
-  <button class="slider-btn prev" onclick="scrollSlider(this, -1)">&#10094;</button>
-  <div class="product-slider">
-    <!-- Produit 1 -->
-    <article class="card">
-      <div class="img-wrapper">
-        <img src="IMG-20250502-WA0001.jpg" alt="Cosmétique 1" class="first">
-        <img src="Screenshot_20250513-195350.jpg" alt="Cosmétique 1 - vue 2" class="second">
-      </div>
-      <div class="product-title">Cosmétique 1</div>
-      <div class="product-desc">Produit de soin naturel et efficace.</div>
-      <div class="price">29,90 €</div>
-      <a class="btn-buy" href="#">Acheter</a>
-    </article>
+</section>
 
-    <!-- Produit 2 -->
-    <article class="card">
-      <div class="img-wrapper">
-        <img src="Screenshot_20250513-195350.jpg" alt="Cosmétique 2" class="first">
-        <img src="1747160119497.png" alt="Cosmétique 2 - vue 2" class="second">
-      </div>
-      <div class="product-title">Cosmétique 2</div>
-      <div class="product-desc">Soin doux et hydratant pour la peau.</div>
-      <div class="price">24,50 €</div>
-      <a class="btn-buy" href="#">Acheter</a>
-    </article>
+<script>
+/* Mini-slider images pour chaque produit */
+document.querySelectorAll('.img-slider').forEach(slider => {
+  const wrapper = slider.querySelector('.img-wrapper');
+  const prev = slider.querySelector('.img-prev');
+  const next = slider.querySelector('.img-next');
+  let index = 0;
 
-    <!-- Produit 3 -->
-    <article class="card">
-      <div class="img-wrapper">
-        <img src="1747160281157.png" alt="Cosmétique 3" class="first">
-        <img src="collage.jpg" alt="Cosmétique 3 - vue 2" class="second">
-      </div>
-      <div class="product-title">Cosmétique 3</div>
-      <div class="product-desc">Nettoie et protège efficacement.</div>
-      <div class="price">18,90 €</div>
-      <a class="btn-buy" href="#">Acheter</a>
-    </article>
-  </div>
-  <button class="slider-btn next" onclick="scrollSlider(this, 1)">&#10095;</button>
-</div>
+  prev.addEventListener('click', () => {
+    index = 0;
+    wrapper.style.transform = 'translateX(0)';
+  });
+
+  next.addEventListener('click', () => {
+    index = 1;
+    wrapper.style.transform = 'translateX(-50%)';
+  });
+});
+</script>
 
 </section>
 
