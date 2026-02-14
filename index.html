@@ -182,9 +182,33 @@ h3::after {
 
 .img-slider .slider-btn:hover { background: var(--accent2); }
 
-/* Vidéos */
-.video-wrap { position: relative; padding-top: 56.25%; border-radius: 16px; overflow: hidden; background: #000; margin: 18px auto 0; max-width: 100%; }
-.video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+/* Vidéos modernisées et compactes */
+.video-wrap {
+  position: relative;
+  padding-top: 40%;         /* réduit la hauteur (ratio plus compact) */
+  border-radius: 12px;       /* coins arrondis */
+  overflow: hidden;
+  background: #000;
+  margin: 16px auto;         /* centré et espacement vertical réduit */
+  max-width: 100%;
+  box-shadow: 0 6px 18px rgba(58,46,57,0.2); /* ombre légère */
+  transition: transform 0.3s, box-shadow 0.3s; /* effet hover */
+}
+
+/* Hover : léger zoom et ombre plus prononcée */
+.video-wrap:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 28px rgba(58,46,57,0.25);
+}
+
+.video-wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 
 /* Footer */
 /* Footer */
