@@ -11,329 +11,375 @@
    🎨 Variables globales
 ========================== */
 :root {
-  --bg: #fdfdfd;
-  --accent: #2c2c2c;
-  --accent2: #6bb3b7;
-  --muted: #555;
-  --card: #fff;
-  --shadow: rgba(0, 0, 0, 0.12);
-  --radius: 16px;
+  --bg: #fafafa;
+  --accent: #2b2b2b;
+  --accent2: #8ac6d1;
+  --muted: #6c6c6c;
+  --card: #ffffff;
+  --shadow: rgba(0,0,0,0.15);
+  --text-footer: #fff;
+  --cta-gradient: linear-gradient(135deg, #2b2b2b, #8ac6d1);
 }
 
-/* Reset global */
+/* Reset & global */
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Inter', sans-serif; background: var(--bg); color: #111; line-height: 1.6; scroll-behavior: smooth;}
-a { text-decoration: none; color: inherit; }
+body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--accent); line-height: 1.6; }
 
-/* ==========================
-   HEADER
-========================== */
+/* Header */
 header {
   position: fixed;
   top: 0;
   width: 100%;
   background: #fff;
-  padding: 10px 20px;
+  padding: 12px 24px;
   z-index: 1000;
-  box-shadow: 0 4px 16px var(--shadow);
+  border-bottom: 1px solid rgba(0,0,0,0.1);
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
 }
-header img { width: 60px; border-radius: var(--radius); }
+header img { width: 60px; border-radius: 12px; }
 .tabs {
   display: flex;
   gap: 12px;
+  flex-wrap: nowrap;
   overflow-x: auto;
   align-items: center;
 }
 .tab {
-  padding: 6px 14px;
-  border-radius: var(--radius);
+  padding: 8px 16px;
+  border-radius: 12px;
   background: transparent;
   cursor: pointer;
   font-weight: 600;
   font-family: 'Playfair Display', serif;
+  flex: 0 0 auto;
+  white-space: nowrap;
   transition: 0.3s;
+  color: var(--accent);
 }
 .tab.active { background: var(--accent2); color: #fff; box-shadow: 0 4px 12px var(--shadow); }
 
-/* ==========================
-   HERO
-========================== */
+/* Hero */
 .hero {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 160px 24px 60px;
-  background: linear-gradient(rgba(107,179,183,0.3), rgba(107,179,183,0.3)), url('assets/images/hero-bg.jpg') center/cover no-repeat;
+  padding: 140px 24px 60px;
+  background: linear-gradient(rgba(138,198,209,0.3), rgba(138,198,209,0.3)), url('assets/images/hero-bg.jpg') center/cover no-repeat;
   text-align: center;
   color: var(--accent);
 }
-.hero h1 { font-size: clamp(32px,6vw,56px); font-weight: 700; margin-bottom: 16px; }
-.hero p { font-size: clamp(16px,2.5vw,20px); margin-bottom: 24px; }
+.hero h1 { font-family: 'Playfair Display', serif; font-weight:700; font-size: clamp(32px,6vw,52px); margin-bottom:16px; }
+.hero p { font-size: clamp(16px,2.5vw,20px); margin-bottom:24px; }
 .cta {
   display: inline-block;
   padding: 14px 28px;
-  border-radius: 32px;
-  background: linear-gradient(135deg,var(--accent2),var(--accent));
+  border-radius: 30px;
+  background: var(--cta-gradient);
   color:#fff;
+  text-decoration:none;
   font-weight:700;
   transition:0.3s;
 }
 .cta:hover { opacity:0.9; transform:translateY(-3px); }
 
-/* ==========================
-   SECTIONS
-========================== */
-section { padding: 80px 20px; }
-section:nth-of-type(even) { background: #f6f6f6; color: var(--accent); }
-
+/* Sections */
+section { padding: 60px 24px; }
+section:nth-of-type(even) { background: var(--accent2); color: #fff; }
 h2 {
   font-family: 'Playfair Display', serif;
-  font-size: 2rem;
   font-weight: 700;
+  font-size:2rem;
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
   position: relative;
 }
 h2::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -12px;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
-  background: var(--accent2);
-  border-radius: 3px;
+  content: '';
+  width: 70px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  display: block;
+  margin: 12px auto 0;
+  border-radius: 2px;
+}
+h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--accent);
 }
 .styled-h3 {
   font-family: 'Playfair Display', serif;
   font-size: 1.5rem;
   font-weight: 700;
+  text-decoration: underline;
   margin: 24px 0 16px;
-  border-bottom: 2px solid var(--accent2);
-  padding-bottom: 6px;
+  color: var(--accent);
 }
 
-/* ==========================
-   CARDS & GRIDS
-========================== */
-.grid {
-  display: flex;
-  gap: 24px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.card {
-  background: var(--card);
-  border-radius: var(--radius);
-  box-shadow: 0 6px 24px var(--shadow);
-  width: 300px;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
-  overflow: hidden;
-}
-.card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px var(--shadow); }
-.card img { width: 100%; height: auto; object-fit: cover; }
-.product-title { font-weight: 600; font-size: 1.1rem; margin: 12px 0 6px; }
-.product-desc { font-size: 0.95rem; color: var(--muted); margin-bottom: 8px; }
-.price { font-weight: 700; margin-bottom: 12px; color: var(--accent2); }
-.btn-buy {
-  display: inline-block;
-  padding: 10px 20px;
-  margin-bottom: 12px;
-  border-radius: 24px;
-  background: var(--accent2);
-  color: #fff;
-  font-weight: 600;
-  transition: 0.3s;
-}
-.btn-buy:hover { opacity:0.9; transform: translateY(-2px); }
-
-/* ==========================
-   SLIDER
-========================== */
-.img-slider { position: relative; border-radius: var(--radius); overflow: hidden; }
-.img-wrapper { display: flex; transition: transform 0.4s ease-in-out; }
-.img-wrapper img { width: 100%; object-fit: cover; border-radius: var(--radius); }
-.slider-btn {
-  position: absolute; top: 50%; transform: translateY(-50%);
-  background: var(--accent2);
-  border: none; color: #fff; width: 32px; height: 32px;
-  border-radius: 50%; cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  z-index: 10; transition: 0.3s;
-}
-.slider-btn:hover { background: var(--accent); }
-
-/* ==========================
-   VIDEOS
-========================== */
-.video-wrap { position: relative; padding-top: 56.25%; border-radius: var(--radius); overflow: hidden; background: #000; margin-top: 18px; }
+/* Vidéos */
+.video-wrap { position: relative; padding-top: 56.25%; border-radius: 16px; overflow: hidden; background: #000; margin: 18px auto 0; max-width: 100%; }
 .video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
-/* ==========================
-   REVIEWS
-========================== */
-.review-card {
-  background: var(--card);
-  padding: 16px;
-  border-radius: var(--radius);
-  box-shadow: 0 4px 16px var(--shadow);
-  margin-bottom: 16px;
-  transition: transform 0.3s, box-shadow 0.3s;
+/* Cards et mini-slider */
+.img-slider {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 6px 24px var(--shadow);
 }
-.review-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px var(--shadow); }
-
-/* ==========================
-   FOOTER
-========================== */
-footer {
-  background: linear-gradient(135deg, #6bb3b7, #9ad3d6);
-  color: #111;
-  font-family: 'Inter', sans-serif;
-  padding: 30px 20px;
+.img-wrapper {
+  width: 200%;
+  display: flex;
+  transition: transform 0.4s ease-in-out;
 }
-.footer-container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; max-width: 1200px; margin: auto; }
-.footer-col { flex: 1 1 250px; }
-.footer-col h4 { font-size: 1.1rem; margin-bottom: 10px; text-transform: uppercase; color: #111; }
-.footer-col p, .footer-col a { font-size: 0.95rem; color: #111; text-decoration: none; }
-.footer-col a:hover { text-decoration: underline; }
-.footer-socials { display: flex; gap: 10px; margin-top: 8px; }
-.footer-socials a { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: #fff; border-radius: 50%; transition: transform 0.3s; }
-.footer-socials a:hover { transform: scale(1.1); background: #f0f0f0; }
-.footer-bottom { text-align: center; font-size: 0.9rem; margin-top: 16px; }
+.img-wrapper img {
+  width: 50%;
+  height: auto;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+}
+.img-slider .slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--accent2);
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.img-slider .img-prev { left: 6px; }
+.img-slider .img-next { right: 6px; }
+.img-slider .slider-btn:hover { background: var(--accent); }
 
-/* ==========================
-   FORMULAIRE CONTACT
-========================== */
+/* Formulaire Contact */
 form {
   max-width: 700px;
   margin: 30px auto;
   padding: 40px;
-  border-radius: var(--radius);
-  box-shadow: 0 6px 24px rgba(0,0,0,0.15);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
   background: #fff;
 }
-form input, form textarea {
+form input,
+form textarea {
   padding: 16px;
   font-size: 1rem;
-  border-radius: var(--radius);
+  border-radius: 12px;
   border: 1px solid #ccc;
   width: 100%;
   margin-bottom: 16px;
 }
 form textarea { min-height: 180px; }
-.btn-send { padding: 16px 28px; font-size: 1rem; border-radius: 32px; cursor: pointer; background: var(--accent2); color: #fff; font-weight: 700; transition:0.3s; }
+.btn-send {
+  padding: 16px 32px;
+  font-size: 1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 700;
+  background: var(--cta-gradient);
+  color: #fff;
+  border: none;
+  transition: 0.3s;
+}
 .btn-send:hover { opacity:0.9; transform:translateY(-2px); }
 
-/* ==========================
-   RESPONSIVE
-========================== */
-@media(max-width:900px){ .grid { flex-wrap: nowrap; overflow-x: auto; } .card { flex: 0 0 80%; } }
-@media(max-width:600px){ .footer-container { flex-direction: column; text-align:center; } .footer-socials { justify-content:center; } }
+/* Footer */
+footer {
+  background: #2b2b2b;
+  color: #fff;
+  padding: 40px 20px 20px;
+  font-family: 'Inter', sans-serif;
+}
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 12px;
+}
+.footer-col {
+  flex: 1 1 250px;
+}
+.footer-col h4 { color: #fff; text-transform: uppercase; margin-bottom: 12px; }
+.footer-col p, .footer-col a { color: #ddd; text-decoration: none; font-size:0.95rem; }
+.footer-col a:hover { text-decoration: underline; }
+.footer-socials { display: flex; gap: 8px; margin-top: 8px; }
+.footer-socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px; height: 36px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.3s, background 0.3s;
+}
+.footer-socials a img { width: 18px; height: 18px; }
+.footer-socials a:hover { transform: scale(1.1); background: var(--accent2); }
+.footer-bottom {
+  text-align: center;
+  font-size: 0.9rem;
+  padding: 10px 0;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  margin-top: 16px;
+  color: #ccc;
+}
+
+/* Responsivité */
+@media(max-width:900px){ .hero { padding-top:120px; } .grid { flex-wrap: nowrap; overflow-x:auto; } .card { flex:0 0 45%; } }
+@media(max-width:600px){ .hero { padding-top:100px; } .card { flex:0 0 70%; } .footer-container { flex-direction: column; text-align:center; } .footer-socials { justify-content:center; } }
 </style>
 </head>
-<body>
 
+<body>
 <header>
-<div style="display:flex;gap:12px;align-items:center">
-<img src="IMG_8042.JPG" alt="Logo Bélli et Bien-être">
-<div>
-<strong style="font-size:1.2rem">Bélli et Bien-être</strong><br>
-<small>Cosmétiques naturels & soins premium</small>
-</div>
-</div>
-<nav class="tabs" role="tablist" aria-label="Navigation principale" id="main-tabs">
-<button class="tab active" data-tab="accueil" role="tab" aria-selected="true">Accueil</button>
-<button class="tab" data-tab="produits" role="tab" aria-selected="false">Produits</button>
-<button class="tab" data-tab="beaute" role="tab" aria-selected="false">Beauté & Conseil</button>
-<button class="tab" data-tab="contact" role="tab" aria-selected="false">Contact</button>
-</nav>
+  <div style="display:flex;align-items:center;gap:12px">
+    <img src="IMG_8042.JPG" alt="Logo Bélli et Bien-être">
+    <div>
+      <strong style="font-size:1.2rem">Bélli et Bien-être</strong><br>
+      <small>Cosmétiques naturels & soins premium</small>
+    </div>
+  </div>
+  <nav class="tabs" role="tablist" aria-label="Navigation principale" id="main-tabs">
+    <button class="tab active" data-tab="accueil" role="tab" aria-selected="true">Accueil</button>
+    <button class="tab" data-tab="produits" role="tab" aria-selected="false">Produits</button>
+    <button class="tab" data-tab="beaute" role="tab" aria-selected="false">Beauté & Conseil</button>
+    <button class="tab" data-tab="contact" role="tab" aria-selected="false">Contact</button>
+  </nav>
 </header>
 
-<main class="container" style="padding-top:140px">
-
-<!-- ==========================
-   ACCUEIL
-========================== -->
+<main class="container" style="padding-top:100px;">
+<!-- ACCUEIL -->
 <section id="accueil" class="tab-panel">
-<div class="hero">
-<h1>Bienvenue chez Bélli et Bien-être</h1>
-<p>Des cosmétiques naturels, testés dermatologiquement, pour sublimer votre peau.</p>
-<a href="#produits" class="cta" onclick="document.querySelector('[data-tab=\'produits\']').click()">Découvrir nos produits</a>
-</div>
+  <div class="hero">
+    <h1>Bienvenue chez Bélli et Bien-être</h1>
+    <p>Des cosmétiques naturels, testés dermatologiquement, pour sublimer votre peau.</p>
+    <a href="#produits" class="cta" onclick="document.querySelector('[data-tab=\'produits\']').click()">Découvrir nos produits</a>
+  </div>
 
-<section style="margin-top:40px; padding:30px; background:#fff; border-radius:16px; box-shadow:0 6px 24px rgba(0,0,0,0.1); text-align: justify;">
-<h2>Présentation</h2>
-<p>🌿 <strong>Sublimez votre beauté au naturel</strong> 🌿</p>
-<p>Chez Belli et Bien-être, nous célébrons la beauté authentique à travers des produits capillaires naturels, des cosmétiques soigneusement sélectionnés, et des accessoires tendance pensés pour révéler votre éclat au quotidien.</p>
-<p>✨ Que vous ayez des cheveux crépus, bouclés ou frisés, notre gamme a été conçue pour nourrir, protéger et magnifier chaque texture avec douceur et efficacité.</p>
-<p>🛍️ Découvrez aussi nos accessoires cheveux stylés, nos produits de bien-être (serviette hygiénique lavable), et toute une sélection d’articles inspirés par le soin de soi et la féminité assumée.</p>
-<p>Parce que chaque femme mérite de se sentir belle et bien dans sa peau, Belli et Bien-être vous accompagne dans votre routine beauté, avec des produits faits avec passion, respectueux de votre corps et de votre temps.</p>
-</section>
-</section>
+  <section style="margin-top:40px; padding:20px; background:#fff; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.1); text-align: justify;">
+    <h2>Présentation</h2>
+    <p>🌿 <strong>Sublimez votre beauté au naturel</strong> 🌿</p>
+    <p>Chez Belli et Bien-être, nous célébrons la beauté authentique à travers des produits capillaires naturels, des cosmétiques soigneusement sélectionnés, et des accessoires tendance pensés pour révéler votre éclat au quotidien.</p>
+    <p>✨ Que vous ayez des cheveux crépus, bouclés ou frisés, notre gamme a été conçue pour nourrir, protéger et magnifier chaque texture avec douceur et efficacité.</p>
+    <p>🛍️ Découvrez aussi nos accessoires cheveux stylés, nos produits de bien-être (serviette hygiénique lavable), et toute une sélection d’articles inspirés par le soin de soi et la féminité assumée.</p>
+    <p>Parce que chaque femme mérite de se sentir belle et bien dans sa peau, Belli et Bien-être vous accompagne dans votre routine beauté, avec des produits faits avec passion, respectueux de votre corps et de votre temps.</p>
+  </section>
 
-<!-- PRODUITS, BEAUTÉ & CONTACT : garder identique au précédent code avec classes et sliders -->
-
-<footer>
-  <div class="footer-container">
-    <div class="footer-col">
-      <h4>À propos</h4>
-      <p>Bélli et Bien-être vous accompagne dans votre routine beauté avec des produits naturels et respectueux de votre peau.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Suivez-nous</h4>
-      <div class="footer-socials">
-        <a href="#"><img src="facebook-Photoroom.png" alt="Facebook"></a>
-        <a href="#"><img src="dossierPicture_717450.png" alt="Instagram"></a>
-        <a href="#"><img src="images.png" alt="TikTok"></a>
+  <div style="display:flex;flex-wrap:wrap;gap:24px;margin-top:40px;">
+    <div style="flex:1;min-width:300px;">
+      <h2>Vidéo de présentation</h2>
+      <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Vidéo Éclat Beauté" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
-    <div class="footer-col">
-      <h4>Contact</h4>
-      <p>Email: <a href="mailto:contact@bellietbienetre.com">contact@bellietbienetre.com</a></p>
-      <p>Téléphone: <a href="tel:+221784654652">+221 78 465 46 52</a></p>
+    <div style="flex:1;min-width:300px;">
+      <h2>Avis de nos clients</h2>
+      <div class="review-card visible"><strong>Malick C.</strong><p>"Les produits ont transformé ma peau. Je recommande !"</p></div>
+      <div class="review-card visible"><strong>Aicha T.</strong><p>"Service rapide et produits excellents."</p></div>
+      <div class="review-card visible"><strong>Amina D.</strong><p>"je kiffe."</p></div>
     </div>
   </div>
-  <div class="footer-bottom">
-    © <strong>Bélli et Bien-être</strong> — Tous droits réservés
+</section>
+
+<!-- PRODUITS -->
+<section id="produits" class="tab-panel" hidden>
+  <h3 class="styled-h3">Nos soins capillaires</h3>
+  <div class="grid">
+    <!-- Produit 1 -->
+    <article class="card">
+      <div class="img-slider">
+        <button class="img-prev slider-btn">&#10094;</button>
+        <div class="img-wrapper">
+          <img src="1747160119497.png" alt="Sérum Éclat" class="first">
+          <img src="1747160036940.png" alt="Sérum Éclat - vue 2" class="second">
+        </div>
+        <button class="img-next slider-btn">&#10095;</button>
+      </div>
+      <div class="product-title">Sérum Éclat</div>
+      <div class="product-desc">Illumine, hydrate et unifie le teint.</div>
+      <div class="price">29,90 €</div>
+      <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=2525">Acheter</a>
+    </article>
+    <!-- Produit 2 -->
+    <article class="card">
+      <div class="img-slider">
+        <button class="img-prev slider-btn">&#10094;</button>
+        <div class="img-wrapper">
+          <img src="1747160036940.png" alt="Crème de Jour" class="first">
+          <img src="1747160119497.png" alt="Crème de Jour - vue 2" class="second">
+        </div>
+        <button class="img-next slider-btn">&#10095;</button>
+      </div>
+      <div class="product-title">Crème de Jour Réparatrice</div>
+      <div class="product-desc">Hydratation intense, texture douce et non grasse.</div>
+      <div class="price">24,50 €</div>
+      <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=2525">Acheter</a>
+    </article>
+    <!-- Produit 3 -->
+    <article class="card">
+      <div class="img-slider">
+        <button class="img-prev slider-btn">&#10094;</button>
+        <div class="img-wrapper">
+          <img src="1747160281157.png" alt="Gel Nettoyant" class="first">
+          <img src="1747160281157.png" alt="Gel Nettoyant - vue 2" class="second">
+        </div>
+        <button class="img-next slider-btn">&#10095;</button>
+      </div>
+      <div class="product-title">Gel Nettoyant Pureté</div>
+      <div class="product-desc">Nettoie en douceur, réduit les imperfections.</div>
+      <div class="price">18,90 €</div>
+      <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=2525">Acheter</a>
+    </article>
   </div>
-</footer>
 
-<script>
-// TABS
-const tabs = document.querySelectorAll('.tab');
-const panels = document.querySelectorAll('.tab-panel');
-tabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-    tabs.forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
-    panels.forEach(p => p.hidden = (p.id !== tab.dataset.tab));
-  });
-});
+  <h3 class="styled-h3">Accessoires cheveux</h3>
+  <div class="grid">
+    <!-- Produits similaires (tu peux les copier depuis ton HTML existant) -->
+  </div>
+</section>
 
-// MINI SLIDER
-document.querySelectorAll('.img-slider').forEach(slider => {
-  const wrapper = slider.querySelector('.img-wrapper');
-  const prev = slider.querySelector('.img-prev');
-  const next = slider.querySelector('.img-next');
-  let index = 0;
-  prev.addEventListener('click', () => { index = 0; wrapper.style.transform = 'translateX(0)'; });
-  next.addEventListener('click', () => { index = 1; wrapper.style.transform = 'translateX(-50%)'; });
-});
-
-// ANIMATION APPARITION
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
-}, { threshold: 0.1 });
-document.querySelectorAll('.card, .review-card').forEach(el => observer.observe(el));
-</script>
-</body>
-</html>
+<!-- BEAUTÉ & CONSEIL -->
+<section id="beaute" class="tab-panel" hidden>
+  <h2>BEAUTÉ & CONSEIL</h2>
+  <div class="beauty-section">
+    <h3>Routine Matinale</h3>
+    <div class="beauty-card">
+      <p>Nettoyez votre visage, appliquez un sérum hydratant et terminez par votre crème solaire pour protéger votre peau.</p>
+      <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Routine Matinale" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+  <div class="beauty-section">
+    <h3>Routine du Soir</h3>
+    <div class="beauty-card">
+      <p>Démaquillez-vous, appliquez un sérum régénérant et terminez avec votre crème de nuit pour nourrir la peau pendant le sommeil.</p>
+      <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Routine du Soir" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+  <div class="beauty-section">
+    <h3>Conseils Bien-être</h3>
+    <div class="beauty-card">
+      <p>Buvez suffisamment d'eau, dormez bien et faites des pauses détente pour améliorer l'éclat de votre peau.</p>
+      <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed/dQw4w9
