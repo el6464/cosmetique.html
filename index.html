@@ -11,35 +11,30 @@
    🎨 Variables globales
 ========================== */
 :root {
-  --bg: #fafafa;
-  --accent: #2b2b2b;
-  --accent2: #8ac6d1;
-  --muted: #6c6c6c;
+  --bg: #fdfdfd;
+  --accent: #000000;
+  --accent2: #6bb3b7;
+  --muted: #555;
   --card: #ffffff;
-  --shadow: rgba(0,0,0,0.15);
+  --shadow: rgba(0, 0, 0, 0.12);
   --text-footer: #fff;
-  --cta-gradient: linear-gradient(135deg, #2b2b2b, #8ac6d1);
 }
 
 /* Reset & global */
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--accent); line-height: 1.6; }
+body { font-family: 'Inter', sans-serif; background: var(--bg); color: #111; line-height: 1.6; }
 
 /* Header */
 header {
   position: fixed;
   top: 0;
   width: 100%;
-  background: #fff;
-  padding: 12px 24px;
+  background: var(--accent2);
+  padding: 10px 0;
   z-index: 1000;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
+  box-shadow: 0 8px 24px var(--shadow);
 }
-header img { width: 60px; border-radius: 12px; }
+header img { width: 50px; border-radius: 12px; }
 .tabs {
   display: flex;
   gap: 12px;
@@ -48,7 +43,7 @@ header img { width: 60px; border-radius: 12px; }
   align-items: center;
 }
 .tab {
-  padding: 8px 16px;
+  padding: 6px 12px;
   border-radius: 12px;
   background: transparent;
   cursor: pointer;
@@ -57,9 +52,8 @@ header img { width: 60px; border-radius: 12px; }
   flex: 0 0 auto;
   white-space: nowrap;
   transition: 0.3s;
-  color: var(--accent);
 }
-.tab.active { background: var(--accent2); color: #fff; box-shadow: 0 4px 12px var(--shadow); }
+.tab.active { background: var(--accent); color: #fff; box-shadow: 0 6px 18px var(--shadow); }
 
 /* Hero */
 .hero {
@@ -67,96 +61,113 @@ header img { width: 60px; border-radius: 12px; }
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 140px 24px 60px;
-  background: linear-gradient(rgba(138,198,209,0.3), rgba(138,198,209,0.3)), url('assets/images/hero-bg.jpg') center/cover no-repeat;
+  padding: 140px 24px 40px;
+  background: linear-gradient(rgba(183,107,163,0.4), rgba(107,179,183,0.4)), url('assets/images/hero-bg.jpg') center/cover no-repeat;
   text-align: center;
   color: var(--accent);
 }
-.hero h1 { font-family: 'Playfair Display', serif; font-weight:700; font-size: clamp(32px,6vw,52px); margin-bottom:16px; }
-.hero p { font-size: clamp(16px,2.5vw,20px); margin-bottom:24px; }
+.hero h1 { font-size: clamp(28px,6vw,48px); margin-bottom: 16px; }
+.hero p { font-size: clamp(14px,2.5vw,18px); margin-bottom: 24px; }
 .cta {
   display: inline-block;
-  padding: 14px 28px;
-  border-radius: 30px;
-  background: var(--cta-gradient);
+  padding: 12px 24px;
+  border-radius: 24px;
+  background: linear-gradient(135deg,var(--accent),var(--accent2));
   color:#fff;
   text-decoration:none;
   font-weight:700;
   transition:0.3s;
 }
-.cta:hover { opacity:0.9; transform:translateY(-3px); }
+.cta:hover { opacity:0.85; transform:translateY(-3px); }
 
-/* Sections */
-section { padding: 60px 24px; }
+/* Sections & titres */
+section { padding: 60px 0; }
 section:nth-of-type(even) { background: var(--accent2); color: #fff; }
 h2 {
   font-family: 'Playfair Display', serif;
-  font-weight: 700;
-  font-size:2rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--accent);
   text-align: center;
-  margin-bottom: 32px;
+  padding-bottom: 8px;
+  margin-bottom: 24px;
   position: relative;
 }
 h2::after {
-  content: '';
-  width: 70px;
-  height: 4px;
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
   background: linear-gradient(90deg, var(--accent), var(--accent2));
-  display: block;
-  margin: 12px auto 0;
-  border-radius: 2px;
+  border-radius: 3px;
 }
 h3 {
-  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
   font-weight: 600;
-  margin-bottom: 16px;
   color: var(--accent);
+  margin-bottom: 16px;
+  position: relative;
 }
+h3::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 2px;
+  background: var(--accent2);
+  margin-top: 4px;
+  border-radius: 2px;
+}
+
+/* TITRES H3 */
 .styled-h3 {
   font-family: 'Playfair Display', serif;
   font-size: 1.5rem;
   font-weight: 700;
+  color: var(--accent);
   text-decoration: underline;
   margin: 24px 0 16px;
-  color: var(--accent);
+  position: relative;
 }
-
-/* Vidéos */
-.video-wrap { position: relative; padding-top: 56.25%; border-radius: 16px; overflow: hidden; background: #000; margin: 18px auto 0; max-width: 100%; }
-.video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-
-/* Cards et mini-slider */
+/* Mini-slider pour chaque produit */
 .img-slider {
   position: relative;
   width: 100%;
-  height: auto;
+  height: auto; /* hauteur automatique */
   overflow: hidden;
-  border-radius: 16px;
-  box-shadow: 0 6px 24px var(--shadow);
+  border-radius: 12px;
 }
+
 .img-wrapper {
-  width: 200%;
+  width: 200%; /* deux images côte à côte */
   display: flex;
   transition: transform 0.4s ease-in-out;
+  height: auto; /* hauteur automatique */
 }
+
 .img-wrapper img {
-  width: 50%;
-  height: auto;
-  max-height: 400px;
-  object-fit: cover;
-  border-radius: 16px;
+  width: 50%; /* chaque image prend la moitié du slider */
+  height: auto; /* garde le ratio naturel */
+  max-height: 400px; /* limite sur grand écran */
+  object-fit: cover; /* remplissage sans déformation */
+  border-radius: 12px;
   display: block;
 }
+
+
+/* Flèches pour mini-slider */
 .img-slider .slider-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: var(--accent2);
+  background: rgba(107,179,183,0.8);
   border: none;
   color: #fff;
   font-size: 1.2rem;
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   cursor: pointer;
   z-index: 10;
@@ -164,143 +175,198 @@ h3 {
   align-items: center;
   justify-content: center;
 }
+
 .img-slider .img-prev { left: 6px; }
 .img-slider .img-next { right: 6px; }
-.img-slider .slider-btn:hover { background: var(--accent); }
 
-/* Formulaire Contact */
-form {
-  max-width: 700px;
-  margin: 30px auto;
-  padding: 40px;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-  background: #fff;
-}
-form input,
-form textarea {
-  padding: 16px;
-  font-size: 1rem;
-  border-radius: 12px;
-  border: 1px solid #ccc;
-  width: 100%;
-  margin-bottom: 16px;
-}
-form textarea { min-height: 180px; }
-.btn-send {
-  padding: 16px 32px;
-  font-size: 1rem;
-  border-radius: 30px;
-  cursor: pointer;
-  font-weight: 700;
-  background: var(--cta-gradient);
-  color: #fff;
-  border: none;
-  transition: 0.3s;
-}
-.btn-send:hover { opacity:0.9; transform:translateY(-2px); }
+.img-slider .slider-btn:hover { background: var(--accent2); }
+
+/* Vidéos */
+.video-wrap { position: relative; padding-top: 56.25%; border-radius: 16px; overflow: hidden; background: #000; margin: 18px auto 0; max-width: 100%; }
+.video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
 /* Footer */
+/* Footer */
 footer {
-  background: #2b2b2b;
-  color: #fff;
-  padding: 40px 20px 20px;
+  background: linear-gradient(135deg, #6bb3b7, #9ad3d6);
+  color: #000; /* Texte noir */
   font-family: 'Inter', sans-serif;
+  padding: 30px 20px 20px 20px; /* réduit l'espace vertical */
 }
+
 .footer-container {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   max-width: 1200px;
   margin: 0 auto;
-  gap: 12px;
+  gap: 12px; /* réduit l'espace horizontal entre les colonnes */
 }
+
 .footer-col {
   flex: 1 1 250px;
 }
-.footer-col h4 { color: #fff; text-transform: uppercase; margin-bottom: 12px; }
-.footer-col p, .footer-col a { color: #ddd; text-decoration: none; font-size:0.95rem; }
-.footer-col a:hover { text-decoration: underline; }
-.footer-socials { display: flex; gap: 8px; margin-top: 8px; }
+
+.footer-col h4 {
+  font-size: 1.1rem;
+  margin-bottom: 10px; /* réduit l'espace sous le titre */
+  color: #000; /* texte noir pour titres */
+  text-transform: uppercase;
+}
+
+.footer-col p, .footer-col a {
+  font-size: 0.95rem;
+  color: #000; /* texte noir pour les liens et paragraphes */
+  text-decoration: none;
+}
+
+.footer-col a:hover {
+  text-decoration: underline;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 8px; /* réduit l'espace entre les icônes */
+  margin-top: 8px;
+}
+
 .footer-socials a {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px; height: 36px;
+  width: 36px;
+  height: 36px;
   background: #fff;
   border-radius: 50%;
   transition: transform 0.3s, background 0.3s;
 }
-.footer-socials a img { width: 18px; height: 18px; }
-.footer-socials a:hover { transform: scale(1.1); background: var(--accent2); }
+
+.footer-socials a img {
+  width: 18px;
+  height: 18px;
+}
+
+.footer-socials a:hover {
+  transform: scale(1.1);
+  background: #f0f0f0;
+}
+
 .footer-bottom {
   text-align: center;
   font-size: 0.9rem;
-  padding: 10px 0;
-  border-top: 1px solid rgba(255,255,255,0.2);
+  padding: 10px 0; /* réduit l'espace vertical */
+  border-top: 1px solid rgba(0,0,0,0.2); /* plus discret */
   margin-top: 16px;
-  color: #ccc;
+  color: #000; /* texte noir */
 }
 
 /* Responsivité */
-@media(max-width:900px){ .hero { padding-top:120px; } .grid { flex-wrap: nowrap; overflow-x:auto; } .card { flex:0 0 45%; } }
-@media(max-width:600px){ .hero { padding-top:100px; } .card { flex:0 0 70%; } .footer-container { flex-direction: column; text-align:center; } .footer-socials { justify-content:center; } }
+@media(max-width: 900px){
+  .hero { padding-top: 120px; }
+  .grid { flex-wrap: nowrap; overflow-x: auto; }
+  .card { flex: 0 0 45%; }
+}
+@media(max-width: 600px){
+  .hero { padding-top: 100px; }
+  .card { flex: 0 0 70%; }
+  .footer-container { flex-direction: column; text-align: center; }
+  .footer-socials { justify-content: center; }
+}
+/* Formulaire Contact */
+form {
+  max-width: 700px; /* plus large */
+  margin: 30px auto; /* recentre et espace du haut */
+  padding: 40px; /* plus de padding intérieur */
+  border-radius: 16px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.15); /* ombre plus élégante */
+  background: #fff;
+}
+
+form input,
+form textarea {
+  padding: 18px; /* plus grand espace pour écrire */
+  font-size: 1rem; /* texte plus lisible */
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  width: 100%;
+  margin-bottom: 16px; /* espacement vertical entre champs */
+}
+
+form textarea {
+  min-height: 180px; /* plus grand pour écrire facilement */
+}
+
+.btn-send {
+  padding: 16px 28px; /* bouton plus grand */
+  font-size: 1rem;
+  border-radius: 24px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
 </style>
+
 </head>
-
 <body>
-<header>
-  <div style="display:flex;align-items:center;gap:12px">
-    <img src="IMG_8042.JPG" alt="Logo Bélli et Bien-être">
-    <div>
-      <strong style="font-size:1.2rem">Bélli et Bien-être</strong><br>
-      <small>Cosmétiques naturels & soins premium</small>
-    </div>
-  </div>
-  <nav class="tabs" role="tablist" aria-label="Navigation principale" id="main-tabs">
-    <button class="tab active" data-tab="accueil" role="tab" aria-selected="true">Accueil</button>
-    <button class="tab" data-tab="produits" role="tab" aria-selected="false">Produits</button>
-    <button class="tab" data-tab="beaute" role="tab" aria-selected="false">Beauté & Conseil</button>
-    <button class="tab" data-tab="contact" role="tab" aria-selected="false">Contact</button>
-  </nav>
-</header>
 
-<main class="container" style="padding-top:100px;">
+<header>
+<div class="container" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap">
+<div style="display:flex;gap:12px;align-items:center">
+<img src="IMG_8042.JPG" alt="Logo Bélli et Bien-être" style="border-radius:12px;width:60px">
+<div>
+<strong style="font-size:1.2rem">Bélli et Bien-être</strong><br>
+<small>Cosmétiques naturels & soins premium</small>
+</div>
+</div>
+<nav class="tabs" role="tablist" aria-label="Navigation principale" id="main-tabs">
+<button class="tab active" data-tab="accueil" role="tab" aria-selected="true">Accueil</button>
+<button class="tab" data-tab="produits" role="tab" aria-selected="false">Produits</button>
+<button class="tab" data-tab="beaute" role="tab" aria-selected="false">Beauté & Conseil</button>
+<button class="tab" data-tab="contact" role="tab" aria-selected="false">Contact</button>
+</nav>
+</div>
+</header>
+main.container {
+  padding-top: 100px; /* laisse de l'espace pour le header fixe */
+}
 <!-- ACCUEIL -->
 <section id="accueil" class="tab-panel">
-  <div class="hero">
-    <h1>Bienvenue chez Bélli et Bien-être</h1>
-    <p>Des cosmétiques naturels, testés dermatologiquement, pour sublimer votre peau.</p>
-    <a href="#produits" class="cta" onclick="document.querySelector('[data-tab=\'produits\']').click()">Découvrir nos produits</a>
-  </div>
+<div class="hero">
+<h1>Bienvenue chez Bélli et Bien-être</h1>
+<p>Des cosmétiques naturels, testés dermatologiquement, pour sublimer votre peau.</p>
+<a href="#produits" class="cta" onclick="document.querySelector('[data-tab=\'produits\']').click()">Découvrir nos produits</a>
+</div>
+  <!-- 🌿 SECTION PRÉSENTATION AJOUTÉE ICI -->
+<section style="margin-top:40px; padding:20px; background:#fff; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.1); text-align: justify;">
+<h2>Présentation</h2>
+<p>🌿 <strong>Sublimez votre beauté au naturel</strong> 🌿</p>
+<p>Chez Belli et Bien-être, nous célébrons la beauté authentique à travers des produits capillaires naturels, des cosmétiques soigneusement sélectionnés, et des accessoires tendance pensés pour révéler votre éclat au quotidien.</p>
+<p>✨ Que vous ayez des cheveux crépus, bouclés ou frisés, notre gamme a été conçue pour nourrir, protéger et magnifier chaque texture avec douceur et efficacité.</p>
+<p>🛍️ Découvrez aussi nos accessoires cheveux stylés, nos produits de bien-être (serviette hygiénique lavable), et toute une sélection d’articles inspirés par le soin de soi et la féminité assumée.</p>
+<p>Parce que chaque femme mérite de se sentir belle et bien dans sa peau, Belli et Bien-être vous accompagne dans votre routine beauté, avec des produits faits avec passion, respectueux de votre corps et de votre temps.</p>
+</section>
+<!-- FIN PRÉSENTATION -->
 
-  <section style="margin-top:40px; padding:20px; background:#fff; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.1); text-align: justify;">
-    <h2>Présentation</h2>
-    <p>🌿 <strong>Sublimez votre beauté au naturel</strong> 🌿</p>
-    <p>Chez Belli et Bien-être, nous célébrons la beauté authentique à travers des produits capillaires naturels, des cosmétiques soigneusement sélectionnés, et des accessoires tendance pensés pour révéler votre éclat au quotidien.</p>
-    <p>✨ Que vous ayez des cheveux crépus, bouclés ou frisés, notre gamme a été conçue pour nourrir, protéger et magnifier chaque texture avec douceur et efficacité.</p>
-    <p>🛍️ Découvrez aussi nos accessoires cheveux stylés, nos produits de bien-être (serviette hygiénique lavable), et toute une sélection d’articles inspirés par le soin de soi et la féminité assumée.</p>
-    <p>Parce que chaque femme mérite de se sentir belle et bien dans sa peau, Belli et Bien-être vous accompagne dans votre routine beauté, avec des produits faits avec passion, respectueux de votre corps et de votre temps.</p>
-  </section>
-
-  <div style="display:flex;flex-wrap:wrap;gap:24px;margin-top:40px;">
-    <div style="flex:1;min-width:300px;">
-      <h2>Vidéo de présentation</h2>
-      <div class="video-wrap">
-        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Vidéo Éclat Beauté" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-    <div style="flex:1;min-width:300px;">
-      <h2>Avis de nos clients</h2>
-      <div class="review-card visible"><strong>Malick C.</strong><p>"Les produits ont transformé ma peau. Je recommande !"</p></div>
-      <div class="review-card visible"><strong>Aicha T.</strong><p>"Service rapide et produits excellents."</p></div>
-      <div class="review-card visible"><strong>Amina D.</strong><p>"je kiffe."</p></div>
-    </div>
-  </div>
+<div style="display:flex;flex-wrap:wrap;gap:24px;margin-top:40px;">
+<div style="flex:1;min-width:300px;">
+<h2>Vidéo de présentation</h2>
+<div class="video-wrap">
+<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Vidéo Éclat Beauté" allowfullscreen loading="lazy"></iframe>
+</div>
+</div>
+<div style="flex:1;min-width:300px;">
+<h2>Avis de nos clients</h2>
+<div class="review-card visible"><strong>Malick C.</strong><p>"Les produits ont transformé ma peau. Je recommande !"</p></div>
+<div class="review-card visible"><strong>Aicha T.</strong><p>"Service rapide et produits excellents."</p></div>
+   <div class="review-card visible"><strong>Amina D.</strong><p>"je kiffe."</p></div>
+</div>
+</div>
 </section>
 
 <!-- PRODUITS -->
 <section id="produits" class="tab-panel" hidden>
+
+  <!-- Nos soins capillaires -->
   <h3 class="styled-h3">Nos soins capillaires</h3>
   <div class="grid">
     <!-- Produit 1 -->
@@ -318,6 +384,7 @@ footer {
       <div class="price">29,90 €</div>
       <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=2525">Acheter</a>
     </article>
+
     <!-- Produit 2 -->
     <article class="card">
       <div class="img-slider">
@@ -333,6 +400,7 @@ footer {
       <div class="price">24,50 €</div>
       <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=2525">Acheter</a>
     </article>
+
     <!-- Produit 3 -->
     <article class="card">
       <div class="img-slider">
@@ -350,15 +418,99 @@ footer {
     </article>
   </div>
 
+  <!-- Accessoires cheveux -->
   <h3 class="styled-h3">Accessoires cheveux</h3>
   <div class="grid">
-    <!-- Produits similaires (tu peux les copier depuis ton HTML existant) -->
+    <!-- Produit 1 -->
+    <article class="card">
+      <div class="img-slider">
+        <button class="img-prev slider-btn">&#10094;</button>
+        <div class="img-wrapper">
+          <img src="1747160036940.png" alt="Masque Nuit" class="first">
+          <img src="Alibaba5f6885d36f99dcfbfd31a61d3b98610a_original.png" alt="Masque Nuit - vue 2" class="second">
+        </div>
+        <button class="img-next slider-btn">&#10095;</button>
+      </div>
+      <div class="product-title">Masque Nuit Régénérant</div>
+      <div class="product-desc">Régénère et apaise la peau pendant votre sommeil.</div>
+      <div class="price">34,00 €</div>
+      <a class="btn-buy" href="#">Acheter</a>
+    </article>
+
+    <!-- Produit 2 -->
+    <article class="card">
+      <div class="img-slider">
+        <button class="img-prev slider-btn">&#10094;</button>
+        <div class="img-wrapper">
+          <img src="1747160119497.png" alt="Gommage" class="first">
+          <img src="Alibabad7faa2c17177e2ffab840d9759a5fb76_original.png" alt="Gommage - vue 2" class="second">
+        </div>
+        <button class="img-next slider-btn">&#10095;</button>
+      </div>
+      <div class="product-title">Gommage Sucre & Coco</div>
+      <div class="product-desc">Exfolie, adoucit et illumine la peau instantanément.</div>
+      <div class="price">19,50 €</div>
+      <a class="btn-buy" href="#">Acheter</a>
+    </article>
+
+    <!-- Produit 3 -->
+    <article class="card">
+      <div class="img-slider">
+        <button class="img-prev slider-btn">&#10094;</button>
+        <div class="img-wrapper">
+          <img src="Alibabad7faa2c17177e2ffab840d9759a5fb76_original.png" alt="Huile Corps" class="first">
+          <img src="IMG-20250502-WA0001.jpg" alt="Huile Corps - vue 2" class="second">
+        </div>
+        <button class="img-next slider-btn">&#10095;</button>
+      </div>
+      <div class="product-title">Huile Corps Satinée</div>
+      <div class="product-desc">Nourrit intensément et laisse un fini lumineux.</div>
+      <div class="price">27,00 €</div>
+      <a class="btn-buy" href="#">Acheter</a>
+    </article>
   </div>
+
+</section>
+
+<script>
+/* Mini-slider images pour chaque produit */
+document.querySelectorAll('.img-slider').forEach(slider => {
+  const wrapper = slider.querySelector('.img-wrapper');
+  const prev = slider.querySelector('.img-prev');
+  const next = slider.querySelector('.img-next');
+  let index = 0;
+
+  prev.addEventListener('click', () => {
+    index = 0;
+    wrapper.style.transform = 'translateX(0)';
+  });
+
+  next.addEventListener('click', () => {
+    index = 1;
+    wrapper.style.transform = 'translateX(-50%)';
+  });
+});
+</script>
+
+</section>
+
+<!-- Script pour les flèches -->
+<script>
+function scrollSlider(button, direction) {
+  const wrapper = button.parentElement;
+  const slider = wrapper.querySelector('.product-slider');
+  slider.scrollBy({ left: direction * 260, behavior: 'smooth' });
+}
+</script>
+
+
+
 </section>
 
 <!-- BEAUTÉ & CONSEIL -->
 <section id="beaute" class="tab-panel" hidden>
-  <h2>BEAUTÉ & CONSEIL</h2>
+
+<h2>BEAUTÉ & CONSEIL</h2>
   <div class="beauty-section">
     <h3>Routine Matinale</h3>
     <div class="beauty-card">
@@ -368,6 +520,7 @@ footer {
       </div>
     </div>
   </div>
+
   <div class="beauty-section">
     <h3>Routine du Soir</h3>
     <div class="beauty-card">
@@ -377,9 +530,83 @@ footer {
       </div>
     </div>
   </div>
+
   <div class="beauty-section">
     <h3>Conseils Bien-être</h3>
     <div class="beauty-card">
       <p>Buvez suffisamment d'eau, dormez bien et faites des pauses détente pour améliorer l'éclat de votre peau.</p>
       <div class="video-wrap">
-        <iframe src="https://www.youtube.com/embed/dQw4w9
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Conseils Bien-être" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact" class="tab-panel" hidden>
+<h2>Contactez-nous</h2>
+<h3 style="text-align:center; margin-bottom:20px; color:var(--accent)">Envoyez-nous un message</h3>
+<form action="https://formspree.io/f/xzzqbpld" method="POST">
+<input type="text" name="name" placeholder="Votre nom" required>
+<input type="tel" name="phone" placeholder="Votre numéro de téléphone" required>
+<textarea name="message" placeholder="Votre message" required></textarea>
+<button type="submit" class="btn-send">Envoyer le message</button>
+</form>
+</section>
+</main>
+
+<footer>
+  <div class="footer-container">
+    <!-- Colonne 1 : À propos -->
+    <div class="footer-col">
+      <h4>À propos</h4>
+      <p>Bélli et Bien-être vous accompagne dans votre routine beauté avec des produits naturels et respectueux de votre peau.</p>
+    </div>
+
+    <!-- Colonne 2 : Réseaux sociaux -->
+    <div class="footer-col">
+      <h4>Suivez-nous</h4>
+      <div class="footer-socials">
+        <a href="https://www.facebook.com/bellietbienetre555" aria-label="Facebook">
+          <img src="facebook-Photoroom.png" alt="Facebook">
+        </a>
+        <a href="https://www.instagram.com/bellietbienetre555?igsh=MWVuN2tjeTlpMmt3bA==" aria-label="Instagram">
+          <img src="dossierPicture_717450.png" alt="Instagram">
+        </a>
+        <a href="https://www.tiktok.com/@khady.ndiaye4280?_t=ZM-8wGemJTRQ8L&_r=1" aria-label="TikTok">
+          <img src="images.png" alt="TikTok">
+        </a>
+      </div>
+    </div>
+
+    <!-- Colonne 3 : Contact -->
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>Email: <a href="mailto:contact@bellietbienetre.com">contact@bellietbienetre.com</a></p>
+      <p>Téléphone: <a href="tel:+221000000000">+221 78 465 46 52</a></p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © <strong>Bélli et Bien-être</strong> — Tous droits réservés
+  </div>
+</footer>
+
+
+<script>
+const tabs = document.querySelectorAll('.tab');
+const panels = document.querySelectorAll('.tab-panel');
+tabs.forEach(tab => {
+tab.addEventListener('click', () => {
+tabs.forEach(t => t.classList.remove('active'));
+tab.classList.add('active');
+panels.forEach(p => p.hidden = (p.id !== tab.dataset.tab));
+});
+});
+const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.1 });
+document.querySelectorAll('.card, .review-card').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
