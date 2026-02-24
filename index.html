@@ -1,208 +1,178 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bélli et Bien-être — Cosmétiques</title>
-
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:wght@600;700&display=swap" rel="stylesheet">
-
-<!-- EmailJS -->
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script>
-  (function(){ emailjs.init("TA_PUBLIC_KEY"); })(); // ← remplace TA_PUBLIC_KEY par ta clé publique
-</script>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Site e-commerce</title>
 <style>
-:root {
-  --bg: #fffaf6;
-  --accent: #000000;
-  --accent2: #e8b89b;
-  --muted: #7a6f72;
-  --shadow: rgba(58,46,57,0.15);
-}
-
-body { font-family:'Inter', sans-serif; background:var(--bg); color:var(--accent); margin:0; padding:0;}
-header { position:fixed; top:0; width:100%; background:var(--accent2); padding:10px 0; z-index:1000; box-shadow:0 8px 24px var(--shadow);}
-header img { width:50px; border-radius:12px;}
-.tabs { display:flex; gap:12px; overflow-x:auto; }
-.tab { padding:6px 12px; border-radius:12px; cursor:pointer; font-weight:600; flex:0 0 auto; }
-.tab.active { background:var(--accent); color:#fff; }
-main { padding-top:100px; }
-
-section { padding:60px 20px; }
-h2 { font-family:'Playfair Display', serif; text-align:center; margin-bottom:24px;}
-.styled-h3 { font-family:'Playfair Display', serif; text-align:center; margin:24px 0; }
-
-.grid { display:flex; flex-wrap:wrap; gap:24px; justify-content:center; }
-.card { flex:1 1 300px; max-width:300px; background:#fff; border-radius:16px; box-shadow:0 6px 20px rgba(0,0,0,0.1); overflow:hidden; display:flex; flex-direction:column; }
-.card img { width:100%; object-fit:cover; }
-.card .product-title { font-weight:700; margin:8px 0; }
-.card .product-desc { color:#555; font-size:0.95rem; margin-bottom:12px; }
-.card .price { font-weight:700; margin-bottom:12px; }
-.btn-buy { display:block; text-align:center; padding:12px; border-radius:24px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; font-weight:700; text-decoration:none; }
-
-#panier-section { display:none; }
-.panier-item { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; background:#f9f9f9; padding:10px; border-radius:12px;}
-.panier-item button { margin:0 4px; padding:4px 8px; border:none; border-radius:6px; cursor:pointer;}
+  body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+  .tab { padding: 10px 20px; cursor: pointer; background:#eee; border:none; margin-right:4px; }
+  .tab[aria-selected="true"] { background:#ccc; }
+  .tab-panel { display:none; padding:20px; }
+  .tab-panel.active { display:block; }
+  .btn-buy { padding:6px 12px; background:#000; color:#fff; border:none; border-radius:5px; cursor:pointer; }
 </style>
 </head>
-
 <body>
 
-<header>
-<div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; padding:0 20px;">
-<div style="display:flex; align-items:center; gap:12px;">
-<img src="IMG_8042.JPG" alt="Logo Bélli et Bien-être">
-<div>
-<strong>Bélli et Bien-être</strong><br>
-<small>Se sentir belle, propre et confiante à petit prix.</small>
+<!-- Onglets -->
+<div style="text-align:center; margin:20px;">
+  <button class="tab" data-tab="produits" role="tab" aria-selected="true">Produits</button>
+  <button class="tab" data-tab="panier" role="tab" aria-selected="false">Panier</button>
 </div>
-</div>
-<nav class="tabs" id="main-tabs">
-<button class="tab active" data-tab="accueil">Accueil</button>
-<button class="tab" data-tab="produits">Produits</button>
-<button class="tab" data-tab="beaute">Beauté & Conseil</button>
-<button class="tab" data-tab="contact">Contact</button>
-<button class="tab" data-tab="panier">Panier 🛒</button>
-</nav>
-</div>
-</header>
 
-<main>
-<!-- ACCUEIL -->
-<section id="accueil" class="tab-panel">
-<h2>Bienvenue chez Bélli et Bien-être</h2>
-<p style="text-align:center;">Des cosmétiques naturels pour sublimer votre peau.</p>
+<!-- Produits -->
+<section id="produits" class="tab-panel active">
+  <h2 style="text-align:center;">🛍️ Nos Produits</h2>
+  <div style="max-width:800px; margin:0 auto;">
+    <div style="margin-bottom:12px;">
+      <span>Produit A - 10€</span>
+      <button class="btn-buy" data-nom="Produit A" data-prix="10">Ajouter</button>
+    </div>
+    <div style="margin-bottom:12px;">
+      <span>Produit B - 15€</span>
+      <button class="btn-buy" data-nom="Produit B" data-prix="15">Ajouter</button>
+    </div>
+    <div style="margin-bottom:12px;">
+      <span>Produit C - 20€</span>
+      <button class="btn-buy" data-nom="Produit C" data-prix="20">Ajouter</button>
+    </div>
+  </div>
 </section>
 
-<!-- PRODUITS -->
-<section id="produits" class="tab-panel" hidden>
-<h3 class="styled-h3">Nos produits</h3>
-<div class="grid">
-  <article class="card" data-nom="Packs pour la douche" data-prix="34.00">
-    <img src="1747160036940.png" alt="Packs pour la douche">
-    <div class="product-title">Packs pour la douche</div>
-    <div class="product-desc">Des accessoires pratiques et de qualité pour assurer une hygiène optimale.</div>
-    <div class="price">34,00 €</div>
-    <a class="btn-buy" href="#" onclick="ajouterPanier('Packs pour la douche',34); return false;">Ajouter au panier</a>
-  </article>
-
-  <article class="card" data-nom="Rasoirs et accessoires épilatoires" data-prix="19.50">
-    <img src="1747160119497.png" alt="Rasoirs">
-    <div class="product-title">Rasoirs et accessoires épilatoires</div>
-    <div class="product-desc">Exfolie, adoucit et illumine la peau instantanément.</div>
-    <div class="price">19,50 €</div>
-    <a class="btn-buy" href="#" onclick="ajouterPanier('Rasoirs et accessoires épilatoires',19.5); return false;">Ajouter au panier</a>
-  </article>
-</div>
-</section>
-
-<!-- PANIER -->
-<section id="panier-section" class="tab-panel" hidden>
-<h3 class="styled-h3">Votre Panier 🛒</h3>
-<div id="panier-items"></div>
-<div id="panier-total" style="font-weight:700; margin:12px 0;"></div>
-
-<h4>Informations client</h4>
-<input type="text" id="nom" placeholder="Nom complet"><br><br>
-<input type="email" id="email" placeholder="Email"><br><br>
-<input type="text" id="telephone" placeholder="Téléphone"><br><br>
-<input type="text" id="adresse" placeholder="Adresse"><br><br>
-<select id="paiement">
-  <option value="">Mode de paiement</option>
-  <option value="Carte bancaire">Carte bancaire</option>
-  <option value="PayPal">PayPal</option>
-</select><br><br>
-
-<button onclick="validerCommande()">📦 Valider la commande</button>
-<button onclick="viderPanier()">🗑️ Vider le panier</button>
+<!-- Panier -->
+<section id="panier" class="tab-panel">
+  <h2 style="text-align:center;">🛒 Votre Panier</h2>
+  <div id="panier-contenu" style="max-width:800px; margin:0 auto; padding:20px;"></div>
+  <div style="text-align:center; margin-top:20px;">
+    <button id="vider-panier" style="padding:10px 20px; margin-right:10px; border-radius:8px; background:#e8b89b; border:none; cursor:pointer;">Vider le panier</button>
+    <button id="valider-panier" style="padding:10px 20px; border-radius:8px; background:#000; color:#fff; border:none; cursor:pointer;">Valider la commande</button>
+  </div>
 </section>
 
 <script>
-// Onglets
-const tabs = document.querySelectorAll('.tab');
-tabs.forEach(tab => {
+// Gestion onglets
+document.querySelectorAll('.tab').forEach(tab => {
   tab.addEventListener('click', () => {
-    tabs.forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
-    document.querySelectorAll('.tab-panel').forEach(p => p.hidden = true);
-    document.getElementById(tab.dataset.tab + (tab.dataset.tab==='panier'?'':'')).hidden = false;
+    document.querySelectorAll('.tab').forEach(t => t.setAttribute('aria-selected','false'));
+    tab.setAttribute('aria-selected','true');
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById(tab.dataset.tab).classList.add('active');
   });
 });
 
-// PANIER
+// Panier en mémoire
 let panier = {};
 
-function ajouterPanier(nom, prix){
-  if(panier[nom]) panier[nom].quantite++;
-  else panier[nom] = {prix:prix, quantite:1};
+// Ajouter au panier
+function ajouterPanier(nom, prix) {
+  if (panier[nom]) panier[nom].quantite++;
+  else panier[nom] = {prix: prix, quantite:1};
   afficherPanier();
+  console.log("Produit ajouté :", nom, prix);
 }
 
-function afficherPanier(){
-  const container = document.getElementById('panier-items');
+// Afficher le panier
+function afficherPanier() {
+  const container = document.getElementById('panier-contenu');
   container.innerHTML = '';
   let total = 0;
-  for(let nom in panier){
+
+  if (Object.keys(panier).length === 0) {
+    container.innerHTML = "<p>Votre panier est vide.</p>";
+    return;
+  }
+
+  for (let nom in panier) {
     let item = panier[nom];
     total += item.prix * item.quantite;
+
     let div = document.createElement('div');
-    div.className = 'panier-item';
+    div.style.display = "flex";
+    div.style.justifyContent = "space-between";
+    div.style.alignItems = "center";
+    div.style.marginBottom = "12px";
     div.innerHTML = `
-      <span>${nom} x <strong>${item.quantite}</strong> = ${ (item.prix*item.quantite).toFixed(2)} €</span>
+      <span style="flex:1;">${nom}</span>
+      <span>${item.prix.toFixed(2)} €</span>
       <div>
-        <button onclick="modifierQuantite('${nom}',-1)">-</button>
-        <button onclick="modifierQuantite('${nom}',1)">+</button>
-        <button onclick="supprimerProduit('${nom}')">🗑️</button>
-      </div>`;
+        <button class="quantite-btn" data-nom="${nom}" data-action="moins">–</button>
+        <span style="margin:0 8px;">${item.quantite}</span>
+        <button class="quantite-btn" data-nom="${nom}" data-action="plus">+</button>
+      </div>
+      <button class="supprimer-btn" data-nom="${nom}" style="margin-left:12px;">❌</button>
+    `;
     container.appendChild(div);
   }
-  document.getElementById('panier-total').innerText = "Total : " + total.toFixed(2) + " €";
+
+  let totalDiv = document.createElement('div');
+  totalDiv.style.textAlign = "right";
+  totalDiv.style.marginTop = "20px";
+  totalDiv.innerHTML = `<strong>Total: ${total.toFixed(2)} €</strong>`;
+  container.appendChild(totalDiv);
+
+  // + / – boutons
+  document.querySelectorAll('.quantite-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      let nom = btn.dataset.nom;
+      let action = btn.dataset.action;
+      if (action === "plus") panier[nom].quantite++;
+      if (action === "moins") {
+        panier[nom].quantite--;
+        if (panier[nom].quantite <= 0) delete panier[nom];
+      }
+      afficherPanier();
+    });
+  });
+
+  // Supprimer produit
+  document.querySelectorAll('.supprimer-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      let nom = btn.dataset.nom;
+      delete panier[nom];
+      afficherPanier();
+    });
+  });
 }
 
-function modifierQuantite(nom, delta){
-  panier[nom].quantite += delta;
-  if(panier[nom].quantite <=0) delete panier[nom];
-  afficherPanier();
-}
-
-function supprimerProduit(nom){
-  delete panier[nom];
-  afficherPanier();
-}
-
-function viderPanier(){
+// Vider panier
+document.getElementById('vider-panier').addEventListener('click', () => {
   panier = {};
   afficherPanier();
-}
+});
 
-// VALIDATION & ENVOI EMAIL
-function validerCommande(){
-  if(Object.keys(panier).length ===0){ alert("Votre panier est vide !"); return; }
-  let nom = document.getElementById("nom").value.trim();
-  let email = document.getElementById("email").value.trim();
-  let telephone = document.getElementById("telephone").value.trim();
-  let adresse = document.getElementById("adresse").value.trim();
-  let paiement = document.getElementById("paiement").value.trim();
-  if(!nom||!email||!telephone||!adresse||!paiement){ alert("Veuillez remplir tous les champs !"); return; }
-
-  let recap = "Nouvelle commande :\n\n";
-  let total = 0;
-  for(let produit in panier){
-    let item = panier[produit];
-    let sousTotal = item.prix * item.quantite;
-    total += sousTotal;
-    recap += `${produit} x ${item.quantite} = ${sousTotal.toFixed(2)} €\n`;
+// Valider commande
+document.getElementById('valider-panier').addEventListener('click', () => {
+  if (Object.keys(panier).length === 0) {
+    alert("Votre panier est vide !");
+    return;
   }
-  recap += `\nTotal : ${total.toFixed(2)} €`;
-  recap += `\nClient : ${nom}\nEmail : ${email}\nTéléphone : ${telephone}\nAdresse : ${adresse}\nPaiement : ${paiement}`;
+  let commande = "Résumé de votre commande:\n\n";
+  let total = 0;
+  for (let nom in panier) {
+    let item = panier[nom];
+    total += item.prix * item.quantite;
+    commande += `${nom} x${item.quantite} = ${(item.prix*item.quantite).toFixed(2)} €\n`;
+  }
+  commande += `\nTotal: ${total.toFixed(2)} €`;
+  alert(commande);
+  console.log("Commande envoyée :", commande);
+  panier = {};
+  afficherPanier();
+});
 
-  emailjs.send("TON_SERVICE_ID","TON_TEMPLATE_ID",{message:recap})
-    .then(()=>{ alert("Commande envoyée avec succès ✅"); panier={}; afficherPanier(); },
-          ()=>{ alert("Erreur lors de l'envoi ❌"); });
-}
+// Boutons Ajouter des produits
+document.querySelectorAll('.btn-buy').forEach(btn => {
+  btn.addEventListener('click', function(e){
+    e.preventDefault();
+    let nom = btn.dataset.nom;
+    let prix = parseFloat(btn.dataset.prix);
+    ajouterPanier(nom, prix);
+  });
+});
+
+// Initialiser affichage
+afficherPanier();
 </script>
 
 </body>
