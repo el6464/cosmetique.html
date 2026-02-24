@@ -1,260 +1,242 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bélli et Bien-être — Cosmétiques</title>
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:wght@600;700&display=swap" rel="stylesheet">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boutique en ligne</title>
+<!-- Wave Checkout -->
+<script src="https://checkout.waveapps.com/checkout.js"></script>
 <style>
-:root {
-  --bg: #fffaf6;
-  --accent: #000000;
-  --accent2: #e8b89b;
-  --muted: #7a6f72;
-  --card: #000000;
-  --shadow: rgba(58,46,57,0.15);
-  --text-footer: #3a2e39;
-  --cta-gradient: linear-gradient(135deg, #e8b89b);
-}
+  body {
+    font-family: Arial, sans-serif;
+    margin:0;
+    padding:0;
+    background:#f5f5f5;
+  }
 
-body { font-family: 'Times New Roman', Times, serif; background: var(--bg); color: var(--accent); margin:0; }
-h1,h2,h3, .tab { font-family: 'Merriweather', serif; }
-* { box-sizing: border-box; margin:0; padding:0; }
+  /* Header */
+  header {
+    background:#007BFF;
+    color:white;
+    padding:15px 20px;
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+  }
+  header h1 {
+    margin:0;
+    font-size:24px;
+  }
+  #cart-button {
+    background:#ffc107;
+    border:none;
+    padding:10px 15px;
+    border-radius:5px;
+    cursor:pointer;
+    font-weight:bold;
+  }
 
-header {
-  position: fixed; top:0; width:100%; background: var(--accent2);
-  padding:10px 0; z-index:1000; box-shadow:0 8px 24px var(--shadow);
-}
-header img { width: 50px; border-radius: 12px; }
-.tabs {
-  display: flex; gap: 12px; flex-wrap: nowrap; overflow-x: auto; align-items:center;
-}
-.tab {
-  padding: 6px 12px; border-radius:12px; background:transparent;
-  cursor:pointer; font-weight:600; font-family:'Playfair Display', serif;
-  flex:0 0 auto; white-space:nowrap; transition:0.3s;
-}
-.tab.active { background: var(--accent); color:#fff; box-shadow:0 6px 18px var(--shadow); }
+  /* Container produits */
+  .container {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    padding:20px;
+    margin-top:10px;
+  }
+  .product {
+    background:white;
+    padding:15px;
+    margin:10px;
+    width:200px;
+    border-radius:8px;
+    box-shadow:0 2px 5px rgba(0,0,0,0.2);
+    text-align:center;
+  }
+  .product button {
+    margin-top:10px;
+    padding:8px 12px;
+    background:#28a745;
+    color:white;
+    border:none;
+    border-radius:4px;
+    cursor:pointer;
+  }
+  .product button:hover {
+    background:#218838;
+  }
 
-.hero {
-  display:flex; flex-direction:column; align-items:center; justify-content:center;
-  padding:140px 24px 40px; background:linear-gradient(rgba(183,107,163,0.4), rgba(107,179,183,0.4)), url('assets/images/hero-bg.jpg') center/cover no-repeat;
-  text-align:center; color: var(--accent);
-}
-.hero h1 { font-size:clamp(28px,6vw,48px); margin-bottom:16px; }
-.hero p { font-size:clamp(14px,2.5vw,18px); margin-bottom:24px; }
-.cta {
-  display:inline-block; padding:12px 24px; border-radius:24px; background:linear-gradient(135deg,var(--accent),var(--accent2));
-  color:#fff; text-decoration:none; font-weight:700; transition:0.3s;
-}
-.cta:hover { opacity:0.85; transform:translateY(-3px); }
-
-section { padding:60px 24px; }
-h2 { font-family: 'Playfair Display', serif; font-size:1.6rem; font-weight:600; color:var(--accent); text-align:center; padding-bottom:8px; margin-bottom:24px; position:relative;}
-h2::after { content:""; position:absolute; left:50%; bottom:0; transform:translateX(-50%); width:60px; height:3px; background:linear-gradient(90deg,var(--accent),var(--accent2)); border-radius:3px;}
-h3 { font-size:1.3rem; font-weight:600; color:var(--accent); margin-bottom:16px; position:relative;}
-.styled-h3 { font-family: 'Playfair Display', serif; font-size:1.5rem; font-weight:700; color: var(--accent); text-decoration:underline; margin:24px 0 16px; position:relative;}
-
-.grid { display:flex; flex-wrap:wrap; gap:24px; justify-content:center; }
-.card { flex:1 1 300px; max-width:300px; background:#fff; border-radius:16px; box-shadow:0 6px 20px rgba(0,0,0,0.1); overflow:hidden; display:flex; flex-direction:column; }
-.card img { width:100%; height:auto; border-radius:12px; }
-.card .price { font-weight:700; margin-bottom:12px; }
-.card .btn-buy { display:block; text-align:center; padding:12px; border-radius:24px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; font-weight:700; text-decoration:none; transition:0.3s; margin-bottom:8px; }
-.card .btn-buy:hover { opacity:0.85; }
-
-.cart-panel { position:fixed; top:60px; right:0; width:320px; max-width:90%; background:#fff; border-left:3px solid var(--accent2); box-shadow:-4px 0 16px rgba(0,0,0,0.1); padding:16px; height:calc(100%-60px); overflow-y:auto; display:none; flex-direction:column; z-index:2000;}
-.cart-panel h2 { text-align:left; margin-bottom:16px; }
-.cart-item { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; border-bottom:1px solid #ddd; padding-bottom:8px; }
-.cart-item span { font-weight:700; }
-.cart-item .qty-controls { display:flex; gap:4px; }
-.cart-item button { padding:4px 8px; border:none; background:var(--accent2); color:#fff; border-radius:4px; cursor:pointer; }
-.cart-bottom { margin-top:auto; }
-.cart-bottom button { width:100%; padding:12px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; border:none; border-radius:24px; font-weight:700; cursor:pointer; margin-top:8px; }
-
-@media(max-width:900px){ .hero { padding-top:120px; } }
-@media(max-width:600px){ .hero { padding-top:100px; } .card { flex:0 0 70%; } }
+  /* Panier flottant */
+  #cart {
+    position:fixed;
+    top:70px;
+    right:20px;
+    background:white;
+    padding:15px;
+    border-radius:8px;
+    width:250px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.3);
+    display:none;
+    max-height:70vh;
+    overflow-y:auto;
+    z-index:100;
+  }
+  #cart h2 {
+    margin:0 0 10px 0;
+    font-size:18px;
+    display:flex;
+    justify-content: space-between;
+  }
+  #cart div.item {
+    margin-bottom:5px;
+    font-size:14px;
+  }
+  #cart button {
+    margin-left:5px;
+    padding:3px 6px;
+    background:#dc3545;
+    color:white;
+    border:none;
+    border-radius:4px;
+    cursor:pointer;
+  }
+  #cart button:hover {
+    background:#c82333;
+  }
+  #checkout-btn {
+    margin-top:10px;
+    padding:8px 12px;
+    background:#ffc107;
+    color:black;
+    border:none;
+    border-radius:4px;
+    cursor:pointer;
+    width:100%;
+  }
+  #checkout-btn:hover {
+    background:#e0a800;
+  }
 </style>
 </head>
 <body>
 
 <header>
-<div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; padding:0 24px;">
-<div style="display:flex; gap:12px; align-items:center">
-<img src="IMG_8042.JPG" alt="Logo Bélli et Bien-être">
-<div><strong>Bélli et Bien-être</strong><br><small>Se sentir belle, propre et confiante</small></div>
-</div>
-<nav class="tabs" id="main-tabs">
-<button class="tab active" data-tab="accueil">Accueil</button>
-<button class="tab" data-tab="produits">Produits</button>
-<button class="tab" data-tab="beaute">Beauté & Conseil</button>
-<button class="tab" data-tab="contact">Contact</button>
-<button class="tab" id="open-cart">Panier 🛒</button>
-</nav>
-</div>
+  <h1>Boutique en ligne</h1>
+  <button id="cart-button">Panier (<span id="cart-count">0</span>)</button>
 </header>
 
-<main style="padding-top:100px;">
-
-<!-- ACCUEIL -->
-<section id="accueil" class="tab-panel">
-<div class="hero">
-<h1>Bienvenue chez Bélli et Bien-être</h1>
-<p>Des cosmétiques naturels pour sublimer votre peau.</p>
-<a href="#produits" class="cta" onclick="document.querySelector('[data-tab=\'produits\']').click()">Découvrir nos produits</a>
-</div>
-</section>
-
-<!-- PRODUITS -->
-<section id="produits" class="tab-panel" hidden>
-<h3 class="styled-h3">Nos Produits</h3>
-<div class="grid">
-
-<article class="card">
-<img src="1747160036940.png" alt="Masque Nuit">
-<div style="padding:10px; flex-grow:1;">
-<div class="product-title">Packs pour la douche</div>
-<div class="product-desc">Accessoires pratiques pour l’hygiène.</div>
-<div class="price">34.00</div>
-<a href="#" class="btn-buy">Ajouter au panier</a>
-</div>
-</article>
-
-<article class="card">
-<img src="1747160119497.png" alt="Gommage">
-<div style="padding:10px; flex-grow:1;">
-<div class="product-title">Rasoirs et accessoires</div>
-<div class="product-desc">Exfolie et illumine la peau.</div>
-<div class="price">19.50</div>
-<a href="#" class="btn-buy">Ajouter au panier</a>
-</div>
-</article>
-
-</div>
-</section>
-
-<!-- BEAUTÉ & CONSEIL -->
-<section id="beaute" class="tab-panel" hidden>
-<h2>BEAUTÉ & CONSEIL</h2>
-<p>Conseils et routines beauté.</p>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="tab-panel" hidden>
-<h2>Contactez-nous</h2>
-<form id="contact-form">
-<input type="text" placeholder="Votre nom" required>
-<input type="email" placeholder="Votre email" required>
-<textarea placeholder="Votre message" required></textarea>
-<button type="submit" class="btn-send">Envoyer</button>
-</form>
-</section>
-
-<!-- PANIER -->
-<div class="cart-panel" id="cart-panel">
-<h2>Votre Panier</h2>
-<div id="cart-items"></div>
-<div class="cart-bottom">
-<div>Total: €<span id="cart-total">0.00</span></div>
-<button id="checkout">Valider et Payer par Wave</button>
-<button id="clear-cart">Vider le panier</button>
-</div>
+<div class="container" id="products">
+  <div class="product">
+    <h3>Produit A</h3>
+    <p>Prix: 10€</p>
+    <button onclick="addToCart('Produit A',10)">Ajouter</button>
+  </div>
+  <div class="product">
+    <h3>Produit B</h3>
+    <p>Prix: 15€</p>
+    <button onclick="addToCart('Produit B',15)">Ajouter</button>
+  </div>
+  <div class="product">
+    <h3>Produit C</h3>
+    <p>Prix: 20€</p>
+    <button onclick="addToCart('Produit C',20)">Ajouter</button>
+  </div>
 </div>
 
-</main>
+<div id="cart">
+  <h2>Panier</h2>
+  <div id="cart-items"></div>
+  <div id="cart-total"></div>
+  <button id="checkout-btn">Valider et payer</button>
+</div>
 
 <script>
-// Onglets
-const tabs = document.querySelectorAll('.tab');
-const panels = document.querySelectorAll('.tab-panel');
-tabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-    tabs.forEach(t=>t.classList.remove('active'));
-    tab.classList.add('active');
-    panels.forEach(p=>p.hidden=true);
-    const panel = document.getElementById(tab.dataset.tab);
-    if(panel) panel.hidden=false;
-  });
-});
-
-// PANIER
 let cart = [];
-const cartPanel = document.getElementById('cart-panel');
-const cartItems = document.getElementById('cart-items');
-const cartTotal = document.getElementById('cart-total');
 
-document.getElementById('open-cart').addEventListener('click', ()=>{
-  cartPanel.style.display = cartPanel.style.display==='flex'?'none':'flex';
+// Afficher / cacher le panier
+const cartButton = document.getElementById('cart-button');
+const cartDiv = document.getElementById('cart');
+cartButton.addEventListener('click', () => {
+  cartDiv.style.display = cartDiv.style.display === 'block' ? 'none' : 'block';
 });
 
+// Afficher le panier et compteur
 function renderCart() {
+  const cartItems = document.getElementById('cart-items');
+  const cartTotal = document.getElementById('cart-total');
+  const cartCount = document.getElementById('cart-count');
+
   cartItems.innerHTML = '';
   let total = 0;
-  cart.forEach((item, i)=>{
+
+  cart.forEach((item, index) => {
+    total += item.price * item.qty;
     const div = document.createElement('div');
-    div.classList.add('cart-item');
+    div.classList.add('item');
     div.innerHTML = `
-      <span>${item.name} (€${item.price})</span>
-      <div class="qty-controls">
-        <button onclick="changeQty(${i}, -1)">-</button>
-        <span>${item.qty}</span>
-        <button onclick="changeQty(${i}, 1)">+</button>
-        <button onclick="removeItem(${i})">❌</button>
-      </div>
+      ${item.name} x ${item.qty} = ${(item.price*item.qty).toFixed(2)}€
+      <button onclick="changeQty(${index}, -1)">-</button>
+      <button onclick="changeQty(${index}, 1)">+</button>
+      <button onclick="removeItem(${index})">Supprimer</button>
     `;
     cartItems.appendChild(div);
-    total += item.price*item.qty;
   });
-  cartTotal.textContent = total.toFixed(2);
+
+  cartTotal.textContent = `Total : ${total.toFixed(2)} €`;
+  cartCount.textContent = cart.reduce((sum, i) => sum + i.qty, 0);
 }
 
-function changeQty(index, delta) {
-  cart[index].qty += delta;
-  if(cart[index].qty<1) cart[index].qty=1;
+// Ajouter un produit
+function addToCart(name, price){
+  const existing = cart.find(i => i.name === name);
+  if(existing) existing.qty++;
+  else cart.push({name, price, qty:1});
   renderCart();
 }
 
+// Modifier quantité
+function changeQty(index, delta) {
+  cart[index].qty += delta;
+  if(cart[index].qty <= 0) cart.splice(index,1);
+  renderCart();
+}
+
+// Supprimer un produit
 function removeItem(index){
   cart.splice(index,1);
   renderCart();
 }
 
-document.getElementById('clear-cart').addEventListener('click', ()=>{
-  cart=[];
-  renderCart();
-});
+// Paiement Wave
+document.getElementById('checkout-btn').addEventListener('click', function(){
+  if(cart.length === 0){
+    alert("Votre panier est vide !");
+    return;
+  }
 
-// Ajouter au panier
-document.querySelectorAll('.btn-buy').forEach((btn, i)=>{
-  btn.addEventListener('click', (e)=>{
-    e.preventDefault();
-    const card = btn.closest('.card');
-    const name = card.querySelector('.product-title').textContent;
-    const price = parseFloat(card.querySelector('.price').textContent);
-    const exist = cart.find(p=>p.name===name);
-    if(exist) exist.qty++;
-    else cart.push({name, price, qty:1});
-    renderCart();
+  const items = cart.map(item => ({
+    name: item.name,
+    quantity: item.qty,
+    unit_price: item.price*100 // Wave prend centimes
+  }));
+
+  const total = cart.reduce((sum, item) => sum + item.price*item.qty, 0);
+
+  WaveCheckout.open({
+    merchantId: 'TON_MERCHANT_ID', // Remplacer par ton ID marchand Wave
+    amount: total.toFixed(2),
+    currency: 'EUR',
+    items: items,
+    callback: function(response) {
+      alert("Paiement effectué avec succès !");
+      cart = [];
+      renderCart();
+      cartDiv.style.display = 'none';
+    }
   });
 });
 
-// Valider et payer par Wave
-document.getElementById('checkout').addEventListener('click', ()=>{
-  if(cart.length===0){ alert('Votre panier est vide'); return; }
-  // Créer un résumé de commande
-  let summary = "Commande Bélli et Bien-être:\n";
-  cart.forEach(i=>summary+=`${i.name} x${i.qty} = €${(i.price*i.qty).toFixed(2)}\n`);
-  summary+="Total: €"+cartTotal.textContent;
-  
-  // Ouvrir Wave pour paiement (exemple avec lien fictif)
-  const waveLink = "https://web.waveapps.com/pay-invoice"; // Remplace par ton lien Wave réel
-  window.open(waveLink, "_blank");
-
-  // Envoyer un email via mailto (option simple)
-  const mailto = `mailto:contact@belli-et-bienetre.com?subject=Nouvelle commande&body=${encodeURIComponent(summary)}`;
-  window.location.href = mailto;
-  cart=[]; renderCart();
-});
+renderCart();
 </script>
 
 </body>
