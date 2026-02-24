@@ -817,6 +817,65 @@ panels.forEach(p => p.hidden = (p.id !== tab.dataset.tab));
 const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.1 });
 document.querySelectorAll('.card, .review-card').forEach(el => observer.observe(el));
 </script>
+<!-- PANIER -->
+<section id="panier" style="padding:40px; background:#fffaf6; border-top:2px solid #e8b89b;">
+  <h2 style="text-align:center;">🛒 Mon Panier</h2>
+  <div id="cart-items" style="max-width:800px; margin:0 auto 20px auto;"></div>
+  <h3 style="text-align:center;">Total : <span id="totalEuro">0</span> €</h3>
+  <h3 style="text-align:center;">Total en FCFA : <span id="totalFcfa">0</span> FCFA</h3>
+  <div style="text-align:center; margin-top:16px;">
+    <button onclick="payerWave()" style="padding:12px 24px; border-radius:24px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; font-weight:700; cursor:pointer;">Payer par Wave</button>
+  </div>
+</section>
 
+<script>
+// 🛍️ Gestion du panier
+let panier = {};
+const taux = 655; // 1€ ≈ 655 FCFA
+
+// Récupérer tous les boutons "Acheter"
+document.querySelectorAll('.btn-buy').forEach((btn, index) => {
+  btn.addEventListener('click', e => {
+    e.preventDefault();
+    const card = btn.closest('.card');
+    const title = card.querySelector('.product-title').textContent;
+    const priceText = card.querySelector('.price').textContent.replace('€','').trim();
+    const price = parseFloat(priceText.replace(',','.')); // 19,50 -> 19.50
+    if (panier[title]) {
+      panier[title].quantite += 1;
+    } else {
+      panier[title] = { prix: price, quantite: 1 };
+    }
+    afficherPanier();
+  });
+});
+
+// Fonction pour afficher le panier
+function afficherPanier() {
+  const cartDiv = document.getElementById('cart-items');
+  cartDiv.innerHTML = '';
+  let total = 0;
+  for (let produit in panier) {
+    const item = panier[produit];
+    total += item.prix * item.quantite;
+    const div = document.createElement('div');
+    div.style.marginBottom = '8px';
+    div.textContent = `${produit} x ${item.quantite} - ${ (item.prix*item.quantite).toFixed(2).replace('.',',') } €`;
+    cartDiv.appendChild(div);
+  }
+  document.getElementById('totalEuro').textContent = total.toFixed(2).replace('.',',');
+  document.getElementById('totalFcfa').textContent = Math.round(total * taux);
+}
+
+// Fonction "payer"
+function payerWave() {
+  let totalFcfa = document.getElementById('totalFcfa').textContent;
+  if (totalFcfa == 0) {
+    alert("Votre panier est vide !");
+    return;
+  }
+  alert(`Veuillez envoyer ${totalFcfa} FCFA au numéro Wave : 77XXXXXXX`);
+}
+</script>
 </body>
 </html>
