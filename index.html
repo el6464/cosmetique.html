@@ -667,7 +667,16 @@ corporelle optimale au quotidien.</div>
     </article>
   </div>
 
-
+<!-- PANIER -->
+<section id="panier" style="padding:40px; background:#fffaf6; border-top:2px solid #e8b89b;">
+  <h2 style="text-align:center;">🛒 Mon Panier</h2>
+  <div id="cart-items" style="max-width:800px; margin:0 auto 20px auto;"></div>
+  <h3 style="text-align:center;">Total : <span id="totalEuro">0</span> €</h3>
+  <h3 style="text-align:center;">Total en FCFA : <span id="totalFcfa">0</span> FCFA</h3>
+  <div style="text-align:center; margin-top:16px;">
+    <button onclick="payerWave()" style="padding:12px 24px; border-radius:24px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; font-weight:700; cursor:pointer;">Payer par Wave</button>
+  </div>
+</section>
 
 </section>
 
@@ -817,16 +826,7 @@ panels.forEach(p => p.hidden = (p.id !== tab.dataset.tab));
 const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.1 });
 document.querySelectorAll('.card, .review-card').forEach(el => observer.observe(el));
 </script>
-<!-- PANIER -->
-<section id="panier" style="padding:40px; background:#fffaf6; border-top:2px solid #e8b89b;">
-  <h2 style="text-align:center;">🛒 Mon Panier</h2>
-  <div id="cart-items" style="max-width:800px; margin:0 auto 20px auto;"></div>
-  <h3 style="text-align:center;">Total : <span id="totalEuro">0</span> €</h3>
-  <h3 style="text-align:center;">Total en FCFA : <span id="totalFcfa">0</span> FCFA</h3>
-  <div style="text-align:center; margin-top:16px;">
-    <button onclick="payerWave()" style="padding:12px 24px; border-radius:24px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; font-weight:700; cursor:pointer;">Payer par Wave</button>
-  </div>
-</section>
+
 
 <script>
 // 🛍️ Gestion du panier
