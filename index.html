@@ -1,296 +1,227 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Belli & Bien Être</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bélli et Bien-être — Cosmétiques</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:wght@600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
 <style>
-body{
-  margin:0;
-  font-family:Arial, sans-serif;
-  background:#f7f7f7;
+:root {
+  --bg: #fffaf6;
+  --accent: #000000;
+  --accent2: #e8b89b;
+  --muted: #7a6f72;
+  --card: #000000;
+  --shadow: rgba(58,46,57,0.15);
+  --text-footer: #3a2e39;
 }
 
-header{
-  background:#000;
-  color:white;
-  padding:15px;
-  text-align:center;
-}
+/* Global */
+body { font-family: 'Lato', sans-serif; background: var(--bg); color: var(--accent); margin:0; padding:0; }
+h1,h2,h3, .tab { font-family: 'Playfair Display', serif; }
+* { box-sizing:border-box; }
+header { position:fixed; top:0; width:100%; background:var(--accent2); padding:10px 0; z-index:1000; box-shadow:0 8px 24px var(--shadow);}
+header img { width:50px; border-radius:12px; }
+.tabs { display:flex; gap:12px; flex-wrap:nowrap; overflow-x:auto; align-items:center;}
+.tab { padding:6px 12px; border-radius:12px; background:transparent; cursor:pointer; font-weight:600; flex:0 0 auto; white-space:nowrap; transition:0.3s;}
+.tab.active { background: var(--accent); color:#fff; box-shadow:0 6px 18px var(--shadow);}
+main.container { padding-top:120px; }
 
-.tabs{
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  margin-top:10px;
-}
+/* Hero */
+.hero { display:flex; flex-direction:column; align-items:center; justify-content:center; padding:140px 24px 40px; background: linear-gradient(rgba(183,107,163,0.4), rgba(107,179,183,0.4)), url('assets/images/hero-bg.jpg') center/cover no-repeat; text-align:center; color:var(--accent);}
+.hero h1 { font-size:clamp(28px,6vw,48px); margin-bottom:16px; }
+.hero p { font-size:clamp(14px,2.5vw,18px); margin-bottom:24px; }
+.cta { display:inline-block; padding:12px 24px; border-radius:24px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; text-decoration:none; font-weight:700; transition:0.3s;}
+.cta:hover { opacity:0.85; transform:translateY(-3px); }
 
-.tab{
-  padding:10px 20px;
-  border:none;
-  cursor:pointer;
-  background:#eee;
-  border-radius:20px;
-}
+/* Sections */
+section { padding:60px 24px; }
+h2 { font-family:'Playfair Display', serif; font-size:1.6rem; font-weight:600; color:var(--accent); text-align:center; margin-bottom:24px; position:relative;}
+h2::after { content:""; position:absolute; left:50%; bottom:0; transform:translateX(-50%); width:60px; height:3px; background:linear-gradient(90deg,var(--accent),var(--accent2)); border-radius:3px;}
+h3.styled-h3 { font-size:1.3rem; font-weight:700; margin:24px 0 16px; color:var(--accent); text-align:center; text-decoration:underline;}
 
-.tab.active{
-  background:#e8b89b;
-  color:white;
-}
+/* Product cards */
+.grid { display:flex; flex-wrap:wrap; gap:24px; justify-content:center;}
+.card { flex:1 1 300px; max-width:300px; background:#fff; border-radius:16px; box-shadow:0 6px 20px rgba(0,0,0,0.1); overflow:hidden; display:flex; flex-direction:column;}
+.card img { width:100%; border-radius:12px; object-fit:cover; }
+.card .product-title { font-weight:700; font-size:1.1rem; margin-bottom:8px; }
+.card .product-desc { font-size:0.95rem; margin-bottom:12px; color:#555; }
+.card .price { font-weight:700; margin-bottom:12px; }
+.btn-buy { display:block; text-align:center; padding:12px; border-radius:24px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; font-weight:700; text-decoration:none; transition:0.3s; }
+.btn-buy:hover { opacity:0.9; }
 
-main{
-  padding:30px;
-}
+/* Panier */
+#cart { display:flex; flex-direction:column; gap:12px; max-width:700px; margin:0 auto; }
+.cart-item { display:flex; justify-content:space-between; padding:8px 12px; background:#f5f5f5; border-radius:12px; }
+.cart-item span { font-weight:600; }
+#cart-count { font-weight:700; color:var(--accent2); }
 
-.tab-panel{
-  display:none;
-}
-
-.tab-panel.active{
-  display:block;
-}
-
-.card{
-  background:white;
-  padding:15px;
-  border-radius:15px;
-  width:250px;
-  text-align:center;
-  box-shadow:0 4px 10px rgba(0,0,0,0.1);
-}
-
-.products-grid{
-  display:flex;
-  gap:20px;
-  flex-wrap:wrap;
-  justify-content:center;
-}
-
-button{
-  cursor:pointer;
-}
-
-.btn-buy{
-  margin-top:10px;
-  padding:8px 15px;
-  border:none;
-  background:black;
-  color:white;
-  border-radius:20px;
-}
-
-table{
-  width:100%;
-  border-collapse:collapse;
-}
-
-th,td{
-  padding:10px;
-  border-bottom:1px solid #ddd;
-  text-align:center;
-}
-
-.checkout-btn{
-  margin-top:20px;
-  padding:10px 20px;
-  border:none;
-  background:linear-gradient(135deg,#000,#e8b89b);
-  color:white;
-  border-radius:20px;
-}
+/* Formulaire commande */
+form { max-width:700px; margin:30px auto; padding:40px; border-radius:16px; box-shadow:0 6px 24px rgba(0,0,0,0.15); background:#fff; display:flex; flex-direction:column; gap:16px;}
+form input, form select { padding:14px; border-radius:12px; border:1px solid #ccc; font-size:1rem; width:100%; }
+form button { padding:14px; border-radius:24px; font-weight:700; cursor:pointer; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; border:none; font-size:1rem; }
 </style>
 </head>
-
 <body>
-
 <header>
-  <h1>Belli & Bien Être</h1>
-
-  <div class="tabs">
+<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:0 24px;">
+  <div style="display:flex;gap:12px;align-items:center;">
+    <img src="IMG_8042.JPG" alt="Logo Bélli et Bien-être">
+    <div>
+      <strong style="font-size:1.2rem;">Bélli et Bien-être</strong><br>
+      <small>Se sentir belle, propre et confiante à petit prix.</small>
+    </div>
+  </div>
+  <nav class="tabs" role="tablist" aria-label="Navigation principale" id="main-tabs">
     <button class="tab active" data-tab="accueil">Accueil</button>
     <button class="tab" data-tab="produits">Produits</button>
     <button class="tab" data-tab="panier">Panier (<span id="cart-count">0</span>)</button>
-    <button class="tab" data-tab="contact">Contact</button>
-  </div>
+    <button class="tab" data-tab="commande">Commande</button>
+  </nav>
+</div>
 </header>
 
-<main>
-
+<main class="container">
 <!-- ACCUEIL -->
-<section id="accueil" class="tab-panel active">
-  <h2>Bienvenue chez Belli & Bien Être</h2>
-  <p>Votre boutique beauté et bien-être.</p>
+<section id="accueil" class="tab-panel">
+  <div class="hero">
+    <h1>Bienvenue chez Bélli et Bien-être</h1>
+    <p>Des cosmétiques naturels, testés dermatologiquement, pour sublimer votre peau.</p>
+    <a href="#produits" class="cta" onclick="document.querySelector('[data-tab=\'produits\']').click()">Découvrir nos produits</a>
+  </div>
 </section>
 
 <!-- PRODUITS -->
-<section id="produits" class="tab-panel">
+<section id="produits" class="tab-panel" hidden>
   <h2>Nos Produits</h2>
-
-  <div class="products-grid">
-
-    <div class="card">
-      <h3 class="product-title">Pack Douche</h3>
-      <p class="price">34.00</p>
-      <button class="btn-buy">Ajouter au panier</button>
+  <div class="grid">
+    <!-- Produit 1 -->
+    <div class="card" data-name="Packs pour la douche" data-price="34.00">
+      <img src="1747160036940.png" alt="Packs pour la douche">
+      <div class="product-title">Packs pour la douche</div>
+      <div class="product-desc">Accessoires hygiène féminine</div>
+      <div class="price">34,00 €</div>
+      <a href="#" class="btn-buy">Acheter</a>
     </div>
-
-    <div class="card">
-      <h3 class="product-title">Rasoirs Épilatoires</h3>
-      <p class="price">19.50</p>
-      <button class="btn-buy">Ajouter au panier</button>
+    <!-- Produit 2 -->
+    <div class="card" data-name="Rasoirs et accessoires" data-price="19.50">
+      <img src="1747160119497.png" alt="Rasoirs">
+      <div class="product-title">Rasoirs et accessoires épilatoires</div>
+      <div class="product-desc">Exfolie et adoucit la peau</div>
+      <div class="price">19,50 €</div>
+      <a href="#" class="btn-buy">Acheter</a>
     </div>
-
-    <div class="card">
-      <h3 class="product-title">Huile Corps Satinée</h3>
-      <p class="price">27.00</p>
-      <button class="btn-buy">Ajouter au panier</button>
+    <!-- Produit 3 -->
+    <div class="card" data-name="Huile Corps Satinée" data-price="27.00">
+      <img src="IMG-20250502-WA0001.jpg" alt="Huile Corps">
+      <div class="product-title">Huile Corps Satinée</div>
+      <div class="product-desc">Nourrit intensément</div>
+      <div class="price">27,00 €</div>
+      <a href="#" class="btn-buy">Acheter</a>
     </div>
-
   </div>
 </section>
 
 <!-- PANIER -->
-<section id="panier" class="tab-panel">
+<section id="panier" class="tab-panel" hidden>
   <h2>Votre Panier</h2>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Produit</th>
-        <th>Prix</th>
-        <th>Qté</th>
-        <th>Total</th>
-        <th>❌</th>
-      </tr>
-    </thead>
-    <tbody id="cart-items"></tbody>
-  </table>
-
-  <h3>Total : <span id="cart-total">0.00</span> €</h3>
-
-  <button class="checkout-btn" id="checkout-btn">Valider le panier</button>
+  <div id="cart">Panier vide</div>
 </section>
 
-<!-- FORMULAIRE -->
-<section id="formulaire" class="tab-panel">
-  <h2>Informations de commande</h2>
-
+<!-- COMMANDE -->
+<section id="commande" class="tab-panel" hidden>
+  <h2>Formulaire de Commande</h2>
   <form id="order-form">
-    <input type="text" name="nom" placeholder="Nom complet" required><br><br>
-    <input type="text" name="telephone" placeholder="Téléphone" required><br><br>
-    <input type="text" name="adresse" placeholder="Adresse" required><br><br>
-
-    <select name="paiement" required>
-      <option value="">Mode de paiement</option>
-      <option value="wave">Wave</option>
-      <option value="orange">Orange Money</option>
-      <option value="espece">Espèces</option>
-    </select><br><br>
-
-    <button type="submit" class="checkout-btn">Valider le paiement</button>
+    <input type="text" id="client-name" placeholder="Nom complet" required>
+    <input type="email" id="client-email" placeholder="Email" required>
+    <input type="tel" id="client-phone" placeholder="Téléphone" required>
+    <label for="payment">Mode de paiement :</label>
+    <select id="payment" required>
+      <option value="">Sélectionnez</option>
+      <option value="paypal">PayPal</option>
+      <option value="stripe">Carte bancaire</option>
+      <option value="momo">Mobile Money</option>
+    </select>
+    <button type="submit" id="pay-btn">Valider et Payer</button>
   </form>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="tab-panel">
-  <h2>Contact</h2>
-  <p>Email : contact@belli.com</p>
 </section>
 
 </main>
 
 <script>
+// Onglets
+const tabs = document.querySelectorAll('.tab');
+const panels = document.querySelectorAll('.tab-panel');
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    panels.forEach(p => p.hidden = true);
+    document.getElementById(tab.dataset.tab).hidden = false;
+  });
+});
+
+// Panier
 let cart = [];
-
-// Navigation onglets
-document.querySelectorAll(".tab").forEach(btn=>{
-  btn.addEventListener("click", ()=>{
-    document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
-    btn.classList.add("active");
-
-    document.querySelectorAll(".tab-panel").forEach(p=>p.classList.remove("active"));
-    document.getElementById(btn.dataset.tab).classList.add("active");
+const cartContainer = document.getElementById('cart');
+function updateCartDisplay() {
+  if(cart.length === 0) { cartContainer.innerHTML = 'Panier vide'; return; }
+  cartContainer.innerHTML = '';
+  cart.forEach((item,i)=>{
+    const div = document.createElement('div');
+    div.className = 'cart-item';
+    div.innerHTML = `<span>${item.name} (${item.price} €)</span> <button onclick="removeFromCart(${i})">❌</button>`;
+    cartContainer.appendChild(div);
   });
-});
-
-// Ajouter au panier
-document.querySelectorAll(".btn-buy").forEach(btn=>{
-  btn.addEventListener("click", ()=>{
-    const card = btn.closest(".card");
-    const title = card.querySelector(".product-title").innerText;
-    const price = parseFloat(card.querySelector(".price").innerText);
-
-    let item = cart.find(p=>p.title===title);
-    if(item){
-      item.qty++;
-    }else{
-      cart.push({title, price, qty:1});
-    }
-
-    updateCart();
-  });
-});
-
-function updateCart(){
-  const tbody = document.getElementById("cart-items");
-  tbody.innerHTML="";
-  let total=0;
-  let count=0;
-
-  cart.forEach(item=>{
-    let row = document.createElement("tr");
-    let itemTotal = item.price*item.qty;
-    total+=itemTotal;
-    count+=item.qty;
-
-    row.innerHTML=`
-      <td>${item.title}</td>
-      <td>${item.price.toFixed(2)}</td>
-      <td>${item.qty}</td>
-      <td>${itemTotal.toFixed(2)}</td>
-      <td><button onclick="removeItem('${item.title}')">❌</button></td>
-    `;
-    tbody.appendChild(row);
-  });
-
-  document.getElementById("cart-total").innerText=total.toFixed(2);
-  document.getElementById("cart-count").innerText=count;
+  document.getElementById('cart-count').textContent = cart.length;
 }
+function removeFromCart(i){ cart.splice(i,1); updateCartDisplay(); }
 
-function removeItem(title){
-  cart=cart.filter(p=>p.title!==title);
-  updateCart();
-}
-
-// Validation panier
-document.getElementById("checkout-btn").addEventListener("click", ()=>{
-  if(cart.length===0){
-    alert("Le panier est vide !");
-    return;
-  }
-  document.querySelector('[data-tab="formulaire"]').click();
+// Ajouter produits au panier
+document.querySelectorAll('.btn-buy').forEach(btn=>{
+  btn.addEventListener('click', e=>{
+    e.preventDefault();
+    const card = btn.closest('.card');
+    const name = card.dataset.name;
+    const price = card.dataset.price;
+    cart.push({name, price});
+    updateCartDisplay();
+    alert(`${name} ajouté au panier !`);
+  });
 });
 
-// Paiement
-document.getElementById("order-form").addEventListener("submit", function(e){
+// Formulaire et paiement
+document.getElementById('order-form').addEventListener('submit', e=>{
   e.preventDefault();
+  if(cart.length===0){ alert('Votre panier est vide !'); return; }
+  const paymentMethod = document.getElementById('payment').value;
+  if(!paymentMethod){ alert('Choisissez un mode de paiement !'); return; }
 
-  const paiement=this.paiement.value;
+  // Redirection vers le lien de paiement
+  let paymentLink='';
+  if(paymentMethod==='paypal') paymentLink='https://www.paypal.com/pay';
+  else if(paymentMethod==='stripe') paymentLink='https://www.stripe.com/pay';
+  else if(paymentMethod==='momo') paymentLink='https://www.momo.com/pay';
 
-  if(paiement==="wave"){
-    window.open("https://wave.com", "_blank");
-  }else if(paiement==="orange"){
-    window.open("https://orangemoney.com", "_blank");
-  }else{
-    alert("Commande confirmée - paiement à la livraison.");
-  }
+  // Télécharger bon de commande avant paiement
+  const orderText = `Commande de ${document.getElementById('client-name').value}\nEmail: ${document.getElementById('client-email').value}\nTéléphone: ${document.getElementById('client-phone').value}\n\nProduits:\n${cart.map(p=>p.name+' - '+p.price+' €').join('\n')}`;
+  const blob = new Blob([orderText], {type:'text/plain'});
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'bon_commande.txt';
+  link.click();
 
-  cart=[];
-  updateCart();
-  this.reset();
+  // Ouvrir le paiement
+  window.open(paymentLink,'_blank');
+
+  // Vider le panier
+  cart = [];
+  updateCartDisplay();
+
+  // Retour à l'onglet panier
+  document.querySelector('[data-tab="panier"]').click();
 });
 </script>
-
 </body>
 </html>
