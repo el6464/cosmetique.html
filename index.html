@@ -1,10 +1,10 @@
-<!doctype html>
+ <!doctype html>
 <html lang="fr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bélli et Bien-être — Cosmétiques</title>
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:wght@600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:wght@600;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
@@ -15,213 +15,975 @@
   --card: #000000;
   --shadow: rgba(58,46,57,0.15);
   --text-footer: #3a2e39;
+  --cta-gradient: linear-gradient(135deg, #e8b89b);
 }
 
-/* Global */
-body { font-family: 'Lato', sans-serif; background: var(--bg); color: var(--accent); margin:0; padding:0; }
-h1,h2,h3, .tab { font-family: 'Playfair Display', serif; }
-* { box-sizing:border-box; }
-header { position:fixed; top:0; width:100%; background:var(--accent2); padding:10px 0; z-index:1000; box-shadow:0 8px 24px var(--shadow);}
-header img { width:50px; border-radius:12px; }
-.tabs { display:flex; gap:12px; flex-wrap:nowrap; overflow-x:auto; align-items:center;}
-.tab { padding:6px 12px; border-radius:12px; background:transparent; cursor:pointer; font-weight:600; flex:0 0 auto; white-space:nowrap; transition:0.3s;}
-.tab.active { background: var(--accent); color:#fff; box-shadow:0 6px 18px var(--shadow);}
-main.container { padding-top:120px; }
+body {  "Times New Roman", Times, serif; background: var(--bg); color: var(--accent); }
+h1,h2,h3, .tab { font-family: 'Merriweather', serif; }
+
+/* Reset & global */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; background: var(--bg); color: #111; line-height: 1.6; }
+
+/* Header */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: var(--accent2);
+  padding: 10px 0;
+  z-index: 1000;
+  box-shadow: 0 8px 24px var(--shadow);
+}
+header img { width: 50px; border-radius: 12px; }
+.tabs {
+  display: flex;
+  gap: 12px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  align-items: center;
+}
+.tab {
+  padding: 6px 12px;
+  border-radius: 12px;
+  background: transparent;
+  cursor: pointer;
+  font-weight: 600;
+  font-family: 'Playfair Display', serif;
+  flex: 0 0 auto;
+  white-space: nowrap;
+  transition: 0.3s;
+}
+.tab.active { background: var(--accent); color: #fff; box-shadow: 0 6px 18px var(--shadow); }
 
 /* Hero */
-.hero { display:flex; flex-direction:column; align-items:center; justify-content:center; padding:140px 24px 40px; background: linear-gradient(rgba(183,107,163,0.4), rgba(107,179,183,0.4)), url('assets/images/hero-bg.jpg') center/cover no-repeat; text-align:center; color:var(--accent);}
-.hero h1 { font-size:clamp(28px,6vw,48px); margin-bottom:16px; }
-.hero p { font-size:clamp(14px,2.5vw,18px); margin-bottom:24px; }
-.cta { display:inline-block; padding:12px 24px; border-radius:24px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; text-decoration:none; font-weight:700; transition:0.3s;}
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 140px 24px 40px;
+  background: linear-gradient(rgba(183,107,163,0.4), rgba(107,179,183,0.4)), url('assets/images/hero-bg.jpg') center/cover no-repeat;
+  text-align: center;
+  color: var(--accent);
+}
+.hero h1 { font-size: clamp(28px,6vw,48px); margin-bottom: 16px; }
+.hero p { font-size: clamp(14px,2.5vw,18px); margin-bottom: 24px; }
+.cta {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 24px;
+  background: linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#fff;
+  text-decoration:none;
+  font-weight:700;
+  transition:0.3s;
+}
 .cta:hover { opacity:0.85; transform:translateY(-3px); }
 
-/* Sections */
-section { padding:60px 24px; }
-h2 { font-family:'Playfair Display', serif; font-size:1.6rem; font-weight:600; color:var(--accent); text-align:center; margin-bottom:24px; position:relative;}
-h2::after { content:""; position:absolute; left:50%; bottom:0; transform:translateX(-50%); width:60px; height:3px; background:linear-gradient(90deg,var(--accent),var(--accent2)); border-radius:3px;}
-h3.styled-h3 { font-size:1.3rem; font-weight:700; margin:24px 0 16px; color:var(--accent); text-align:center; text-decoration:underline;}
+/* Sections & titres */
+section { padding: 60px 0; }
+section:nth-of-type(even) { background: var(--accent2); color: #fff; }
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-align: center;
+  padding-bottom: 8px;
+  margin-bottom: 24px;
+  position: relative;
+}
+h2::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  border-radius: 3px;
+}
+h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 16px;
+  position: relative;
+}
+h3::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 2px;
+  background: var(--accent2);
+  margin-top: 4px;
+  border-radius: 2px;
+}
 
-/* Product cards */
-.grid { display:flex; flex-wrap:wrap; gap:24px; justify-content:center;}
-.card { flex:1 1 300px; max-width:300px; background:#fff; border-radius:16px; box-shadow:0 6px 20px rgba(0,0,0,0.1); overflow:hidden; display:flex; flex-direction:column;}
-.card img { width:100%; border-radius:12px; object-fit:cover; }
-.card .product-title { font-weight:700; font-size:1.1rem; margin-bottom:8px; }
-.card .product-desc { font-size:0.95rem; margin-bottom:12px; color:#555; }
-.card .price { font-weight:700; margin-bottom:12px; }
-.btn-buy { display:block; text-align:center; padding:12px; border-radius:24px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; font-weight:700; text-decoration:none; transition:0.3s; }
-.btn-buy:hover { opacity:0.9; }
+/* TITRES H3 */
+.styled-h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: underline;
+  margin: 24px 0 16px;
+  position: relative;
+}
+/* Mini-slider pour chaque produit */
+.img-slider {
+  position: relative;
+  width: 100%;
+  height: auto; /* hauteur automatique */
+  overflow: hidden;
+  border-radius: 12px;
+}
 
-/* Panier */
-#cart { display:flex; flex-direction:column; gap:12px; max-width:700px; margin:0 auto; }
-.cart-item { display:flex; justify-content:space-between; padding:8px 12px; background:#f5f5f5; border-radius:12px; }
-.cart-item span { font-weight:600; }
-#cart-count { font-weight:700; color:var(--accent2); }
+.img-wrapper {
+  width: 200%; /* deux images côte à côte */
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+  height: auto; /* hauteur automatique */
+}
 
-/* Formulaire commande */
-form { max-width:700px; margin:30px auto; padding:40px; border-radius:16px; box-shadow:0 6px 24px rgba(0,0,0,0.15); background:#fff; display:flex; flex-direction:column; gap:16px;}
-form input, form select { padding:14px; border-radius:12px; border:1px solid #ccc; font-size:1rem; width:100%; }
-form button { padding:14px; border-radius:24px; font-weight:700; cursor:pointer; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; border:none; font-size:1rem; }
+.img-wrapper img {
+  width: 50%; /* chaque image prend la moitié du slider */
+  height: auto; /* garde le ratio naturel */
+  max-height: 400px; /* limite sur grand écran */
+  object-fit: cover; /* remplissage sans déformation */
+  border-radius: 12px;
+  display: block;
+}
+
+
+/* Flèches pour mini-slider */
+.img-slider .slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(107,179,183,0.8);
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-slider .img-prev { left: 6px; }
+.img-slider .img-next { right: 6px; }
+
+.img-slider .slider-btn:hover { background: var(--accent2); }
+
+/* Vidéos modernisées et compactes */
+.video-wrap {
+  position: relative;
+  padding-top: 40%;         /* réduit la hauteur (ratio plus compact) */
+  border-radius: 12px;       /* coins arrondis */
+  overflow: hidden;
+  background: #000;
+  margin: 16px auto;         /* centré et espacement vertical réduit */
+  max-width: 100%;
+  box-shadow: 0 6px 18px rgba(58,46,57,0.2); /* ombre légère */
+  transition: transform 0.3s, box-shadow 0.3s; /* effet hover */
+}
+
+/* Hover : léger zoom et ombre plus prononcée */
+.video-wrap:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 26px rgba(58,46,57,0.25);
+}
+
+.video-wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+
+/* Footer */
+/* Footer */
+footer {
+  background: linear-gradient(135deg, #e8b89b);
+  color: #000; /* Texte noir */
+  font-family: 'Inter', sans-serif;
+  padding: 30px 20px 20px 20px; /* réduit l'espace vertical */
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 12px; /* réduit l'espace horizontal entre les colonnes */
+}
+
+.footer-col {
+  flex: 1 1 250px;
+}
+
+.footer-col h4 {
+  font-size: 1.1rem;
+  margin-bottom: 10px; /* réduit l'espace sous le titre */
+  color: #000; /* texte noir pour titres */
+  text-transform: uppercase;
+}
+
+.footer-col p, .footer-col a {
+  font-size: 0.95rem;
+  color: #000; /* texte noir pour les liens et paragraphes */
+  text-decoration: none;
+}
+
+.footer-col a:hover {
+  text-decoration: underline;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 8px; /* réduit l'espace entre les icônes */
+  margin-top: 8px;
+}
+
+.footer-socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.footer-socials a img {
+  width: 18px;
+  height: 18px;
+}
+
+.footer-socials a:hover {
+  transform: scale(1.1);
+  background: #f0f0f0;
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 0.9rem;
+  padding: 10px 0; /* réduit l'espace vertical */
+  border-top: 1px solid rgba(0,0,0,0.2); /* plus discret */
+  margin-top: 16px;
+  color: #000; /* texte noir */
+}
+
+/* Responsivité */
+@media(max-width: 900px){
+  .hero { padding-top: 120px; }
+  .grid { flex-wrap: nowrap; overflow-x: auto; }
+  .card { flex: 0 0 45%; }
+}
+@media(max-width: 600px){
+  .hero { padding-top: 100px; }
+  .card { flex: 0 0 70%; }
+  .footer-container { flex-direction: column; text-align: center; }
+  .footer-socials { justify-content: center; }
+}
+/* Formulaire Contact */
+form {
+  max-width: 700px; /* plus large */
+  margin: 30px auto; /* recentre et espace du haut */
+  padding: 40px; /* plus de padding intérieur */
+  border-radius: 16px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.15); /* ombre plus élégante */
+  background: #fff;
+}
+
+form input,
+form textarea {
+  padding: 18px; /* plus grand espace pour écrire */
+  font-size: 1rem; /* texte plus lisible */
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  width: 100%;
+  margin-bottom: 16px; /* espacement vertical entre champs */
+}
+
+form textarea {
+  min-height: 180px; /* plus grand pour écrire facilement */
+}
+
+.btn-send {
+  padding: 16px 28px; /* bouton plus grand */
+  font-size: 1rem;
+  border-radius: 24px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
 </style>
+
 </head>
 <body>
+
 <header>
-<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:0 24px;">
-  <div style="display:flex;gap:12px;align-items:center;">
-    <img src="IMG_8042.JPG" alt="Logo Bélli et Bien-être">
-    <div>
-      <strong style="font-size:1.2rem;">Bélli et Bien-être</strong><br>
-      <small>Se sentir belle, propre et confiante à petit prix.</small>
-    </div>
-  </div>
-  <nav class="tabs" role="tablist" aria-label="Navigation principale" id="main-tabs">
-    <button class="tab active" data-tab="accueil">Accueil</button>
-    <button class="tab" data-tab="produits">Produits</button>
-    <button class="tab" data-tab="panier">Panier (<span id="cart-count">0</span>)</button>
-    <button class="tab" data-tab="commande">Commande</button>
-  </nav>
+<div class="container" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap">
+<div style="display:flex;gap:12px;align-items:center">
+<img src="IMG_8042.JPG" alt="Logo Bélli et Bien-être" style="border-radius:12px;width:60px">
+<div>
+<strong style="font-size:1.2rem">Bélli et Bien-être</strong><br>
+<small>Se sentir belle, propre et confiante à petit prix.</small>
+</div>
+</div>
+<nav class="tabs" role="tablist" aria-label="Navigation principale" id="main-tabs">
+<button class="tab active" data-tab="accueil" role="tab" aria-selected="true">Accueil</button>
+<button class="tab" data-tab="produits" role="tab" aria-selected="false">Produits</button>
+<button class="tab" data-tab="beaute" role="tab" aria-selected="false">Beauté & Conseil</button>
+<button class="tab" data-tab="contact" role="tab" aria-selected="false">Contact</button>
+</nav>
 </div>
 </header>
-
-<main class="container">
+main.container {
+  padding-top: 100px; /* laisse de l'espace pour le header fixe */
+}
+  <div style="position:relative;">
+  <button id="cart-btn" style="background:none; border:none; cursor:pointer; position:relative; font-size:1.5rem;">
+    🛒 <span id="cart-count" style="position:absolute; top:-8px; right:-8px; background:red; color:white; border-radius:50%; padding:2px 6px; font-size:0.8rem;">0</span>
+  </button>
+  <div id="cart-dropdown" style="display:none; position:absolute; right:0; top:36px; background:#fff; border:1px solid #ccc; border-radius:12px; width:250px; max-height:300px; overflow-y:auto; box-shadow:0 4px 12px rgba(0,0,0,0.15); padding:10px; z-index:2000;">
+    <h4 style="margin:0 0 8px 0; font-size:1rem;">Panier</h4>
+    <ul id="cart-items" style="list-style:none; padding:0; margin:0;"></ul>
+    <div id="cart-total" style="margin-top:10px; font-weight:700;">Total: 0 €</div>
+  </div>
+</div>
 <!-- ACCUEIL -->
 <section id="accueil" class="tab-panel">
-  <div class="hero">
-    <h1>Bienvenue chez Bélli et Bien-être</h1>
-    <p>Des cosmétiques naturels, testés dermatologiquement, pour sublimer votre peau.</p>
-    <a href="#produits" class="cta" onclick="document.querySelector('[data-tab=\'produits\']').click()">Découvrir nos produits</a>
-  </div>
+<div class="hero">
+<h1>Bienvenue chez Bélli et Bien-être</h1>
+<p>Des cosmétiques naturels, testés dermatologiquement, pour sublimer votre peau.</p>
+<a href="#produits" class="cta" onclick="document.querySelector('[data-tab=\'produits\']').click()">Découvrir nos produits</a>
+</div>
+  <!-- 🌿 SECTION PRÉSENTATION AJOUTÉE ICI -->
+<section style="margin-top:40px; padding:20px; background:#fff; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.1); text-align: justify;">
+<h2>Présentation</h2>
+<p>🌿 <strong>Sublimez votre beauté au naturel</strong> 🌿</p>
+Belli et Bien- Etre est une entreprise spécialisée dans la vente d’accessoires féminins, de
+produits cosmétiques, de produits de bien-être et d’accessoires capillaires naturels. 
+<p>Nous proposons des produits de bonne qualité à des prix accessibles, afin de permettre à toutes les femmes de prendre soin d’elles au quotidien.</p>
+<p>Notre objectif est d’offrir des solutions simples, efficaces et abordables pour l’hygiène, la
+beauté et le bien-être féminin. 
+<p>BELLI ET BIEN ETRE accompagne chaque femme pour l’aider à se sentir propre, belle et confiante.</p>
+<p>Chez Belli et Bien-être, nous célébrons la beauté authentique à travers des produits capillaires naturels, des cosmétiques soigneusement sélectionnés, et des accessoires tendance pensés pour révéler votre éclat au quotidien.</p>
+<p>🛍️ Découvrez aussi nos accessoires cheveux stylés, nos produits de bien-être (serviette hygiénique lavable), et toute une sélection d’articles inspirés par le soin de soi et la féminité assumée.</p>
+<p>Parce que chaque femme mérite de se sentir belle et bien dans sa peau, Belli et Bien-être vous accompagne dans votre routine beauté, avec des produits faits avec passion, respectueux de votre corps et de votre temps.</p>
+</section>
+<!-- FIN PRÉSENTATION -->
+
+<div style="display:flex;flex-wrap:wrap;gap:24px;margin-top:40px;">
+<div style="flex:1;min-width:300px;">
+<h2>Vidéo de présentation</h2>
+<div class="video-wrap">
+<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Vidéo Éclat Beauté" allowfullscreen loading="lazy"></iframe>
+</div>
+</div>
+<div style="flex:1;min-width:300px;">
+<h2>Avis de nos clients</h2>
+<div class="review-card visible"><strong>Malick C.</strong><p>"Les produits ont transformé ma peau. Je recommande !"</p></div>
+<div class="review-card visible"><strong>Aicha T.</strong><p>"Service rapide et produits excellents."</p></div>
+   <div class="review-card visible"><strong>Amina D.</strong><p>"je kiffe."</p></div>
+   <div class="review-card visible"><strong>Amina D.</strong><p>"je kiffe."</p></div>
+   <div class="review-card visible"><strong>Amina D.</strong><p>"je kiffe."</p></div>
+   <div class="review-card visible"><strong>Amina D.</strong><p>"je kiffe."</p></div>
+</div>
+</div>
 </section>
 
 <!-- PRODUITS -->
-<section id="produits" class="tab-panel" hidden>
-  <h2>Nos Produits</h2>
-  <div class="grid">
+  <section id="produits" class="tab-panel" hidden>
+    <!-- Accessoires féminins et Hygiène--> 
+    <h3 class="styled-h3"style="text-align:center;">Accessoires féminins et Hygiène</h3> 
+    <div class="grid" style="display:flex;flex-wrap:wrap;gap:24px;justify-content:center;">
+
     <!-- Produit 1 -->
-    <div class="card" data-name="Packs pour la douche" data-price="34.00">
-      <img src="1747160036940.png" alt="Packs pour la douche">
-      <div class="product-title">Packs pour la douche</div>
-      <div class="product-desc">Accessoires hygiène féminine</div>
-      <div class="price">34,00 €</div>
-      <a href="#" class="btn-buy">Acheter</a>
-    </div>
+    <article class="card" style="flex:1 1 300px; max-width:300px; background:#fff; border-radius:16px; box-shadow:0 6px 20px rgba(0,0,0,0.1); overflow:hidden; display:flex; flex-direction:column;">
+      <div class="img-slider" style="position:relative;">
+        <div class="img-wrapper" style="display:flex; width:200%; transition:0.4s;">
+          <img src="1747160036940.png" alt="Masque Nuit" style="width:50%; object-fit:cover;">
+          <img src="Alibaba5f6885d36f99dcfbfd31a61d3b98610a_original.png" alt="Masque Nuit - vue 2" style="width:50%; object-fit:cover;">
+        </div>
+      </div>
+      <div style="padding:10px; flex-grow:1;">
+        <div class="product-title" style="font-weight:700; font-size:1.1rem; margin-bottom:8px;color:#000;">Packs pour la douche</div>
+        <div class="product-desc" style="color:#555; font-size:0.95rem; margin-bottom:12px;">Des accessoires pratiques et de qualité pour assurer une hygiène intime et
+corporelle optimale au quotidien.</div>
+        <div class="price" style="font-weight:700; margin-bottom:12px;">34,00 €</div>
+        <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=8000" data-title="Packs pour la douche" data-price="34"style="display:block; text-align:center; padding:12px; border-radius:24px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; font-weight:700; text-decoration:none; transition:0.3s;">Acheter</a>
+      </div>
+    </article>
+
     <!-- Produit 2 -->
-    <div class="card" data-name="Rasoirs et accessoires" data-price="19.50">
-      <img src="1747160119497.png" alt="Rasoirs">
-      <div class="product-title">Rasoirs et accessoires épilatoires</div>
-      <div class="product-desc">Exfolie et adoucit la peau</div>
-      <div class="price">19,50 €</div>
-      <a href="#" class="btn-buy">Acheter</a>
-    </div>
+    <article class="card" style="flex:1 1 300px; max-width:300px; background:#fff; border-radius:16px; box-shadow:0 6px 20px rgba(0,0,0,0.1); overflow:hidden; display:flex; flex-direction:column;">
+      <div class="img-slider" style="position:relative;">
+        <div class="img-wrapper" style="display:flex; width:200%; transition:0.4s;">
+          <img src="1747160119497.png" alt="Gommage" style="width:50%; object-fit:cover;">
+          <img src="Alibabad7faa2c17177e2ffab840d9759a5fb76_original.png" alt="Gommage - vue 2" style="width:50%; object-fit:cover;">
+        </div>
+      </div>
+      <div style="padding:10px; flex-grow:1;">
+        <div class="product-title" style="font-weight:700; font-size:1.1rem; margin-bottom:8px;color:#000;">Rasoirs et accessoires épilatoires</div>
+        <div class="product-desc" style="color:#555; font-size:0.95rem; margin-bottom:12px;">Exfolie, adoucit et illumine la peau instantanément.</div>
+        <div class="price" style="font-weight:700; margin-bottom:12px;">19,50 €</div>
+        <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=8000" data-title="Rasoirs et accessoires épilatoires" data-price="19,50" style="display:block; text-align:center; padding:12px; border-radius:24px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; font-weight:700; text-decoration:none; transition:0.3s;">Acheter</a>
+      </div>
+    </article>
+
     <!-- Produit 3 -->
-    <div class="card" data-name="Huile Corps Satinée" data-price="27.00">
-      <img src="IMG-20250502-WA0001.jpg" alt="Huile Corps">
-      <div class="product-title">Huile Corps Satinée</div>
-      <div class="product-desc">Nourrit intensément</div>
-      <div class="price">27,00 €</div>
-      <a href="#" class="btn-buy">Acheter</a>
-    </div>
+    <article class="card" style="flex:1 1 300px; max-width:300px; background:#fff; border-radius:16px; box-shadow:0 6px 20px rgba(0,0,0,0.1); overflow:hidden; display:flex; flex-direction:column;">
+      <div class="img-slider" style="position:relative;">
+        <div class="img-wrapper" style="display:flex; width:200%; transition:0.4s;">
+          <img src="Alibabad7faa2c17177e2ffab840d9759a5fb76_original.png" alt="Huile Corps" style="width:50%; object-fit:cover;">
+          <img src="IMG-20250502-WA0001.jpg" alt="Huile Corps - vue 2" style="width:50%; object-fit:cover;">
+        </div>
+      </div>
+      <div style="padding:10px; flex-grow:1;">
+        <div class="product-title" style="font-weight:700; font-size:1.1rem; margin-bottom:8px;color:#000;">Accessoires d’hygiène féminine</div>
+        <div class="product-desc" style="color:#555; font-size:0.95rem; margin-bottom:12px;">Nourrit intensément et laisse un fini lumineux.</div>
+        <div class="price" style="font-weight:700; margin-bottom:12px;">27,00 €</div>
+         <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=8000" data-title="Accessoires d’hygiène féminine" data-price="27,00" style="display:block; text-align:center; padding:12px; border-radius:24px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; font-weight:700; text-decoration:none; transition:0.3s;">Acheter</a>
+      </div>
+    </article>
+    <!-- Produit 4 -->
+    <article class="card" style="flex:1 1 300px; max-width:300px; background:#fff; border-radius:16px; box-shadow:0 6px 20px rgba(0,0,0,0.1); overflow:hidden; display:flex; flex-direction:column;">
+      <div class="img-slider" style="position:relative;">
+        <div class="img-wrapper" style="display:flex; width:200%; transition:0.4s;">
+          <img src="Alibabad7faa2c17177e2ffab840d9759a5fb76_original.png" alt="Huile Corps" style="width:50%; object-fit:cover;">
+          <img src="IMG-20250502-WA0001.jpg" alt="Huile Corps - vue 2" style="width:50%; object-fit:cover;">
+        </div>
+      </div>
+      <div style="padding:10px; flex-grow:1;">
+        <div class="product-title" style="font-weight:700; font-size:1.1rem; margin-bottom:8px;color:#000;">Huile Corps Satinée</div>
+        <div class="product-desc" style="color:#555; font-size:0.95rem; margin-bottom:12px;">Nourrit intensément et laisse un fini lumineux.</div>
+        <div class="price" style="font-weight:700; margin-bottom:12px;">27,00 €</div>
+       <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=8000" data-title="Accessoires d’hygiène féminine" data-price="27,00" style="display:block; text-align:center; padding:12px; border-radius:24px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; font-weight:700; text-decoration:none; transition:0.3s;">Acheter</a>
+      </div>
+    </article>
+
+     <!-- Produits de Bien-être-->
+  <h3 class="styled-h3">Produits de Bien-être</h3>
+  <div class="grid" style="display:flex;flex-wrap:wrap;gap:24px;justify-content:center;">
+
+    <!-- Produit 1 -->
+    <article class="card" style="flex:1 1 300px; max-width:300px; background:#fff; border-radius:16px; box-shadow:0 6px 20px rgba(0,0,0,0.1); overflow:hidden; display:flex; flex-direction:column;">
+      <div class="img-slider" style="position:relative;">
+        <div class="img-wrapper" style="display:flex; width:200%; transition:0.4s;">
+          <img src="1747160036940.png" alt="Masque Nuit" style="width:50%; object-fit:cover;">
+          <img src="Alibaba5f6885d36f99dcfbfd31a61d3b98610a_original.png" alt="Masque Nuit - vue 2" style="width:50%; object-fit:cover;">
+        </div>
+      </div>
+      <div style="padding:10px; flex-grow:1;">
+        <div class="product-title" style="font-weight:700; font-size:1.1rem; margin-bottom:8px;color:#000;">Serviettes hygiéniques lavables</div>
+        <div class="product-desc" style="color:#555; font-size:0.95rem; margin-bottom:12px;">Régénère et apaise la peau pendant votre sommeil.</div>
+        <div class="price" style="font-weight:700; margin-bottom:12px;">34,00 €</div>
+        <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=8000" data-title="Accessoires d’hygiène féminine" data-price="27,00" style="display:block; text-align:center; padding:12px; border-radius:24px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; font-weight:700; text-decoration:none; transition:0.3s;">Acheter</a>
+      </div>
+    </article>
+
+    <!-- Produit 2 -->
+    <article class="card" style="flex:1 1 300px; max-width:300px; background:#fff; border-radius:16px; box-shadow:0 6px 20px rgba(0,0,0,0.1); overflow:hidden; display:flex; flex-direction:column;">
+      <div class="img-slider" style="position:relative;">
+        <div class="img-wrapper" style="display:flex; width:200%; transition:0.4s;">
+          <img src="1747160119497.png" alt="Gommage" style="width:50%; object-fit:cover;">
+          <img src="Alibabad7faa2c17177e2ffab840d9759a5fb76_original.png" alt="Gommage - vue 2" style="width:50%; object-fit:cover;">
+        </div>
+      </div>
+      <div style="padding:10px; flex-grow:1;">
+        <div class="product-title" style="font-weight:700; font-size:1.1rem; margin-bottom:8px;color:#000;">Sous-vêtements confortables</div>
+        <div class="product-desc" style="color:#555; font-size:0.95rem; margin-bottom:12px;">Exfolie, adoucit et illumine la peau instantanément.</div>
+        <div class="price" style="font-weight:700; margin-bottom:12px;">19,50 €</div>
+        <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=8000" data-title="Accessoires d’hygiène féminine" data-price="27,00"" style="display:block; text-align:center; padding:12px; border-radius:24px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; font-weight:700; text-decoration:none; transition:0.3s;">Acheter</a>
+      </div>
+    </article>
+
+    <!-- Produit 3 -->
+    <article class="card" style="flex:1 1 300px; max-width:300px; background:#fff; border-radius:16px; box-shadow:0 6px 20px rgba(0,0,0,0.1); overflow:hidden; display:flex; flex-direction:column;">
+      <div class="img-slider" style="position:relative;">
+        <div class="img-wrapper" style="display:flex; width:200%; transition:0.4s;">
+          <img src="Alibabad7faa2c17177e2ffab840d9759a5fb76_original.png" alt="Huile Corps" style="width:50%; object-fit:cover;">
+          <img src="IMG-20250502-WA0001.jpg" alt="Huile Corps - vue 2" style="width:50%; object-fit:cover;">
+        </div>
+      </div>
+      <div style="padding:16px; flex-grow:1;">
+        <div class="product-title" style="font-weight:700; font-size:1.1rem; margin-bottom:8px;color:#000;">Huile Corps Satinée</div>
+        <div class="product-desc" style="color:#555; font-size:0.95rem; margin-bottom:12px;">Nourrit intensément et laisse un fini lumineux.</div>
+        <div class="price" style="font-weight:700; margin-bottom:12px;">27,00 €</div>
+      <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=8000" data-title="Accessoires d’hygiène féminine" data-price="27,00" style="display:block; text-align:center; padding:12px; border-radius:24px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; font-weight:700; text-decoration:none; transition:0.3s;">Acheter</a>
+      </div>
+    </article>
+    <!-- Produit 4 -->
+    <article class="card" style="flex:1 1 300px; max-width:300px; background:#fff; border-radius:16px; box-shadow:0 6px 20px rgba(0,0,0,0.1); overflow:hidden; display:flex; flex-direction:column;">
+      <div class="img-slider" style="position:relative;">
+        <div class="img-wrapper" style="display:flex; width:200%; transition:0.4s;">
+          <img src="Alibabad7faa2c17177e2ffab840d9759a5fb76_original.png" alt="Huile Corps" style="width:50%; object-fit:cover;">
+          <img src="IMG-20250502-WA0001.jpg" alt="Huile Corps - vue 2" style="width:50%; object-fit:cover;">
+        </div>
+      </div>
+      <div style="padding:10px; flex-grow:1;">
+        <div class="product-title" style="font-weight:700; font-size:1.1rem; margin-bottom:8px;color:#000;">Huile Corps Satinée</div>
+        <div class="product-desc" style="color:#555; font-size:0.95rem; margin-bottom:12px;">Nourrit intensément et laisse un fini lumineux.</div>
+        <div class="price" style="font-weight:700; margin-bottom:12px;">27,00 €</div>
+        <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=8000" data-title="Accessoires d’hygiène féminine" data-price="27,00" style="display:block; text-align:center; padding:12px; border-radius:24px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; font-weight:700; text-decoration:none; transition:0.3s;">Acheter</a>
+      </div>
+    </article>
+
+      <!-- Produits naturels et Accessoires capillaires -->
+  <h3 class="styled-h3">Produits naturels et Accessoires capillaires</h3>
+  <div class="grid" style="display:flex;flex-wrap:wrap;gap:24px;justify-content:center;">
+
+    <!-- Produit 1 -->
+    <article class="card" style="flex:1 1 300px; max-width:300px; background:#fff; border-radius:16px; box-shadow:0 6px 20px rgba(0,0,0,0.1); overflow:hidden; display:flex; flex-direction:column;">
+      <div class="img-slider" style="position:relative;">
+        <div class="img-wrapper" style="display:flex; width:200%; transition:0.4s;">
+          <img src="1747160036940.png" alt="Masque Nuit" style="width:50%; object-fit:cover;">
+          <img src="Alibaba5f6885d36f99dcfbfd31a61d3b98610a_original.png" alt="Masque Nuit - vue 2" style="width:50%; object-fit:cover;">
+        </div>
+      </div>
+      <div style="padding:10px; flex-grow:1;">
+        <div class="product-title" style="font-weight:700; font-size:1.1rem; margin-bottom:8px;color:#000;">Baumes capillaires naturels</div>
+        <div class="product-desc" style="color:#555; font-size:0.95rem; margin-bottom:12px;">Régénère et apaise la peau pendant votre sommeil.</div>
+        <div class="price" style="font-weight:700; margin-bottom:12px;">34,00 €</div>
+        <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=8000" data-title="Accessoires d’hygiène féminine" data-price="27,00" style="display:block; text-align:center; padding:12px; border-radius:24px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; font-weight:700; text-decoration:none; transition:0.3s;">Acheter</a>
+      </div>
+    </article>
+
+    <!-- Produit 2 -->
+    <article class="card" style="flex:1 1 300px; max-width:300px; background:#fff; border-radius:16px; box-shadow:0 6px 20px rgba(0,0,0,0.1); overflow:hidden; display:flex; flex-direction:column;">
+      <div class="img-slider" style="position:relative;">
+        <div class="img-wrapper" style="display:flex; width:200%; transition:0.4s;">
+          <img src="1747160119497.png" alt="Gommage" style="width:50%; object-fit:cover;">
+          <img src="Alibabad7faa2c17177e2ffab840d9759a5fb76_original.png" alt="Gommage - vue 2" style="width:50%; object-fit:cover;">
+        </div>
+      </div>
+      <div style="padding:10px; flex-grow:1;">
+        <div class="product-title" style="font-weight:700; font-size:1.1rem; margin-bottom:8px;color:#000;">Accessoires capillaires</div>
+        <div class="product-desc" style="color:#555; font-size:0.95rem; margin-bottom:12px;">Exfolie, adoucit et illumine la peau instantanément.</div>
+        <div class="price" style="font-weight:700; margin-bottom:12px;">19,50 €</div>
+       <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=8000" data-title="Accessoires d’hygiène féminine" data-price="27,00" style="display:block; text-align:center; padding:12px; border-radius:24px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; font-weight:700; text-decoration:none; transition:0.3s;">Acheter</a>
+      </div>
+    </article>
+
+    <!-- Produit 3 -->
+    <article class="card" style="flex:1 1 300px; max-width:300px; background:#fff; border-radius:16px; box-shadow:0 6px 20px rgba(0,0,0,0.1); overflow:hidden; display:flex; flex-direction:column;">
+      <div class="img-slider" style="position:relative;">
+        <div class="img-wrapper" style="display:flex; width:200%; transition:0.4s;">
+          <img src="Alibabad7faa2c17177e2ffab840d9759a5fb76_original.png" alt="Huile Corps" style="width:50%; object-fit:cover;">
+          <img src="IMG-20250502-WA0001.jpg" alt="Huile Corps - vue 2" style="width:50%; object-fit:cover;">
+        </div>
+      </div>
+      <div style="padding:16px; flex-grow:1;">
+        <div class="product-title" style="font-weight:700; font-size:1.1rem; margin-bottom:8px;color:#000;">Soins capillaires naturels</div>
+        <div class="product-desc" style="color:#555; font-size:0.95rem; margin-bottom:12px;">Nourrit intensément et laisse un fini lumineux.</div>
+        <div class="price" style="font-weight:700; margin-bottom:12px;">27,00 €</div>
+        <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=8000" data-title="Accessoires d’hygiène féminine" data-price="27,00" style="display:block; text-align:center; padding:12px; border-radius:24px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; font-weight:700; text-decoration:none; transition:0.3s;">Acheter</a>
+      </div>
+    </article>
+    <!-- Produit 4 -->
+    <article class="card" style="flex:1 1 300px; max-width:300px; background:#fff; border-radius:16px; box-shadow:0 6px 20px rgba(0,0,0,0.1); overflow:hidden; display:flex; flex-direction:column;">
+      <div class="img-slider" style="position:relative;">
+        <div class="img-wrapper" style="display:flex; width:200%; transition:0.4s;">
+          <img src="Alibabad7faa2c17177e2ffab840d9759a5fb76_original.png" alt="Huile Corps" style="width:50%; object-fit:cover;">
+          <img src="IMG-20250502-WA0001.jpg" alt="Huile Corps - vue 2" style="width:50%; object-fit:cover;">
+        </div>
+      </div>
+      <div style="padding:10px; flex-grow:1;">
+        <div class="product-title" style="font-weight:700; font-size:1.1rem; margin-bottom:8px;color:#000;">Huile Corps Satinée</div>
+        <div class="product-desc" style="color:#555; font-size:0.95rem; margin-bottom:12px;">Nourrit intensément et laisse un fini lumineux.</div>
+        <div class="price" style="font-weight:700; margin-bottom:12px;">27,00 €</div>
+        <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=8000" data-title="Accessoires d’hygiène féminine" data-price="27,00" href="#" style="display:block; text-align:center; padding:12px; border-radius:24px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; font-weight:700; text-decoration:none; transition:0.3s;">Acheter</a>
+      </div>
+    </article>
+      <!-- Accessoires cheveux -->
+  <h3 class="styled-h3">Accessoires cheveux</h3>
+  <div class="grid" style="display:flex;flex-wrap:wrap;gap:24px;justify-content:center;">
+
+    <!-- Produit 1 -->
+    <article class="card" style="flex:1 1 300px; max-width:300px; background:#fff; border-radius:16px; box-shadow:0 6px 20px rgba(0,0,0,0.1); overflow:hidden; display:flex; flex-direction:column;">
+      <div class="img-slider" style="position:relative;">
+        <div class="img-wrapper" style="display:flex; width:200%; transition:0.4s;">
+          <img src="1747160036940.png" alt="Masque Nuit" style="width:50%; object-fit:cover;">
+          <img src="Alibaba5f6885d36f99dcfbfd31a61d3b98610a_original.png" alt="Masque Nuit - vue 2" style="width:50%; object-fit:cover;">
+        </div>
+      </div>
+      <div style="padding:10px; flex-grow:1;">
+        <div class="product-title" style="font-weight:700; font-size:1.1rem; margin-bottom:8px;color:#000;">Masque Nuit Régénérant</div>
+        <div class="product-desc" style="color:#555; font-size:0.95rem; margin-bottom:12px;">Régénère et apaise la peau pendant votre sommeil.</div>
+        <div class="price" style="font-weight:700; margin-bottom:12px;">34,00 €</div>
+        <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=8000" data-title="Accessoires d’hygiène féminine" data-price="27,00" style="display:block; text-align:center; padding:12px; border-radius:24px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; font-weight:700; text-decoration:none; transition:0.3s;">Acheter</a>
+      </div>
+    </article>
+
+    <!-- Produit 2 -->
+    <article class="card" style="flex:1 1 300px; max-width:300px; background:#fff; border-radius:16px; box-shadow:0 6px 20px rgba(0,0,0,0.1); overflow:hidden; display:flex; flex-direction:column;">
+      <div class="img-slider" style="position:relative;">
+        <div class="img-wrapper" style="display:flex; width:200%; transition:0.4s;">
+          <img src="1747160119497.png" alt="Gommage" style="width:50%; object-fit:cover;">
+          <img src="Alibabad7faa2c17177e2ffab840d9759a5fb76_original.png" alt="Gommage - vue 2" style="width:50%; object-fit:cover;">
+        </div>
+      </div>
+      <div style="padding:10px; flex-grow:1;">
+        <div class="product-title" style="font-weight:700; font-size:1.1rem; margin-bottom:8px;color:#000;">Gommage Sucre & Coco</div>
+        <div class="product-desc" style="color:#555; font-size:0.95rem; margin-bottom:12px;">Exfolie, adoucit et illumine la peau instantanément.</div>
+        <div class="price" style="font-weight:700; margin-bottom:12px;">19,50 €</div>
+       <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=8000" data-title="Accessoires d’hygiène féminine" data-price="27,00" style="display:block; text-align:center; padding:12px; border-radius:24px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; font-weight:700; text-decoration:none; transition:0.3s;">Acheter</a>
+      </div>
+    </article>
+
+    <!-- Produit 3 -->
+    <article class="card" style="flex:1 1 300px; max-width:300px; background:#fff; border-radius:16px; box-shadow:0 6px 20px rgba(0,0,0,0.1); overflow:hidden; display:flex; flex-direction:column;">
+      <div class="img-slider" style="position:relative;">
+        <div class="img-wrapper" style="display:flex; width:200%; transition:0.4s;">
+          <img src="Alibabad7faa2c17177e2ffab840d9759a5fb76_original.png" alt="Huile Corps" style="width:50%; object-fit:cover;">
+          <img src="IMG-20250502-WA0001.jpg" alt="Huile Corps - vue 2" style="width:50%; object-fit:cover;">
+        </div>
+      </div>
+      <div style="padding:10px; flex-grow:1;">
+        <div class="product-title" style="font-weight:700; font-size:1.1rem; margin-bottom:8px;color:#000;">Huile Corps Satinée</div>
+        <div class="product-desc" style="color:#555; font-size:0.95rem; margin-bottom:12px;">Nourrit intensément et laisse un fini lumineux.</div>
+        <div class="price" style="font-weight:700; margin-bottom:12px;">27,00 €</div>
+     <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=8000" data-title="Accessoires d’hygiène féminine" data-price="27,00"style="display:block; text-align:center; padding:12px; border-radius:24px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; font-weight:700; text-decoration:none; transition:0.3s;">Acheter</a>
+      </div>
+    </article>
+    <!-- Produit 4 -->
+    <article class="card" style="flex:1 1 300px; max-width:300px; background:#fff; border-radius:16px; box-shadow:0 6px 20px rgba(0,0,0,0.1); overflow:hidden; display:flex; flex-direction:column;">
+      <div class="img-slider" style="position:relative;">
+        <div class="img-wrapper" style="display:flex; width:200%; transition:0.4s;">
+          <img src="Alibabad7faa2c17177e2ffab840d9759a5fb76_original.png" alt="Huile Corps" style="width:50%; object-fit:cover;">
+          <img src="IMG-20250502-WA0001.jpg" alt="Huile Corps - vue 2" style="width:50%; object-fit:cover;">
+        </div>
+      </div>
+      <div style="padding:10px; flex-grow:1;">
+        <div class="product-title" style="font-weight:700; font-size:1.1rem; margin-bottom:8px;color:#000;">Huile Corps Satinée</div>
+        <div class="product-desc" style="color:#555; font-size:0.95rem; margin-bottom:12px;">Nourrit intensément et laisse un fini lumineux.</div>
+        <div class="price" style="font-weight:700; margin-bottom:12px;">27,00 €</div>
+        <a class="btn-buy" href="https://pay.wave.com/m/M_sn_zy5ahAQs1Ctt/c/sn/?amount=8000" data-title="Accessoires d’hygiène féminine" data-price="27,00" style="display:block; text-align:center; padding:12px; border-radius:24px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; font-weight:700; text-decoration:none; transition:0.3s;">Acheter</a>
+      </div>
+    </article>
   </div>
-</section>
 
-<!-- PANIER -->
-<section id="panier" class="tab-panel" hidden>
-  <h2>Votre Panier</h2>
-  <div id="cart">Panier vide</div>
-</section>
 
-<!-- COMMANDE -->
-<section id="commande" class="tab-panel" hidden>
-  <h2>Formulaire de Commande</h2>
-  <form id="order-form">
-    <input type="text" id="client-name" placeholder="Nom complet" required>
-    <input type="email" id="client-email" placeholder="Email" required>
-    <input type="tel" id="client-phone" placeholder="Téléphone" required>
-    <label for="payment">Mode de paiement :</label>
-    <select id="payment" required>
-      <option value="">Sélectionnez</option>
-      <option value="paypal">PayPal</option>
-      <option value="stripe">Carte bancaire</option>
-      <option value="momo">Mobile Money</option>
-    </select>
-    <button type="submit" id="pay-btn">Valider et Payer</button>
-  </form>
-</section>
 
-</main>
+</section>
 
 <script>
-// Onglets
+/* Mini-slider images pour chaque produit */
+document.querySelectorAll('.img-slider').forEach(slider => {
+  const wrapper = slider.querySelector('.img-wrapper');
+  const prev = slider.querySelector('.img-prev');
+  const next = slider.querySelector('.img-next');
+  let index = 0;
+
+  prev.addEventListener('click', () => {
+    index = 0;
+    wrapper.style.transform = 'translateX(0)';
+  });
+
+  next.addEventListener('click', () => {
+    index = 1;
+    wrapper.style.transform = 'translateX(-50%)';
+  });
+});
+</script>
+
+</section>
+
+<!-- Script pour les flèches -->
+<script>
+function scrollSlider(button, direction) {
+  const wrapper = button.parentElement;
+  const slider = wrapper.querySelector('.product-slider');
+  slider.scrollBy({ left: direction * 260, behavior: 'smooth' });
+}
+</script>
+
+
+
+</section>
+
+<!-- BEAUTÉ & CONSEIL -->
+<section id="beaute" class="tab-panel" hidden>
+  <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:60px;">
+<div style="flex:1;min-width:200px;">
+<h2>BEAUTÉ & CONSEIL</h2>
+<div class="beauty-section">
+<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Routine Matinale" allowfullscreen loading="lazy"></iframe>
+</div>
+</div>
+<div style="flex:1;min-width:200px;">
+<h2></h2>
+<div class="review-card visible"></strong><p>"Nettoyez votre visage, appliquez un sérum hydratant et terminez par votre crème solaire pour protéger votre peau."</p></div>
+</div>
+</div>
+
+  
+ <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:40px;">
+<div style="flex:1;min-width:400px;">
+  <h2>Routine du Soir</h2>
+<div class="beauty-section">
+<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Routine Matinale" allowfullscreen loading="lazy"></iframe>
+</div>
+</div>
+<div style="flex:1;min-width:400px;">
+<h2></h2>
+<div class="review-card visible"></strong><p>"Démaquillez-vous, appliquez un sérum régénérant et terminez avec votre crème de nuit pour nourrir la peau pendant le sommeil."</p></div>
+</div>
+</div>
+
+ <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:40px;">
+<div style="flex:1;min-width:400px;">
+    <h2>Conseils Bien-être</h2>
+<div class="beauty-section">
+<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Routine Matinale" allowfullscreen loading="lazy"></iframe>
+</div>
+</div>
+<div style="flex:1;min-width:400px;">
+<h2></h2>
+<div class="review-card visible"></strong><p>"Buvez suffisamment d'eau, dormez bien et faites des pauses détente pour améliorer l'éclat de votre peau.."</p></div>
+</div>
+</div>
+
+
+
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact" class="tab-panel" hidden>
+<h2>Contactez-nous</h2>
+<h3 style="text-align:center; margin-bottom:20px; color:var(--accent)">Envoyez-nous un message</h3>
+<form action="https://formspree.io/f/xzzqbpld" method="POST">
+<input type="text" name="name" placeholder="Votre nom" required>
+<input type="tel" name="phone" placeholder="Votre numéro de téléphone" required>
+<textarea name="message" placeholder="Votre message" required></textarea>
+<button type="submit" class="btn-send">Envoyer le message</button>
+</form>
+</section>
+</main>
+
+<footer>
+  <div class="footer-container">
+    <!-- Colonne 1 : À propos -->
+    <div class="footer-col">
+      <h4>À propos</h4>
+      <p>Bélli et Bien-être vous accompagne dans votre routine beauté avec des produits naturels et respectueux de votre peau.</p>
+    </div>
+
+    <!-- Colonne 2 : Réseaux sociaux -->
+    <div class="footer-col">
+      <h4>Suivez-nous</h4>
+      <div class="footer-socials">
+        <a href="https://www.facebook.com/share/1DSc7zHAQY/" aria-label="Facebook">
+          <img src="facebook-Photoroom.png" alt="Facebook">
+        </a>
+        <a href=" https://www.instagram.com/bellietbienetre555?igsh=MWVuN2tjeTlpMmt3bA==" aria-label="Instagram">
+          <img src="dossierPicture_717450.png" alt="Instagram">
+        </a>
+        <a href="https://www.tiktok.com/@belli.bienetre4280?_r=1&_t=ZS-93wRqyrTEpE">
+          <img src="images.png" alt="TikTok">
+        </a>
+      </div>
+    </div>
+
+    <!-- Colonne 3 : Contact -->
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>Email: <a href="mailto:bellietbienetre18@gmail.com">bellietbienetre18@gmail.com</a></p>
+      <p>Téléphone: +221 78 465 46 52</a></p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © <strong>Bélli et Bien-être</strong> — Tous droits réservés
+  </div>
+</footer>
+
+
+<script>
 const tabs = document.querySelectorAll('.tab');
 const panels = document.querySelectorAll('.tab-panel');
 tabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-    tabs.forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
-    panels.forEach(p => p.hidden = true);
-    document.getElementById(tab.dataset.tab).hidden = false;
-  });
+tab.addEventListener('click', () => {
+tabs.forEach(t => t.classList.remove('active'));
+tab.classList.add('active');
+panels.forEach(p => p.hidden = (p.id !== tab.dataset.tab));
 });
+});
+const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.1 });
+document.querySelectorAll('.card, .review-card').forEach(el => observer.observe(el));
+</script>
+    
+<!-- Bouton panier avec badge -->
+<div style="position:fixed; top:20px; right:20px; z-index:2000;">
+  <button id="cart-button" style="position:relative; padding:12px 16px; border:none; border-radius:24px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; cursor:pointer; font-size:16px;">
+    🛒 Panier
+    <span id="cart-count" style="position:absolute; top:-6px; right:-6px; background:red; color:#fff; font-size:12px; padding:2px 6px; border-radius:50%; display:none;">0</span>
+  </button>
+</div>
 
-// Panier
+<!-- Panier flottant avec slide -->
+<div id="cart" style="position:fixed; top:0; right:-350px; width:350px; height:100%; overflow:auto; background:#fff; box-shadow:-4px 0 20px rgba(0,0,0,0.2); padding:20px; transition:right 0.3s ease; z-index:2000;">
+  <h3 style="margin-bottom:16px;">Votre Panier 🛒</h3>
+  <ul id="cart-items" style="list-style:none; padding:0; margin:0;"></ul>
+  <div style="margin-top:16px; font-weight:700;">Total: <span id="cart-total">0 €</span></div>
+  <button onclick="checkout()" style="margin-top:12px; padding:10px 20px; border:none; border-radius:24px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; cursor:pointer;">Commander</button>
+  <button onclick="toggleCart()" style="margin-top:8px; padding:6px 12px; border:none; border-radius:12px; background:#ccc; color:#000; cursor:pointer;">Fermer</button>
+</div>
+
+<script>
+// Panier JS avec badge et slide
 let cart = [];
-const cartContainer = document.getElementById('cart');
-function updateCartDisplay() {
-  if(cart.length === 0) { cartContainer.innerHTML = 'Panier vide'; return; }
-  cartContainer.innerHTML = '';
-  cart.forEach((item,i)=>{
-    const div = document.createElement('div');
-    div.className = 'cart-item';
-    div.innerHTML = `<span>${item.name} (${item.price} €)</span> <button onclick="removeFromCart(${i})">❌</button>`;
-    cartContainer.appendChild(div);
-  });
-  document.getElementById('cart-count').textContent = cart.length;
-}
-function removeFromCart(i){ cart.splice(i,1); updateCartDisplay(); }
 
-// Ajouter produits au panier
-document.querySelectorAll('.btn-buy').forEach(btn=>{
-  btn.addEventListener('click', e=>{
+const cartDiv = document.getElementById('cart');
+const cartButton = document.getElementById('cart-button');
+
+function toggleCart() {
+  if(cartDiv.style.right === '0px'){
+    cartDiv.style.right = '-350px';
+  } else {
+    cartDiv.style.right = '0px';
+  }
+}
+
+function updateCartCount() {
+  const countSpan = document.getElementById('cart-count');
+  if(cart.length > 0){
+    countSpan.style.display = 'inline-block';
+    countSpan.textContent = cart.length;
+  } else {
+    countSpan.style.display = 'none';
+  }
+}
+
+function addToCart(title, price) {
+  cart.push({title, price});
+  renderCart();
+  updateCartCount();
+  cartDiv.style.right = '0px'; // ouvre le panier automatiquement
+}
+
+function renderCart() {
+  const list = document.getElementById('cart-items');
+  list.innerHTML = '';
+  let total = 0;
+  cart.forEach((item, index) => {
+    const priceNum = parseFloat(item.price.replace('€','').replace(',','.'));
+    total += priceNum;
+    const li = document.createElement('li');
+    li.style.marginBottom = '8px';
+    li.innerHTML = `${item.title} - ${item.price} <button onclick="removeFromCart(${index})" style="border:none; background:none; color:red; cursor:pointer;">x</button>`;
+    list.appendChild(li);
+  });
+  document.getElementById('cart-total').textContent = total.toFixed(2).replace('.',',') + ' €';
+}
+
+function removeFromCart(index) {
+  cart.splice(index, 1);
+  renderCart();
+  updateCartCount();
+}
+
+function checkout() {
+  alert('Merci pour votre commande ! Total : ' + document.getElementById('cart-total').textContent);
+  cart = [];
+  renderCart();
+  updateCartCount();
+  cartDiv.style.right = '-350px';
+}
+
+// Ajouter écouteurs sur tous les boutons "Acheter"
+document.querySelectorAll('.btn-buy').forEach(btn => {
+  btn.addEventListener('click', (e) => {
     e.preventDefault();
     const card = btn.closest('.card');
-    const name = card.dataset.name;
-    const price = card.dataset.price;
-    cart.push({name, price});
-    updateCartDisplay();
-    alert(`${name} ajouté au panier !`);
+    const title = card.querySelector('.product-title').textContent;
+    const price = card.querySelector('.price').textContent;
+    addToCart(title, price);
   });
 });
 
-// Formulaire et paiement
-document.getElementById('order-form').addEventListener('submit', e=>{
-  e.preventDefault();
-  if(cart.length===0){ alert('Votre panier est vide !'); return; }
-  const paymentMethod = document.getElementById('payment').value;
-  if(!paymentMethod){ alert('Choisissez un mode de paiement !'); return; }
+cartButton.addEventListener('click', toggleCart);
+</script>
+<!-- Panier flottant -->
+<div id="cart" style="position:fixed; top:80px; right:20px; width:300px; max-height:400px; overflow:auto; background:#fff; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.2); padding:16px; display:none; z-index:2000;">
+  <h3 style="margin-bottom:12px;">Votre Panier 🛒</h3>
+  <ul id="cart-items" style="list-style:none; padding:0; margin:0;"></ul>
+  <div style="margin-top:12px; font-weight:700;">Total: <span id="cart-total">0 €</span></div>
+  <button onclick="checkout()" style="margin-top:12px; padding:10px 20px; border:none; border-radius:24px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; cursor:pointer;">Commander</button>
+  <button onclick="toggleCart()" style="margin-top:8px; padding:6px 12px; border:none; border-radius:12px; background:#ccc; color:#000; cursor:pointer;">Fermer</button>
+</div>
 
-  // Redirection vers le lien de paiement
-  let paymentLink='';
-  if(paymentMethod==='paypal') paymentLink='https://www.paypal.com/pay';
-  else if(paymentMethod==='stripe') paymentLink='https://www.stripe.com/pay';
-  else if(paymentMethod==='momo') paymentLink='https://www.momo.com/pay';
+<!-- Bouton panier en header -->
+<button id="cart-button" onclick="toggleCart()" style="position:fixed; top:20px; right:20px; z-index:2000; padding:12px 16px; border:none; border-radius:24px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; cursor:pointer;">🛒 Panier</button>
 
-  // Télécharger bon de commande avant paiement
-  const orderText = `Commande de ${document.getElementById('client-name').value}\nEmail: ${document.getElementById('client-email').value}\nTéléphone: ${document.getElementById('client-phone').value}\n\nProduits:\n${cart.map(p=>p.name+' - '+p.price+' €').join('\n')}`;
-  const blob = new Blob([orderText], {type:'text/plain'});
-  const link = document.createElement('a');
-  link.href = URL.createObjectURL(blob);
-  link.download = 'bon_commande.txt';
-  link.click();
+<script>
+// Panier JS simple
+let cart = [];
 
-  // Ouvrir le paiement
-  window.open(paymentLink,'_blank');
+function toggleCart() {
+  const cartDiv = document.getElementById('cart');
+  cartDiv.style.display = cartDiv.style.display === 'none' ? 'block' : 'none';
+}
 
-  // Vider le panier
+function addToCart(title, price) {
+  const product = {title, price};
+  cart.push(product);
+  renderCart();
+}
+
+function renderCart() {
+  const list = document.getElementById('cart-items');
+  list.innerHTML = '';
+  let total = 0;
+  cart.forEach((item, index) => {
+    total += parseFloat(item.price.replace('€','').replace(',','.'));
+    const li = document.createElement('li');
+    li.style.marginBottom = '8px';
+    li.innerHTML = `${item.title} - ${item.price} <button onclick="removeFromCart(${index})" style="border:none; background:none; color:red; cursor:pointer;">x</button>`;
+    list.appendChild(li);
+  });
+  document.getElementById('cart-total').textContent = total.toFixed(2).replace('.',',') + ' €';
+}
+
+function removeFromCart(index) {
+  cart.splice(index, 1);
+  renderCart();
+}
+
+function checkout() {
+  alert('Merci pour votre commande ! Total : ' + document.getElementById('cart-total').textContent);
   cart = [];
-  updateCartDisplay();
+  renderCart();
+  toggleCart();
+}
 
-  // Retour à l'onglet panier
-  document.querySelector('[data-tab="panier"]').click();
+// Ajouter écouteurs sur tous les boutons "Acheter"
+document.querySelectorAll('.btn-buy').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const card = btn.closest('.card');
+    const title = card.querySelector('.product-title').textContent;
+    const price = card.querySelector('.price').textContent;
+    addToCart(title, price);
+    toggleCart();
+  });
 });
+</script>
 </script>
 </body>
 </html>
